@@ -1,7 +1,7 @@
 package pt.c40task.l05wumpus;
 
 public abstract class Componente {
-	Caverna cavernaa;
+	Caverna caverna;
 	int linha;
 	int coluna;
 	
