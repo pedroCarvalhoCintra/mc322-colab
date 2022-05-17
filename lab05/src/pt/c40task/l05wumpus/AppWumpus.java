@@ -1,7 +1,7 @@
 package pt.c40task.l05wumpus;
 
 public class AppWumpus {
-
+   
    public static void main(String[] args) {
 	  System.out.println("DELETAR DEPOIS: CAVERNA IMPRIMIR");
       AppWumpus.executaJogo(
@@ -12,8 +12,21 @@ public class AppWumpus {
    
    public static void executaJogo(String arquivoCaverna, String arquivoSaida,
                                   String arquivoMovimentos) {
-	  
+      
       Toolkit tk = Toolkit.start(arquivoCaverna, arquivoSaida, arquivoMovimentos);
+	   Montador montador = new Montador(tk);
+      Carverna caverna = montador.construirCaverna(tk.retrieveCave());
+
+
+      if ( caverna != null ){
+         Controle controle = new Controle(caverna.getSala(0,0).getMaiorPrioridade());
+
+         if (arquivoMovimentos == null)
+            Controle.iniciarInterativo(caverna);
+         else
+            Controle.iniciarLeitura(caverna, tk.retrieveMovements());
+      }
+
       /*
       String cave[][] = tk.retrieveCave();
       System.out.println("=== Caverna");

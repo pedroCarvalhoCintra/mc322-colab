@@ -18,12 +18,20 @@ public abstract class Componente {
 	public int getColuna() {
 		return this.coluna;
 	}
+
+	public void setLinha(int novaLinha){
+		this.linha = novaLinha;
+	}
 	
+	public void setColuna(int novaColuna){
+		this.coluna = novaColuna;
+	}
+
 	public void conectar() {
 		caverna.conectar(this);
 	}
-	
-	public void desconectar() {
+
+	public void desconectar(){
 		caverna.desconectar(this);
 	}
 	
