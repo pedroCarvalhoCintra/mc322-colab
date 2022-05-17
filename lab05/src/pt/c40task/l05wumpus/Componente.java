@@ -23,6 +23,10 @@ public abstract class Componente {
 		caverna.conectar(this);
 	}
 	
+	public void desconectar() {
+		caverna.desconectar(this);
+	}
+	
 	public abstract int getPrioridade();
 	
 	public abstract String getId();

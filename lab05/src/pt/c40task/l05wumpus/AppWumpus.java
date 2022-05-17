@@ -12,15 +12,9 @@ public class AppWumpus {
    
    public static void executaJogo(String arquivoCaverna, String arquivoSaida,
                                   String arquivoMovimentos) {
-	   
-	   //if (arquivoMovimentos == null) {
-	   
-		 //  Controle.iniciarInterativo(arquivoCarverna, arquivoSaida);
-	   //}
-	   
 	  
       Toolkit tk = Toolkit.start(arquivoCaverna, arquivoSaida, arquivoMovimentos);
-      
+      /*
       String cave[][] = tk.retrieveCave();
       System.out.println("=== Caverna");
       for (int l = 0; l < cave.length; l++) {
@@ -28,9 +22,12 @@ public class AppWumpus {
             System.out.print(cave[l][c] + ((c < cave[l].length-1) ? ", " : ""));
          System.out.println();
       }
+      */
+      Montador novo = new Montador(tk);
+      Caverna caverna = novo.construirCaverna();
+      caverna.imprimirCaverna();
       
-      Montador novo = new Montador(cave);
-      novo.imprimir();
+
             
       String movements = tk.retrieveMovements();
       System.out.println("=== Movimentos");

@@ -17,4 +17,8 @@ public class Heroi extends Componente{
 	public String getId() {
 		return "P";
 	}
+	
+	public int getFlechasUsadas() {
+		return 1;
+	}
 }
