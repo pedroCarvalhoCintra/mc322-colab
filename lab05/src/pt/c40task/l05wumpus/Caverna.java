@@ -27,8 +27,11 @@ public class Caverna {
 		int linha = comp.getLinha();
 		int coluna = comp.getColuna();
 		
-		if (verificarPosicao(linha, coluna) == true) { //verifiação de validade de posicionamento
-			layout[linha][coluna].addComponente(comp);
+		if (verificarPosicao(linha, coluna) == true) { //verifiaï¿½ï¿½o de validade de posicionamento
+			int sucesso = layout[linha][coluna].addComponente(comp);
+			if (sucesso == -1) {
+				System.out.println("Erro: posicionamento invalido de componente.");
+			}
 		}
 	}
 	
@@ -36,27 +39,37 @@ public class Caverna {
 		int linha = comp.getLinha();
 		int coluna = comp.getColuna();
 		
-		if (verificarPosicao(linha, coluna) == true) { //verifiação de validade de posicionamento
+		if (verificarPosicao(linha, coluna) == true) { //verifiaï¿½ï¿½o de validade de posicionamento
 			layout[linha][coluna].removerComponente(comp);
 		}
 	}
 	
+	public Sala getSala(int linha, int coluna) {
+		return layout[linha][coluna];
+	}
+	
 	public String[][] getCaverna() {
-		//Retorna uma versão em String da caverna, levando em conta prioridades.
+		//Retorna uma versï¿½o em String da caverna, levando em conta prioridades.
 		String cavernaStr[][] = new String[4][4];
 		
 		
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
-				cavernaStr[i][j] = layout[i][j].getMaiorPrioridade().getId();
+				if (layout[i][j].getVisitado() == false) {
+					cavernaStr[i][j] = "-";
+				}
+				
+				else {
+					cavernaStr[i][j] = layout[i][j].getMaiorPrioridade().getId();
+				}
 			}
 		}
 		
 		return cavernaStr;
 	}
 	
-	//TEMPORÁRIO!!!
-	//TEMPORÁRIO!!!
+	//TEMPORï¿½RIO!!!
+	//TEMPORï¿½RIO!!!
 	public void imprimirCaverna() {
 		String[][] cavernaStr = this.getCaverna();
 		for (int i = 0; i < 4; i++) {

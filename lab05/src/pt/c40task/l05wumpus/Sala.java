@@ -23,9 +23,30 @@ public class Sala {
 		this.foiVisitado = !this.foiVisitado;
 	}
 	
-	public void addComponente(Componente novo) {
-		this.componentes[nComponentes] = novo;
-		this.nComponentes += 1;
+	public int addComponente(Componente novo) {
+		if (nComponentes != 0) {
+			if (this.getMaiorPrioridade().getPrioridade() == 3 && novo.getPrioridade() == 3) {
+				return -1; //erro. Apenas 1 objeto de prioridade 3 (ouro, wumpus ou buraco) pode estar na mesma sala
+			}
+			
+			else {
+				if (novo.getId().equals("P") == true) {
+					this.toggleVisitado();
+				}
+				this.componentes[nComponentes] = novo;
+				this.nComponentes += 1;
+				return 1;
+			}
+		}
+		
+		else {
+			if (novo.getId().equals("P") == true) {
+				this.toggleVisitado();
+			}
+			this.componentes[nComponentes] = novo;
+			this.nComponentes += 1;
+			return 1;
+		}	
 	}
 	
 	public void removerComponente(Componente removido) {
@@ -48,5 +69,16 @@ public class Sala {
 		}
 		
 		return max;
+	}
+	
+	public Componente buscarId(String id) {
+		Componente desejado = null;;
+		for (int i = 0; i < nComponentes; i++) {
+			if (componentes[i].getId().equals(id) == true) {
+				desejado = componentes[i];
+			}
+		}
+		
+		return desejado;
 	}
 }
