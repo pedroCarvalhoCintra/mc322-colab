@@ -28,7 +28,7 @@ public class Caverna {
 		int linha = heroi.getLinha();
 		int coluna = heroi.getColuna();
 		
-		if (verificarPosicao(linha, coluna) == true) { //verificaï¿½ï¿½o de validade de posicionamento
+		if (verificarPosicao(linha, coluna) == true) { //verificação de validade de posicionamento
 			layout[linha][coluna].addComponente(heroi);
 			this.setHeroi(heroi);
 		}
@@ -38,7 +38,7 @@ public class Caverna {
 		int linha = comp.getLinha();
 		int coluna = comp.getColuna();
 		
-		if (verificarPosicao(linha, coluna) == true) { //verificaï¿½ï¿½o de validade de posicionamento
+		if (verificarPosicao(linha, coluna) == true) { //verificação de validade de posicionamento
 			int sucesso = layout[linha][coluna].addComponente(comp);
 			if (sucesso == -1) {
 				System.out.println("Erro: posicionamento invalido de componente.");
@@ -50,7 +50,7 @@ public class Caverna {
 		int linha = comp.getLinha();
 		int coluna = comp.getColuna();
 		
-		if (verificarPosicao(linha, coluna) == true) { //verificaï¿½ï¿½oo de validade de posicionamento
+		if (verificarPosicao(linha, coluna) == true) { //verificaçãoo de validade de posicionamento
 			layout[linha][coluna].removerComponente(comp);
 		}
 	}
@@ -68,7 +68,7 @@ public class Caverna {
 	}
 	
 	public char[][] getCaverna() {
-		//Retorna uma versï¿½o em char da caverna, levando em conta prioridades.
+		//Retorna uma versão em char da caverna, levando em conta prioridades.
 		char cavernaChar[][] = new char[4][4];
 		
 		
@@ -87,8 +87,8 @@ public class Caverna {
 		return cavernaChar;
 	}
 	
-	//TEMPORÃ¯Â¿Â½RIO!!!
-	//TEMPORÃ¯Â¿Â½RIO!!!
+	//TEMPORï¿½RIO!!!
+	//TEMPORï¿½RIO!!!
 	public void imprimirCaverna() {
 		char[][] cavernaStr = this.getCaverna();
 		for (int i = 0; i < 4; i++) {

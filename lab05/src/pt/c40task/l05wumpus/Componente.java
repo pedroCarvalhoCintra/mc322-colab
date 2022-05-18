@@ -20,13 +20,17 @@ public abstract class Componente {
 	}
 
 	public void setLinha(int novaLinha){
-		this.linha = novaLinha;
+		if (novaLinha >= 0 && novaLinha <= 3) {
+			this.linha = novaLinha;
+		}
 	}
 	
 	public void setColuna(int novaColuna){
-		this.coluna = novaColuna;
+		if (novaColuna >= 0 && novaColuna <= 3) {
+			this.coluna = novaColuna;
+		}
 	}
-
+	
 	public void conectar() {
 		caverna.conectar(this);
 	}
@@ -38,5 +42,4 @@ public abstract class Componente {
 	public abstract int getPrioridade();
 	
 	public abstract char getId();
-
 }

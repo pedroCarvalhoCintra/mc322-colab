@@ -24,10 +24,14 @@ public class Controle {
 	public void setNomeJogador(String novoNome){
 		this.nomeJogador = novoNome;
 	}
+	
+	public void addScore(int score) {
+		this.score += score;
+	}
 
 	public void perdeu(){
 		status = 'n';
-		score -= 1000;
+		this.addScore(-1000);
 		tk.writeBoard(caverna.getCaverna(), score, status);
 		
 		System.out.println("\n");
@@ -41,7 +45,7 @@ public class Controle {
 
 	public void ganhou(){
 		status = 'w';
-		score += 1000;
+		this.addScore(1000);
 		tk.writeBoard(caverna.getCaverna(), score, status);
 		
 		System.out.println("\n");
@@ -75,14 +79,14 @@ public class Controle {
 		estaNoJogo = false;
 	}
 
-
 	public boolean ehBuraco(Componente comp){
 		boolean result = false;
-		if (comp.getId() == 'B') 
-			result = true;
+		if (comp != null) {
+			if (comp.getId() == 'B') 
+				result = true;
+		}
 		return result;
 	}
-
 
 	public boolean ehOrigem(){
 		boolean result = false;
@@ -93,8 +97,10 @@ public class Controle {
 
 	public boolean ehWumpus(Componente comp){
 		boolean result = false;
-		if (comp.getId() == 'W') 
-			result = true;
+		if (comp != null) {
+			if (comp.getId() == 'W') 
+				result = true;
+		}
 		return result;
 	}
 
@@ -103,58 +109,73 @@ public class Controle {
 	}
 
 	public void confereMovimento(){
-		
-		if ( ehBuraco(caverna.getSala(player.getLinha(), player.getColuna()).buscarId('B')))
-			perdeu();
-		else if ( ehOrigem() && player.getPegouOuro() )
-			ganhou();
-		else if ( ehWumpus(caverna.getSala(player.getLinha(), player.getColuna()).buscarId('W'))){
-			if ( atirarFlecha() ){
-				player.matarWumpus();
-				score += 500;
+		if (player.getFlechaEquipada()) {
+			boolean acerto = atirarFlecha();
+			this.addScore(-100);
+			if (ehWumpus(caverna.getSala(player.getLinha(), player.getColuna()).buscarId('W'))) {
+				if (acerto == true) {
+					player.matarWumpus();
+					this.addScore(500);
+				}
+				
+				else {
+					perdeu();
+
+				}
 			}
-			else
-				perdeu();
+		}
+		
+		if (ehBuraco(caverna.getSala(player.getLinha(), player.getColuna()).buscarId('B')))
+			perdeu();
+		else if ( ehOrigem() && player.getPegouOuro() ) {
+			ganhou();
 		} else {
 			intermediaria();
 		}
 	}
-
+	
     public void moverParaCima(){
-        player.desconectar();
-        player.setLinha(player.getLinha()-1);
-        player.conectar();
-		score -= 15;
-		confereMovimento();
+    	if (this.caverna.verificarPosicao(player.getLinha()-1, player.getColuna())) {
+    		player.desconectar();
+            player.setLinha(player.getLinha()-1);
+            player.conectar();
+    		this.addScore(-15);
+    	}
+    	confereMovimento();
     }
 
     public void moverParaBaixo(){
-        player.desconectar();
-        player.setLinha(player.getLinha()+1);
-        player.conectar();
-		score -= 15;
+    	if (this.caverna.verificarPosicao(player.getLinha()+1, player.getColuna())) {
+    		player.desconectar();
+            player.setLinha(player.getLinha()+1);
+            player.conectar();
+    		this.addScore(-15);
+    	}
 		confereMovimento();
     }
 
     public void moverParaDireita(){
-        player.desconectar();
-        player.setColuna(player.getColuna()+1);
-        player.conectar();
-		score -= 15;
+    	if (this.caverna.verificarPosicao(player.getLinha(), player.getColuna()+1)) {
+    		player.desconectar();
+            player.setColuna(player.getColuna()+1);
+            player.conectar();
+    		this.addScore(-15);
+    	}
 		confereMovimento();
     }
 
     public void moverParaEsquerda(){
-        player.desconectar();
-        player.setColuna(player.getColuna()-1);
-        player.conectar();
-		score -= 15;
+    	if (this.caverna.verificarPosicao(player.getLinha()-1, player.getColuna()-1)) {
+    		player.desconectar();
+            player.setColuna(player.getColuna()-1);
+            player.conectar();
+    		this.addScore(-15);
+    	}
 		confereMovimento();
     }
 
     public void equiparFlecha(){
         player.equiparFlecha();
-		score -= 100;
 		intermediaria();
     }
 
@@ -167,37 +188,42 @@ public class Controle {
 
     public void iniciarLeitura(){
 		String movimentos = tk.retrieveMovements();
+		
+		intermediaria();
 
         for ( int i = 0; i < movimentos.length() && estaNoJogo; i++ ){
-            String movimento = movimentos.substring(0,1);
-            movimentos = movimentos.substring(1,movimentos.length());
-            
+            String movimento = movimentos.substring(i,i+1);
             switch(movimento){
                 case "w":
                     moverParaCima();
+                    break;
                 case "s":
                     moverParaBaixo();
+                    break;
                 case "d":
                     moverParaDireita();
+                    break;
                 case "a":
                     moverParaEsquerda();
+                    break;
                 case "k":
                     equiparFlecha();
+                    break;
                 case "c":
                     capturarOuro();
+                    break;
                 case "q":
 					sairJogo();
+					break;
             }
-			
-        
         }
-
-
     }
 
     public void iniciarInterativo(){
         Scanner teclado = new Scanner(System.in);
 		setNomeJogador(teclado.nextLine());
+		intermediaria();
+
         String movimento = teclado.nextLine();
 
         while( estaNoJogo ){
@@ -205,24 +231,34 @@ public class Controle {
             switch(movimento){
                 case "w":
                     moverParaCima();
+                    break;
                 case "s":
                     moverParaBaixo();
+                    break;
                 case "d":
                     moverParaDireita();
+                    break;
                 case "a":
                     moverParaEsquerda();
+                    break;
                 case "k":
                     equiparFlecha();
+                    break;
                 case "c":
                     capturarOuro();
+                    break;
 				case "q":
 					sairJogo();
+					teclado.close();
+					break;
+				default:
+					System.out.println("Inválido! Por favor, digite novamente.");
+					break;
             }
 		
 			movimento = teclado.nextLine();
         }
 		teclado.close();
     }
-
 
 }

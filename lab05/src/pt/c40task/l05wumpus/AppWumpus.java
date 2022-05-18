@@ -3,7 +3,6 @@ package pt.c40task.l05wumpus;
 public class AppWumpus {
    
    public static void main(String[] args) {
-	  System.out.println("DELETAR DEPOIS: CAVERNA IMPRIMIR");
       AppWumpus.executaJogo(
             (args.length > 0) ? args[0] : null,
             (args.length > 1) ? args[1] : null,
@@ -15,18 +14,16 @@ public class AppWumpus {
       
       Toolkit tk = Toolkit.start(arquivoCaverna, arquivoSaida, arquivoMovimentos);
 	  Montador montador = new Montador(tk);
-    Caverna caverna = montador.construirCaverna();
+      Caverna caverna = montador.construirCaverna();
 
-
-
-      if ( caverna != null ){
+      if (caverna != null){
          Controle controle = new Controle(tk, caverna);
 
          if (arquivoMovimentos == null)
             controle.iniciarInterativo();
+        	 //controle.iniciarLeitura();
          else
             controle.iniciarLeitura();
-
       }
 
       /*
@@ -44,7 +41,7 @@ public class AppWumpus {
       caverna.imprimirCaverna();
       */
 
-            
+      /*      
       String movements = tk.retrieveMovements();
       System.out.println("=== Movimentos");
       System.out.println(movements);
@@ -57,10 +54,10 @@ public class AppWumpus {
          {'p', '-', '-', '-'}
       };
       int score = -120;
-      char status = 'x'; // 'w' para venceu; 'n' para perdeu; 'x' intermediï¿½rias
+      char status = 'x'; // 'w' para venceu; 'n' para perdeu; 'x' intermediárias
       tk.writeBoard(partialCave, score, status);
 
-      System.out.println("=== ï¿½ltima Caverna");
+      System.out.println("=== Última Caverna");
       char finalCave[][] = {
          {'#', '#', 'b', '-'},
          {'#', 'b', '#', 'f'},
@@ -68,9 +65,9 @@ public class AppWumpus {
          {'#', '-', '-', '-'}
       };
       score = -1210;
-      status = 'n'; // 'w' para venceu; 'n' para perdeu; 'x' intermediï¿½rias
+      status = 'n'; // 'w' para venceu; 'n' para perdeu; 'x' intermediárias
       tk.writeBoard(finalCave, score, status);
-      
+      */
       tk.stop();
    }
 

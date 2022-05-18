@@ -8,7 +8,7 @@ public class Sala {
 	public Sala() {
 		nComponentes = 0;
 		componentes = new Componente[10]; //Componentes suficientes para todos os componentes possiveis.
-		foiVisitado = true;
+		foiVisitado = false;
 	}
 
 	public Componente[] getComponentes() {
@@ -19,8 +19,8 @@ public class Sala {
 		return this.foiVisitado;
 	}
 	
-	public void toggleVisitado() {
-		this.foiVisitado = !this.foiVisitado;
+	public void setVisitado() {
+		this.foiVisitado = true;
 	}
 	
 	public int addComponente(Componente novo) {
@@ -31,7 +31,7 @@ public class Sala {
 			
 			else {
 				if (novo.getId() == 'P') {
-					this.toggleVisitado();
+					this.setVisitado();
 				}
 				this.componentes[nComponentes] = novo;
 				this.nComponentes += 1;
@@ -41,7 +41,7 @@ public class Sala {
 		
 		else {
 			if (novo.getId() == 'P') {
-				this.toggleVisitado();
+				this.setVisitado();
 			}
 			this.componentes[nComponentes] = novo;
 			this.nComponentes += 1;
@@ -51,13 +51,15 @@ public class Sala {
 	
 	public void removerComponente(Componente removido) {
 		for (int i = 0; i < nComponentes && componentes[i] != null; i++) {
-			if (componentes[nComponentes] == removido) {
+			if (componentes[i].getId() == removido.getId()) {
 				componentes[i] = componentes[nComponentes-1];
 				componentes[nComponentes] = null;
+				nComponentes -= 1;
 				break;
 			}
 		}
 	}
+	
 	
 	public Componente getMaiorPrioridade() {
 		Componente max = componentes[0];
