@@ -14,7 +14,7 @@ public class Controle {
     public Controle(Toolkit tk, Caverna caverna){
 		this.tk = tk;
         this.caverna = caverna;
-		this.player = caverna.getSala(0,0).getMaiorPrioridade();
+		this.player = caverna.getHeroi();
 		this.score = 0;
 		this.status = 'x';
 		this.nomeJogador = "Alcebiades";
@@ -75,40 +75,42 @@ public class Controle {
 		estaNoJogo = false;
 	}
 
-	public boolean ehBuraco(String idComponente){
+
+	public boolean ehBuraco(Componente comp){
 		boolean result = false;
-		if ( idComponente.equals("B") ) 
+		if (comp.getId() == 'B') 
 			result = true;
 		return result;
 	}
 
-	public ehOrigem(){
+
+	public boolean ehOrigem(){
 		boolean result = false;
 		if ( player.getLinha() == 0 && player.getColuna() == 0 )
 			result = true;
 		return result;
 	}
 
-	public boolean ehWumpus(String idComponente){
+	public boolean ehWumpus(Componente comp){
 		boolean result = false;
-		if ( idComponente.equals("B") ) 
+		if (comp.getId() == 'W') 
 			result = true;
 		return result;
 	}
 
 	public boolean atirarFlecha(){
-		return player.atiraFlecha();
+		return player.atirarFlecha();
 	}
 
 	public void confereMovimento(){
 		
-		if ( ehBuraco(caverna.getSala(player.getLinha(), player.getColuna()).buscarId('B')) != null )
+		if ( ehBuraco(caverna.getSala(player.getLinha(), player.getColuna()).buscarId('B')))
 			perdeu();
 		else if ( ehOrigem() && player.getPegouOuro() )
 			ganhou();
-		else if ( ehWumpus(caverna.getSala(player.getLinha(), player.getColuna()).buscarID('W')) != null ){
-			if ( atiraFlecha() ){
-				player.mataWumpus();
+		else if ( ehWumpus(caverna.getSala(player.getLinha(), player.getColuna()).buscarId('W'))){
+			if ( atirarFlecha() ){
+				player.matarWumpus();
 				score += 500;
 			}
 			else
@@ -158,7 +160,7 @@ public class Controle {
 
     public void capturarOuro(){
         player.capturarOuro();
-		intermediaria()
+		intermediaria();
     }
 
 
@@ -180,9 +182,9 @@ public class Controle {
                 case "a":
                     moverParaEsquerda();
                 case "k":
-                    equipaFlecha();
+                    equiparFlecha();
                 case "c":
-                    capturaOuro();
+                    capturarOuro();
                 case "q":
 					sairJogo();
             }
@@ -210,9 +212,9 @@ public class Controle {
                 case "a":
                     moverParaEsquerda();
                 case "k":
-                    equipaFlecha();
+                    equiparFlecha();
                 case "c":
-                    capturaOuro();
+                    capturarOuro();
 				case "q":
 					sairJogo();
             }
@@ -221,5 +223,6 @@ public class Controle {
         }
 		teclado.close();
     }
+
 
 }

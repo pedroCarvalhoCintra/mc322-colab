@@ -2,6 +2,7 @@ package pt.c40task.l05wumpus;
 
 public class Caverna {
 	private Sala[][] layout;
+	private Heroi heroi;
 	
 	public Caverna() {
 		layout = new Sala[4][4];
@@ -23,11 +24,21 @@ public class Caverna {
 		return valido;
 	}
 	
+	public void conectar(Heroi heroi) {
+		int linha = heroi.getLinha();
+		int coluna = heroi.getColuna();
+		
+		if (verificarPosicao(linha, coluna) == true) { //verifica��o de validade de posicionamento
+			layout[linha][coluna].addComponente(heroi);
+			this.setHeroi(heroi);
+		}
+	}
+	
 	public void conectar(Componente comp) {
 		int linha = comp.getLinha();
 		int coluna = comp.getColuna();
 		
-		if (verificarPosicao(linha, coluna) == true) { //verifiaï¿½ï¿½o de validade de posicionamento
+		if (verificarPosicao(linha, coluna) == true) { //verifica��o de validade de posicionamento
 			int sucesso = layout[linha][coluna].addComponente(comp);
 			if (sucesso == -1) {
 				System.out.println("Erro: posicionamento invalido de componente.");
@@ -39,9 +50,17 @@ public class Caverna {
 		int linha = comp.getLinha();
 		int coluna = comp.getColuna();
 		
-		if (verificarPosicao(linha, coluna) == true) { //verifiaï¿½ï¿½o de validade de posicionamento
+		if (verificarPosicao(linha, coluna) == true) { //verifica��oo de validade de posicionamento
 			layout[linha][coluna].removerComponente(comp);
 		}
+	}
+	
+	public void setHeroi(Heroi heroi) {
+		this.heroi = heroi;
+	}
+	
+	public Heroi getHeroi() {
+		return this.heroi;
 	}
 	
 	public Sala getSala(int linha, int coluna) {
@@ -49,7 +68,7 @@ public class Caverna {
 	}
 	
 	public char[][] getCaverna() {
-		//Retorna uma versï¿½o em String da caverna, levando em conta prioridades.
+		//Retorna uma vers�o em char da caverna, levando em conta prioridades.
 		char cavernaChar[][] = new char[4][4];
 		
 		

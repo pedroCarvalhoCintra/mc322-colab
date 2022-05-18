@@ -10,6 +10,6 @@ public class Vazio extends Componente {
 	}
 	
 	public char getId() {
-		return '-';
+		return '#';
 	}
 }

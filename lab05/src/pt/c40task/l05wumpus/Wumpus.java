@@ -28,5 +28,5 @@ public class Wumpus extends Componente{
 		fedor3.conectar();
 		fedor4.conectar();
 	}	
-
 }
+

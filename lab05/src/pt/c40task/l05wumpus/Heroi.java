@@ -1,5 +1,7 @@
 package pt.c40task.l05wumpus;
 
+import java.util.Random;
+
 public class Heroi extends Componente{
 	private int numFlechas;
 	private boolean flechaEquipada;
@@ -61,3 +63,4 @@ public class Heroi extends Componente{
 	}
 
 }
+
