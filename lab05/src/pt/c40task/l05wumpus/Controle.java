@@ -8,7 +8,7 @@ public class Controle {
     private Heroi player;
 	private int score;
 	private char status;
-	private String nomeJodador;
+	private String nomeJogador;
 	private boolean estaNoJogo; 
 
     public Controle(Toolkit tk, Caverna caverna){
@@ -17,12 +17,12 @@ public class Controle {
 		this.player = caverna.getSala(0,0).getMaiorPrioridade();
 		this.score = 0;
 		this.status = 'x';
-		this.jodador = "Alcebiades";
+		this.nomeJogador = "Alcebiades";
 		this.estaNoJogo = true;
     }
 
 	public void setNomeJogador(String novoNome){
-		this.nomeJodador = novoNome;
+		this.nomeJogador = novoNome;
 	}
 
 	public void perdeu(){
@@ -32,7 +32,7 @@ public class Controle {
 		
 		System.out.println("\n");
 		caverna.imprimirCaverna();
-		System.out.println("Player: " + nomeJodador);
+		System.out.println("Player: " + nomeJogador);
 		System.out.println("Score: " + score);
 		System.out.println("Voce perdeu =( ...");
 
@@ -46,7 +46,7 @@ public class Controle {
 		
 		System.out.println("\n");
 		caverna.imprimirCaverna();
-		System.out.println("Player: " + nomeJodador);
+		System.out.println("Player: " + nomeJogador);
 		System.out.println("Score: " + score);
 		System.out.println("Voce ganhou =) !!!");
 
@@ -58,7 +58,7 @@ public class Controle {
 
 		System.out.println("\n");
 		caverna.imprimirCaverna();
-		System.out.println("Player: " + nomeJodador);
+		System.out.println("Player: " + nomeJogador);
 		System.out.println("Score: " + score);
 		System.out.println("Continue a jogar, continue a jogar, jogar, jogar ...");
 	}
@@ -68,9 +68,11 @@ public class Controle {
 
 		System.out.println("\n");
 		caverna.imprimirCaverna();
-		System.out.println("Player: " + nomeJodador);
+		System.out.println("Player: " + nomeJogador);
 		System.out.println("Score: " + score);
 		System.out.println("Volte sempre !");
+		
+		estaNoJogo = false;
 	}
 
 	public boolean ehBuraco(String idComponente){
@@ -100,11 +102,11 @@ public class Controle {
 
 	public void confereMovimento(){
 		
-		if ( ehBuraco(caverna.getSala(player.getLinha(), player.getColuna()).buscarID("B")) != null )
+		if ( ehBuraco(caverna.getSala(player.getLinha(), player.getColuna()).buscarId('B')) != null )
 			perdeu();
 		else if ( ehOrigem() && player.getPegouOuro() )
 			ganhou();
-		else if ( ehWumpus(caverna.getSala(player.getLinha(), player.getColuna()).buscarID("W")) != null ){
+		else if ( ehWumpus(caverna.getSala(player.getLinha(), player.getColuna()).buscarID('W')) != null ){
 			if ( atiraFlecha() ){
 				player.mataWumpus();
 				score += 500;
@@ -193,6 +195,7 @@ public class Controle {
 
     public void iniciarInterativo(){
         Scanner teclado = new Scanner(System.in);
+		setNomeJogador(teclado.nextLine());
         String movimento = teclado.nextLine();
 
         while( estaNoJogo ){
@@ -213,7 +216,10 @@ public class Controle {
 				case "q":
 					sairJogo();
             }
+		
+			movimento = teclado.nextLine();
         }
+		teclado.close();
     }
 
 }

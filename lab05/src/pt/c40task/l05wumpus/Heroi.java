@@ -10,7 +10,6 @@ public class Heroi extends Componente{
 		this.numFlechas = 1;
 		this.flechaEquipada = false;
 		pegouOuro = false;
-		derrotouWumpus = false;
 	}
 	
 	public int getPrioridade() {
@@ -26,8 +25,8 @@ public class Heroi extends Componente{
 	}
 	
 	public void capturarOuro(){
-		Componente componenteBuscado = caverna.getSala(this.getLinha(), this.getColuna()).buscarID("O");
-        if ( componenteBuscado != NUll ){
+		Componente componenteBuscado = caverna.getSala(this.getLinha(), this.getColuna()).buscarId('O');
+        if ( componenteBuscado != null ){
             componenteBuscado.desconectar();
             pegouOuro = true;
 		}
@@ -40,7 +39,7 @@ public class Heroi extends Componente{
 		}
 	}
 
-	public void atirarFlecha(){
+	public boolean atirarFlecha(){
 		boolean result = false;
 
 		if ( flechaEquipada ){
@@ -56,9 +55,9 @@ public class Heroi extends Componente{
 	}
 
 	public void matarWumpus(){
-		Componente Wumpus = caverna.getSala(this.getLinha(), this.getColuna()).buscarID("W");
-        if ( componenteBuscado != NUll )
-            componenteBuscado.desconectar();
+		Componente Wumpus = caverna.getSala(this.getLinha(), this.getColuna()).buscarId('W');
+        if ( Wumpus != null )
+			Wumpus.desconectar();
 	}
 
 }
