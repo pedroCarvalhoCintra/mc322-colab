@@ -1,7 +1,7 @@
 package pt.c40task.l05wumpus;
 
 public class AppWumpus {
-
+   
    public static void main(String[] args) {
 	  System.out.println("DELETAR DEPOIS: CAVERNA IMPRIMIR");
       AppWumpus.executaJogo(
@@ -12,8 +12,21 @@ public class AppWumpus {
    
    public static void executaJogo(String arquivoCaverna, String arquivoSaida,
                                   String arquivoMovimentos) {
-	  
+      
       Toolkit tk = Toolkit.start(arquivoCaverna, arquivoSaida, arquivoMovimentos);
+	  Montador montador = new Montador(tk);
+      Caverna caverna = montador.construirCaverna();
+
+
+      if ( caverna != null ){
+         Controle controle = new Controle(tk, caverna);
+
+         if (arquivoMovimentos == null)
+            controle.iniciarInterativo();
+         else
+            controle.iniciarLeitura();
+      }
+
       /*
       String cave[][] = tk.retrieveCave();
       System.out.println("=== Caverna");
@@ -23,10 +36,11 @@ public class AppWumpus {
          System.out.println();
       }
       */
+      /*
       Montador novo = new Montador(tk);
       Caverna caverna = novo.construirCaverna();
       caverna.imprimirCaverna();
-      
+      */
 
             
       String movements = tk.retrieveMovements();
@@ -41,10 +55,10 @@ public class AppWumpus {
          {'p', '-', '-', '-'}
       };
       int score = -120;
-      char status = 'x'; // 'w' para venceu; 'n' para perdeu; 'x' intermediÃ¡rias
+      char status = 'x'; // 'w' para venceu; 'n' para perdeu; 'x' intermediárias
       tk.writeBoard(partialCave, score, status);
 
-      System.out.println("=== Ãšltima Caverna");
+      System.out.println("=== Última Caverna");
       char finalCave[][] = {
          {'#', '#', 'b', '-'},
          {'#', 'b', '#', 'f'},
@@ -52,7 +66,7 @@ public class AppWumpus {
          {'#', '-', '-', '-'}
       };
       score = -1210;
-      status = 'n'; // 'w' para venceu; 'n' para perdeu; 'x' intermediÃ¡rias
+      status = 'n'; // 'w' para venceu; 'n' para perdeu; 'x' intermediárias
       tk.writeBoard(finalCave, score, status);
       
       tk.stop();

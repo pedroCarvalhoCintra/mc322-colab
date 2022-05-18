@@ -7,8 +7,8 @@ public class Sala {
 	
 	public Sala() {
 		nComponentes = 0;
-		componentes = new Componente[4]; //1 componente e a sala vazia. Maximo de 3 outros componentes, independentemente da situacao, com as regras dadas.
-		foiVisitado = false;
+		componentes = new Componente[10]; //Componentes suficientes para todos os componentes possiveis.
+		foiVisitado = true;
 	}
 
 	public Componente[] getComponentes() {
@@ -30,7 +30,7 @@ public class Sala {
 			}
 			
 			else {
-				if (novo.getId().equals("P") == true) {
+				if (novo.getId() == 'P') {
 					this.toggleVisitado();
 				}
 				this.componentes[nComponentes] = novo;
@@ -40,7 +40,7 @@ public class Sala {
 		}
 		
 		else {
-			if (novo.getId().equals("P") == true) {
+			if (novo.getId() == 'P') {
 				this.toggleVisitado();
 			}
 			this.componentes[nComponentes] = novo;
@@ -71,10 +71,10 @@ public class Sala {
 		return max;
 	}
 	
-	public Componente buscarId(String id) {
+	public Componente buscarId(char id) {
 		Componente desejado = null;;
 		for (int i = 0; i < nComponentes; i++) {
-			if (componentes[i].getId().equals(id) == true) {
+			if (componentes[i].getId() == id) {
 				desejado = componentes[i];
 			}
 		}

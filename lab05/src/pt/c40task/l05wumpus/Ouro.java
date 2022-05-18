@@ -9,7 +9,7 @@ public class Ouro extends Componente {
 		return 3;
 	}
 	
-	public String getId() {
-		return "O";
+	public char getId() {
+		return 'O';
 	}
 }

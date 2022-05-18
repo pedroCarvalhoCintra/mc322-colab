@@ -2,6 +2,7 @@ package pt.c40task.l05wumpus;
 
 public class Caverna {
 	private Sala[][] layout;
+	private Heroi heroi;
 	
 	public Caverna() {
 		layout = new Sala[4][4];
@@ -23,11 +24,21 @@ public class Caverna {
 		return valido;
 	}
 	
+	public void conectar(Heroi heroi) {
+		int linha = heroi.getLinha();
+		int coluna = heroi.getColuna();
+		
+		if (verificarPosicao(linha, coluna) == true) { //verificação de validade de posicionamento
+			layout[linha][coluna].addComponente(heroi);
+			this.setHeroi(heroi);
+		}
+	}
+	
 	public void conectar(Componente comp) {
 		int linha = comp.getLinha();
 		int coluna = comp.getColuna();
 		
-		if (verificarPosicao(linha, coluna) == true) { //verifiaï¿½ï¿½o de validade de posicionamento
+		if (verificarPosicao(linha, coluna) == true) { //verificação de validade de posicionamento
 			int sucesso = layout[linha][coluna].addComponente(comp);
 			if (sucesso == -1) {
 				System.out.println("Erro: posicionamento invalido de componente.");
@@ -39,39 +50,47 @@ public class Caverna {
 		int linha = comp.getLinha();
 		int coluna = comp.getColuna();
 		
-		if (verificarPosicao(linha, coluna) == true) { //verifiaï¿½ï¿½o de validade de posicionamento
+		if (verificarPosicao(linha, coluna) == true) { //verificaçãoo de validade de posicionamento
 			layout[linha][coluna].removerComponente(comp);
 		}
+	}
+	
+	public void setHeroi(Heroi heroi) {
+		this.heroi = heroi;
+	}
+	
+	public Heroi getHeroi() {
+		return this.heroi;
 	}
 	
 	public Sala getSala(int linha, int coluna) {
 		return layout[linha][coluna];
 	}
 	
-	public String[][] getCaverna() {
-		//Retorna uma versï¿½o em String da caverna, levando em conta prioridades.
-		String cavernaStr[][] = new String[4][4];
+	public char[][] getCaverna() {
+		//Retorna uma versão em char da caverna, levando em conta prioridades.
+		char cavernaChar[][] = new char[4][4];
 		
 		
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
 				if (layout[i][j].getVisitado() == false) {
-					cavernaStr[i][j] = "-";
+					cavernaChar[i][j] = '-';
 				}
 				
 				else {
-					cavernaStr[i][j] = layout[i][j].getMaiorPrioridade().getId();
+					cavernaChar[i][j] = layout[i][j].getMaiorPrioridade().getId();
 				}
 			}
 		}
 		
-		return cavernaStr;
+		return cavernaChar;
 	}
 	
 	//TEMPORï¿½RIO!!!
 	//TEMPORï¿½RIO!!!
 	public void imprimirCaverna() {
-		String[][] cavernaStr = this.getCaverna();
+		char[][] cavernaStr = this.getCaverna();
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
 				System.out.print(cavernaStr[i][j]);
