@@ -9,16 +9,16 @@ public class Buraco extends Componente{
 		return 3;
 	}
 	
-	public String getId() {
-		return "B";
+	public char getId() {
+		return 'B';
 	}
 
 	public void conectar() {
 		caverna.conectar(this);
-		Componete brisa1 = new Fedor(caverna, linha-1, coluna);
-		Componete brisa2 = new Fedor(caverna, linha+1, coluna);
-		Componete brisa3 = new Fedor(caverna, linha, coluna-1);
-		Componete brisa4 = new Fedor(caverna, linha, coluna+1);
+		Componente brisa1 = new Buraco(caverna, linha-1, coluna);
+		Componente brisa2 = new Buraco(caverna, linha+1, coluna);
+		Componente brisa3 = new Buraco(caverna, linha, coluna-1);
+		Componente brisa4 = new Buraco(caverna, linha, coluna+1);
 		
 		brisa1.conectar();
 		brisa2.conectar();

@@ -9,7 +9,7 @@ public class Vazio extends Componente {
 		return -1;
 	}
 	
-	public String getId() {
-		return "#";
+	public char getId() {
+		return '-';
 	}
 }

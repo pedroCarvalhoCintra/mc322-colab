@@ -37,5 +37,5 @@ public abstract class Componente {
 	
 	public abstract int getPrioridade();
 	
-	public abstract String getId();
+	public abstract char getId();
 }

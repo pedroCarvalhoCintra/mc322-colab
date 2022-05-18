@@ -19,12 +19,12 @@ public class AppWumpus {
 
 
       if ( caverna != null ){
-         Controle controle = new Controle(caverna.getSala(0,0).getMaiorPrioridade());
+         Controle controle = new Controle(tk, caverna);
 
          if (arquivoMovimentos == null)
-            Controle.iniciarInterativo(caverna);
+            Controle.iniciarInterativo(tk);
          else
-            Controle.iniciarLeitura(caverna, tk.retrieveMovements());
+            Controle.iniciarLeitura();
       }
 
       /*

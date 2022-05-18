@@ -9,7 +9,7 @@ public class Fedor extends Componente{
 		return 1;
 	}
 	
-	public String getId() {
-		return "f";
+	public char getId() {
+		return 'f';
 	}
 }

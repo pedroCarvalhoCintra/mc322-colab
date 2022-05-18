@@ -19,14 +19,14 @@ public class Montador {
 		Caverna caverna = new Caverna();
 		
 		caverna = new Caverna();
-		for (int i = 0; i < 16; i++) { //16 salas
+		for (int i = 0; i < layout.length; i++) {
 			int linha = Integer.parseInt(layout[i][0]) - 1;
 			int coluna = Integer.parseInt(layout[i][1]) - 1;
 
 			switch(layout[i][2]) {
 			case "P":
 				if (verificarPosHeroi(linha, coluna) == false) {
-					System.out.println("ERRO: Caverna Inválida. Desligando... - CÓD DE ERRO: 001");
+					System.out.println("ERRO: Caverna Inválida. Desligando... - COD DE ERRO: 001");
 					return null;
 				}
 				criarHeroi(caverna, linha, coluna);
@@ -49,13 +49,13 @@ public class Montador {
 			}
 			
 			if (layout[i][2].equals("_") == false) {
-				criarVazio(caverna, linha, coluna);
+				criarVazio(caverna, linha, coluna); //Sempre colocamos um componente vazio nas salas, para facilitar caso todos os outros componentes sejam removidos.
 			}
 		}
 		
 		
 		if (veriricarCaverna() == false) {
-			System.out.println("ERRO: Caverna Inválida. Desligando... - CÓD DE ERRO: 002");
+			System.out.println("ERRO: Caverna Inválida. Desligando... - COD DE ERRO: 002");
 			return null;
 		}
 		
@@ -105,24 +105,19 @@ public class Montador {
 	public boolean veriricarCaverna() {
 		boolean isValido = true;
 		
-		if (nPlayers > 1) {
+		if (nPlayers != 1) {
 			isValido = false;
 		}
 		
-		if (nBuracos > 3) {
+		if (nBuracos > 3 || nBuracos < 2) {
 			isValido = false;
 		}
 		
-		if (nBuracos < 2)
-		{
+		if (nWumpus != 1) {
 			isValido = false;
 		}
 		
-		if (nWumpus > 1) {
-			isValido = false;
-		}
-		
-		if (nOuro > 1) {
+		if (nOuro != 1) {
 			isValido = false;
 		}
 		

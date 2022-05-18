@@ -9,7 +9,7 @@ public class Brisa extends Componente{
 		return 0;
 	}
 	
-	public String getId() {
-		return "b";
+	public char getId() {
+		return 'b';
 	}
 }

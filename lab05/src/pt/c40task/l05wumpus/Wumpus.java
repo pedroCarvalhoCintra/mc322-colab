@@ -12,16 +12,16 @@ public class Wumpus extends Componente{
 		return 3;
 	}
 	
-	public String getId() {
-		return "W";
+	public char getId() {
+		return 'W';
 	}
 
 	public void conectar() {
 		caverna.conectar(this);
-		Componete fedor1 = new Fedor(caverna, linha-1, coluna);
-		Componete fedor2 = new Fedor(caverna, linha+1, coluna);
-		Componete fedor3 = new Fedor(caverna, linha, coluna-1);
-		Componete fedor4 = new Fedor(caverna, linha, coluna+1);
+		Componente fedor1 = new Fedor(caverna, linha-1, coluna);
+		Componente fedor2 = new Fedor(caverna, linha+1, coluna);
+		Componente fedor3 = new Fedor(caverna, linha, coluna-1);
+		Componente fedor4 = new Fedor(caverna, linha, coluna+1);
 		
 		fedor1.conectar();
 		fedor2.conectar();
