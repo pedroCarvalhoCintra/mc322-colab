@@ -38,4 +38,5 @@ public abstract class Componente {
 	public abstract int getPrioridade();
 	
 	public abstract char getId();
+
 }

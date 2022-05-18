@@ -26,7 +26,7 @@ public class Montador {
 			switch(layout[i][2]) {
 			case "P":
 				if (verificarPosHeroi(linha, coluna) == false) {
-					System.out.println("ERRO: Caverna Inv·lida. Desligando... - COD DE ERRO: 001");
+					System.out.println("ERRO: Caverna Inv√°lida. Desligando... - COD DE ERRO: 001");
 					return null;
 				}
 				criarHeroi(caverna, linha, coluna);
@@ -55,7 +55,7 @@ public class Montador {
 		
 		
 		if (veriricarCaverna() == false) {
-			System.out.println("ERRO: Caverna Inv·lida. Desligando... - COD DE ERRO: 002");
+			System.out.println("ERRO: Caverna Inv√°lida. Desligando... - COD DE ERRO: 002");
 			return null;
 		}
 		

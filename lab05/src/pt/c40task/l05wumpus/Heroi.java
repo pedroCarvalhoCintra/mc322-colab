@@ -63,3 +63,4 @@ public class Heroi extends Componente{
 	}
 
 }
+

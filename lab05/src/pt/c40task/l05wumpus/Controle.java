@@ -75,12 +75,14 @@ public class Controle {
 		estaNoJogo = false;
 	}
 
+
 	public boolean ehBuraco(Componente comp){
 		boolean result = false;
 		if (comp.getId() == 'B') 
 			result = true;
 		return result;
 	}
+
 
 	public boolean ehOrigem(){
 		boolean result = false;
@@ -221,5 +223,6 @@ public class Controle {
         }
 		teclado.close();
     }
+
 
 }
