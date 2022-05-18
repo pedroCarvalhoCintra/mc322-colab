@@ -23,7 +23,11 @@ public class Heroi extends Componente{
 	}
 
 	public boolean getPegouOuro(){
-		return pegouOuro;
+		return this.pegouOuro;
+	}
+	
+	public boolean getFlechaEquipada() {
+		return this.flechaEquipada;
 	}
 	
 	public void capturarOuro(){
@@ -34,11 +38,15 @@ public class Heroi extends Componente{
 		}
 	}
 
-	public void equiparFlecha() {
+	public boolean equiparFlecha() {
+		boolean valido = false;
 		if ( numFlechas > 0 ) {
 			flechaEquipada = true;
 			numFlechas--;
+			valido = true;
 		}
+		
+		return valido;
 	}
 
 	public boolean atirarFlecha(){
@@ -61,6 +69,9 @@ public class Heroi extends Componente{
         if ( Wumpus != null )
 			Wumpus.desconectar();
 	}
+	
+	public void conectar() {
+		caverna.conectar(this);
+	}
 
 }
-

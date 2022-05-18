@@ -1,7 +1,5 @@
 package pt.c40task.l05wumpus;
 
-import javax.lang.model.element.NestingKind;
-
 public class Wumpus extends Componente{
 
 	public Wumpus(Caverna caverna, int linha, int coluna) {
@@ -28,5 +26,5 @@ public class Wumpus extends Componente{
 		fedor3.conectar();
 		fedor4.conectar();
 	}	
-}
 
+}

@@ -15,18 +15,14 @@ public class Buraco extends Componente{
 
 	public void conectar() {
 		caverna.conectar(this);
-
 		Componente brisa1 = new Brisa(caverna, linha-1, coluna);
 		Componente brisa2 = new Brisa(caverna, linha+1, coluna);
 		Componente brisa3 = new Brisa(caverna, linha, coluna-1);
 		Componente brisa4 = new Brisa(caverna, linha, coluna+1);
-
 		
 		brisa1.conectar();
 		brisa2.conectar();
 		brisa3.conectar();
 		brisa4.conectar();
-
 	}
 }
-
