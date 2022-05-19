@@ -31,8 +31,9 @@ public abstract class Componente {
 		}
 	}
 	
-	public void conectar() {
-		caverna.conectar(this);
+	public boolean conectar() {
+		boolean retorno = caverna.conectar(this);
+		return retorno;
 	}
 
 	public void desconectar(){

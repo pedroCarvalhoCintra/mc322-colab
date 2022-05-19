@@ -23,10 +23,10 @@ public class Sala {
 		this.foiVisitado = true;
 	}
 	
-	public int addComponente(Componente novo) {
+	public boolean addComponente(Componente novo) {
 		if (nComponentes != 0) {
 			if (this.getMaiorPrioridade().getPrioridade() == 3 && novo.getPrioridade() == 3) {
-				return -1; //erro. Apenas 1 objeto de prioridade 3 (ouro, wumpus ou buraco) pode estar na mesma sala
+				return false; //erro. Apenas 1 objeto de prioridade 3 (ouro, wumpus ou buraco) pode estar na mesma sala
 			}
 			
 			else {
@@ -35,7 +35,7 @@ public class Sala {
 				}
 				this.componentes[nComponentes] = novo;
 				this.nComponentes += 1;
-				return 1;
+				return true;
 			}
 		}
 		
@@ -45,7 +45,7 @@ public class Sala {
 			}
 			this.componentes[nComponentes] = novo;
 			this.nComponentes += 1;
-			return 1;
+			return true;
 		}	
 	}
 	

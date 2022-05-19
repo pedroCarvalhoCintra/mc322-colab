@@ -30,12 +30,8 @@ public class Heroi extends Componente{
 		return this.flechaEquipada;
 	}
 	
-	public void capturarOuro(){
-		Componente componenteBuscado = caverna.getSala(this.getLinha(), this.getColuna()).buscarId('O');
-        if ( componenteBuscado != null ){
-            componenteBuscado.desconectar();
-            pegouOuro = true;
-		}
+	public void setPegouOuro(boolean valor) {
+		this.pegouOuro = valor;
 	}
 
 	public boolean equiparFlecha() {
@@ -63,15 +59,10 @@ public class Heroi extends Componente{
 		}
 		return result;
 	}
-
-	public void matarWumpus(){
-		Componente Wumpus = caverna.getSala(this.getLinha(), this.getColuna()).buscarId('W');
-        if ( Wumpus != null )
-			Wumpus.desconectar();
-	}
 	
-	public void conectar() {
-		caverna.conectar(this);
+	public boolean conectar() {
+		boolean retorno = caverna.conectar(this);
+		return retorno;
 	}
 
 }

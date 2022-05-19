@@ -24,33 +24,37 @@ public class Caverna {
 		return valido;
 	}
 	
-	public void conectar(Heroi heroi) {
+	public boolean conectar(Heroi heroi) {
 		int linha = heroi.getLinha();
 		int coluna = heroi.getColuna();
+		boolean sucesso = false;
 		
 		if (verificarPosicao(linha, coluna) == true) { //verificação de validade de posicionamento
 			layout[linha][coluna].addComponente(heroi);
 			this.setHeroi(heroi);
+			sucesso = true;
 		}
+		
+		return sucesso;
 	}
 	
-	public void conectar(Componente comp) {
+	public boolean conectar(Componente comp) {
 		int linha = comp.getLinha();
 		int coluna = comp.getColuna();
+		boolean sucesso = false;
 		
 		if (verificarPosicao(linha, coluna) == true) { //verificação de validade de posicionamento
-			int sucesso = layout[linha][coluna].addComponente(comp);
-			if (sucesso == -1) {
-				System.out.println("Erro: posicionamento invalido de componente.");
-			}
+			sucesso = layout[linha][coluna].addComponente(comp);
 		}
+		
+		return sucesso;
 	}
 	
 	public void desconectar(Componente comp) {
 		int linha = comp.getLinha();
 		int coluna = comp.getColuna();
 		
-		if (verificarPosicao(linha, coluna) == true) { //verificaçãoo de validade de posicionamento
+		if (verificarPosicao(linha, coluna) == true) { //verificação de validade de posicionamento
 			layout[linha][coluna].removerComponente(comp);
 		}
 	}
@@ -87,8 +91,6 @@ public class Caverna {
 		return cavernaChar;
 	}
 	
-	//TEMPORï¿½RIO!!!
-	//TEMPORï¿½RIO!!!
 	public void imprimirCaverna() {
 		char[][] cavernaStr = this.getCaverna();
 		for (int i = 0; i < 4; i++) {

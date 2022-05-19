@@ -26,26 +26,45 @@ public class Montador {
 			switch(layout[i][2]) {
 			case "P":
 				if (verificarPosHeroi(linha, coluna) == false) {
-					System.out.println("ERRO: Caverna Inválida. Desligando... - COD DE ERRO: 001");
+					System.out.println("ERRO: Caverna Inválida: Jogador fora da posição inicial. Desligando... - COD DE ERRO: 001");
 					return null;
 				}
-				criarHeroi(caverna, linha, coluna);
+				if (criarHeroi(caverna, linha, coluna) == false) {
+					System.out.println("ERRO: Caverna Inválida. Sala verificou um problema na inserção de componente. Desligando... - COD DE ERRO: 002");
+					return null;
+				}
 				break;
 			case "W":
-				criarWumpus(caverna, linha, coluna);
+				if (criarWumpus(caverna, linha, coluna) == false) {
+					System.out.println("ERRO: Caverna Inválida. Sala verificou um problema na inserção de componente. Desligando... - COD DE ERRO: 002");
+					return null;
+				}
+				
 				break;
 			case "B":
-				criarBuraco(caverna, linha, coluna);
+				if (criarBuraco(caverna, linha, coluna) == false) {
+					System.out.println("ERRO: Caverna Inválida. Sala verificou um problema na inserção de componente. Desligando... - COD DE ERRO: 002");
+					return null;
+				}
 				break;
 			case "O":
-				criarOuro(caverna, linha, coluna);
+				if (criarOuro(caverna, linha, coluna) == false) {
+					System.out.println("ERRO: Caverna Inválida. Sala verificou um problema na inserção de componente. Desligando... - COD DE ERRO: 002");
+					return null;
+				}
 				break;
 			case "_":
-				criarVazio(caverna, linha, coluna);
+				if (criarVazio(caverna, linha, coluna) ==  false) {
+					System.out.println("ERRO: Caverna Inválida. Sala verificou um problema na inserção de componente. Desligando... - COD DE ERRO: 002");
+					return null;
+				}
 				break;	
 			default:
-				criarVazio(caverna, linha, coluna);
-				break;
+				if (criarVazio(caverna, linha, coluna) == false) {
+					System.out.println("ERRO: Caverna Inválida. Sala verificou um problema na inserção de componente. Desligando... - COD DE ERRO: 002");
+					return null;
+				}
+				break;	
 			}
 			
 			if (layout[i][2].equals("_") == false) {
@@ -55,7 +74,7 @@ public class Montador {
 		
 		
 		if (veriricarCaverna() == false) {
-			System.out.println("ERRO: Caverna Inválida. Desligando... - COD DE ERRO: 002");
+			System.out.println("ERRO: Caverna Inválida. Desligando... - COD DE ERRO: 003");
 			return null;
 		}
 		
@@ -64,33 +83,43 @@ public class Montador {
 		}
 	}
 	
-	public void criarHeroi(Caverna caverna, int linha, int coluna) {
+	public boolean criarHeroi(Caverna caverna, int linha, int coluna) {
 		Heroi novo = new Heroi(caverna, linha, coluna);
+		boolean resultado;
 		this.nPlayers += 1;
-		novo.conectar();
+		resultado = novo.conectar();
+		return resultado;
 	}
 	
-	public void criarWumpus(Caverna caverna, int linha, int coluna) {
+	public boolean criarWumpus(Caverna caverna, int linha, int coluna) {
 		Componente novo = new Wumpus(caverna, linha, coluna);
+		boolean resultado;
 		this.nWumpus += 1;
-		novo.conectar();
+		resultado = novo.conectar();
+		return resultado;
 	}
 	
-	public void criarOuro(Caverna caverna, int linha, int coluna) {
+	public boolean criarOuro(Caverna caverna, int linha, int coluna) {
 		Componente novo = new Ouro(caverna, linha, coluna);
+		boolean resultado;
 		this.nOuro += 1;
-		novo.conectar();
+		resultado = novo.conectar();
+		return resultado;
 	}
 	
-	public void criarBuraco(Caverna caverna, int linha, int coluna) {
+	public boolean criarBuraco(Caverna caverna, int linha, int coluna) {
 		Componente novo = new Buraco(caverna, linha, coluna);
+		boolean resultado;
 		this.nBuracos += 1;
-		novo.conectar();
+		resultado = novo.conectar();
+		return resultado;
 	}
 	
-	public void criarVazio(Caverna caverna, int linha, int coluna) {
+	public boolean criarVazio(Caverna caverna, int linha, int coluna) {
 		Componente novo = new Vazio(caverna, linha, coluna);
-		novo.conectar();
+		boolean resultado;
+		resultado = novo.conectar();
+		return resultado;
 	}
 	
 	public boolean verificarPosHeroi(int linha, int coluna) {

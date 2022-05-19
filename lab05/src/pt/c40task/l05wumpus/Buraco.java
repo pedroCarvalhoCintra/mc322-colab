@@ -13,8 +13,8 @@ public class Buraco extends Componente{
 		return 'B';
 	}
 
-	public void conectar() {
-		caverna.conectar(this);
+	public boolean conectar() {
+		boolean retorno = caverna.conectar(this);
 		Componente brisa1 = new Brisa(caverna, linha-1, coluna);
 		Componente brisa2 = new Brisa(caverna, linha+1, coluna);
 		Componente brisa3 = new Brisa(caverna, linha, coluna-1);
@@ -24,5 +24,7 @@ public class Buraco extends Componente{
 		brisa2.conectar();
 		brisa3.conectar();
 		brisa4.conectar();
+		
+		return retorno;
 	}
 }

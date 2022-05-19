@@ -9,7 +9,8 @@ public class Controle {
 	private int score;
 	private char status;
 	private String nomeJogador;
-	private boolean estaNoJogo; 
+	private boolean estaNoJogo;
+	private boolean matouWumpus;
 
     public Controle(Toolkit tk, Caverna caverna){
 		this.tk = tk;
@@ -19,6 +20,7 @@ public class Controle {
 		this.status = 'x';
 		this.nomeJogador = "Alcebiades";
 		this.estaNoJogo = true;
+		this.matouWumpus = false;
     }
 
 	public void setNomeJogador(String novoNome){
@@ -28,17 +30,52 @@ public class Controle {
 	public void addScore(int score) {
 		this.score += score;
 	}
-
-	public void perdeu(){
+	
+	public void imprimirEstado() {
+		caverna.imprimirCaverna();
+		System.out.println("Player: " + nomeJogador);
+		System.out.println("Score: " + score);
+		
+		if (matouWumpus == true) {
+			System.out.println("Matou Wumpus: Sim");
+		}
+		
+		else {
+			System.out.println("Matou Wumpus: Não");
+		}
+		
+		if (player.getPegouOuro()) {
+			System.out.println("Pegou Ouro: Sim");
+		}
+		
+		else {
+			System.out.println("Pegou Ouro: Não");
+		}
+	}
+	
+	public void mensagemMorte(char causa) {
+		switch(causa) {
+		case 'w':
+			System.out.println("Causa da Morte: O Wumpus teve um ótimo jantar hoje. Prepare-se melhor na próxima!");
+			break;
+		case 'b':
+			System.out.println("Causa da Morte: Testou a teoria gravitacional. Olhe melhor por onde pisa!");
+			break;
+		case 'c':
+			System.out.println("Causa da Morte: Mirou alto demais. Treine melhor sua pontaria!");
+			break;
+		}
+	}
+	
+	public void perdeu(char motivo){
 		status = 'n';
 		this.addScore(-1000);
 		tk.writeBoard(caverna.getCaverna(), score, status);
 		
-		System.out.println("\n");
-		caverna.imprimirCaverna();
-		System.out.println("Player: " + nomeJogador);
-		System.out.println("Score: " + score);
-		System.out.println("Voce perdeu =( ...");
+		imprimirEstado();
+		
+		System.out.println("Oh Não! Você perdeu! Espero que tenha melhor sorte da próxima vez!");
+		mensagemMorte(motivo);
 
 		estaNoJogo = false;
 	}
@@ -48,35 +85,56 @@ public class Controle {
 		this.addScore(1000);
 		tk.writeBoard(caverna.getCaverna(), score, status);
 		
-		System.out.println("\n");
-		caverna.imprimirCaverna();
-		System.out.println("Player: " + nomeJogador);
-		System.out.println("Score: " + score);
-		System.out.println("Voce ganhou =) !!!");
+		imprimirEstado();
+
+		System.out.println("Vitória! O herói conquistou seu o seu objetivo e vai viver uma vida pacata até que o ouro acabe! Nos vemos em Valhalla!");
 
 		estaNoJogo = false;
 	}
 
 	public void intermediaria(){
 		tk.writeBoard(caverna.getCaverna(), score, status);
-
-		System.out.println("\n");
-		caverna.imprimirCaverna();
-		System.out.println("Player: " + nomeJogador);
-		System.out.println("Score: " + score);
-		System.out.println("Continue a jogar, continue a jogar, jogar, jogar ...");
+		
+		imprimirEstado();
+		vasculharCaverna();
+		System.out.println("Continue jogando!");
 	}
 
 	public void sairJogo(){
 		tk.writeBoard(caverna.getCaverna(), score, status);
 
-		System.out.println("\n");
-		caverna.imprimirCaverna();
-		System.out.println("Player: " + nomeJogador);
-		System.out.println("Score: " + score);
-		System.out.println("Volte sempre !");
+		imprimirEstado();
+
+		System.out.println("Saiu do Jogo! Volte sempre!");
 		
 		estaNoJogo = false;
+	}
+	
+	public void matarWumpus(int linha, int coluna){
+		Componente Wumpus = caverna.getSala(linha, coluna).buscarId('W');
+        if (Wumpus != null)
+			Wumpus.desconectar();
+			this.addScore(500);
+        	this.matouWumpus = true;
+	}
+	
+	public boolean capturarOuro(int linha, int coluna){
+		Componente componenteBuscado = caverna.getSala(linha, coluna).buscarId('O');
+		boolean pegou = false;
+        if (componenteBuscado != null){
+            componenteBuscado.desconectar();
+            player.setPegouOuro(true);
+            pegou = true;
+		}
+        
+        return pegou;
+	}
+	
+	public boolean ehOrigem(){
+		boolean result = false;
+		if (player.getLinha() == 0 && player.getColuna() == 0)
+			result = true;
+		return result;
 	}
 
 	public boolean ehBuraco(Componente comp){
@@ -88,13 +146,6 @@ public class Controle {
 		return result;
 	}
 
-	public boolean ehOrigem(){
-		boolean result = false;
-		if ( player.getLinha() == 0 && player.getColuna() == 0 )
-			result = true;
-		return result;
-	}
-
 	public boolean ehWumpus(Componente comp){
 		boolean result = false;
 		if (comp != null) {
@@ -103,33 +154,94 @@ public class Controle {
 		}
 		return result;
 	}
+	
+	public boolean ehOuro(Componente comp) {
+		boolean result = false;
+		if (comp != null) {
+			if (comp.getId() == 'O') 
+				result = true;
+		}
+		return result;
+	}
+	
+	public boolean ehBrisa(Componente comp) {
+		boolean result = false;
+		if (comp != null) {
+			if (comp.getId() == 'b') 
+				result = true;
+		}
+		return result;
+	}
+	
+	public boolean ehFedor(Componente comp) {
+		boolean result = false;
+		if (comp != null) {
+			if (comp.getId() == 'f') 
+				result = true;
+		}
+		return result;
+	}
 
 	public boolean atirarFlecha(){
 		return player.atirarFlecha();
 	}
+	
+	public void vasculharCaverna() {
+		int linha = player.getLinha();
+		int coluna = player.getColuna();
+		
+		boolean ehFedor = ehFedor(caverna.getSala(linha, coluna).buscarId('f'));
+		boolean ehBrisa = ehBrisa(caverna.getSala(linha, coluna).buscarId('b'));
+		boolean ehOuro = ehOuro(caverna.getSala(linha, coluna).buscarId('O'));
+		
+		if (ehFedor) {
+			System.out.println("> Você sente um odor terrível!");
+		}
+		
+		if (ehBrisa) {
+			System.out.println("> Você sente uma leve brisa....");
+		}
+		
+		if (ehOuro) {
+			System.out.println("> Você vê um brilho dourado!");
+		}
+	}
 
 	public void confereMovimento(){
+		int linha = player.getLinha();
+		int coluna = player.getColuna();
+		
+		boolean ehBuraco = ehBuraco(caverna.getSala(linha, coluna).buscarId('B'));
+		boolean ehWumpus = ehWumpus(caverna.getSala(linha, coluna).buscarId('W'));
+		boolean ehOrigem = ehOrigem();
+		
 		if (player.getFlechaEquipada()) {
 			boolean acerto = atirarFlecha();
 			this.addScore(-100);
-			if (ehWumpus(caverna.getSala(player.getLinha(), player.getColuna()).buscarId('W'))) {
+			if (ehWumpus) {
+				ehWumpus = false;
 				if (acerto == true) {
-					player.matarWumpus();
-					this.addScore(500);
+					matarWumpus(linha, coluna);
 				}
-				
 				else {
-					perdeu();
-
+					perdeu('c');
 				}
 			}
 		}
 		
-		if (ehBuraco(caverna.getSala(player.getLinha(), player.getColuna()).buscarId('B')))
-			perdeu();
-		else if ( ehOrigem() && player.getPegouOuro() ) {
+		if (ehBuraco) {
+			perdeu('b');
+		}
+		
+		else if (ehWumpus) {
+			perdeu('w');
+		}
+		
+		else if (ehOrigem && player.getPegouOuro()) {
 			ganhou();
-		} else {
+		}
+		
+		else if (estaNoJogo){
 			intermediaria();
 		}
 	}
@@ -161,11 +273,15 @@ public class Controle {
             player.conectar();
     		this.addScore(-15);
     	}
+    	
+    	else {
+    		System.out.println("ERRO: Tentou sair da caverna. Nada foi alterado - CÓD: 003");
+    	}
 		confereMovimento();
     }
 
     public void moverParaEsquerda(){
-    	if (this.caverna.verificarPosicao(player.getLinha()-1, player.getColuna()-1)) {
+    	if (this.caverna.verificarPosicao(player.getLinha(), player.getColuna()-1)) {
     		player.desconectar();
             player.setColuna(player.getColuna()-1);
             player.conectar();
@@ -175,13 +291,31 @@ public class Controle {
     }
 
     public void equiparFlecha(){
-        player.equiparFlecha();
+        boolean equipou = player.equiparFlecha();
+        
 		intermediaria();
+		
+		if (equipou == true) {
+        	System.out.println(">> Flecha equipada!");
+    	}
+            
+        else {
+        	System.out.println(">> Não há mais flechas!");
+        }
     }
 
     public void capturarOuro(){
-        player.capturarOuro();
-		intermediaria();
+        boolean pegou = capturarOuro(player.getLinha(), player.getColuna());
+        
+        intermediaria();
+        
+        if (pegou == true) {
+        	System.out.println("* Ouro capturado! *");
+    	}
+            
+        else {
+        	System.out.println("Ouro? Acho que você se confundiu...");
+        }
     }
 
 
@@ -226,7 +360,7 @@ public class Controle {
 
         String movimento = teclado.nextLine();
 
-        while( estaNoJogo ){
+        while(estaNoJogo){
             
             switch(movimento){
                 case "w":
@@ -249,14 +383,14 @@ public class Controle {
                     break;
 				case "q":
 					sairJogo();
-					teclado.close();
 					break;
 				default:
 					System.out.println("Inválido! Por favor, digite novamente.");
 					break;
             }
-		
-			movimento = teclado.nextLine();
+            if (estaNoJogo) {
+    			movimento = teclado.nextLine();
+            }
         }
 		teclado.close();
     }
