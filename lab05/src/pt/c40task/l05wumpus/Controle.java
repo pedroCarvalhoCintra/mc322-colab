@@ -199,11 +199,11 @@ public class Controle {
 		}
 		
 		if (ehBrisa) {
-			System.out.println("> Vocr sente uma leve brisa....");
+			System.out.println("> Voce sente uma leve brisa....");
 		}
 		
 		if (ehOuro) {
-			System.out.println("> Vocr vr um brilho dourado!");
+			System.out.println("> Voce ve um brilho dourado!");
 		}
 	}
 
@@ -247,30 +247,36 @@ public class Controle {
 	}
 	
     public void moverParaCima(){
-    	if (this.caverna.verificarPosicao(player.getLinha()-1, player.getColuna())) {
-    		player.desconectar();
-            player.setLinha(player.getLinha()-1);
-            player.conectar();
+    	boolean resultado = player.moverParaCima();
+
+    	if (resultado) {
     		this.addScore(-15);
+    	}
+    	
+    	else {
+    		System.out.println("ERRO: Tentou sair da caverna. Nada foi alterado - COD: 003");
     	}
     	confereMovimento();
     }
 
     public void moverParaBaixo(){
-    	if (this.caverna.verificarPosicao(player.getLinha()+1, player.getColuna())) {
-    		player.desconectar();
-            player.setLinha(player.getLinha()+1);
-            player.conectar();
+    	boolean resultado = player.moverParaBaixo();
+
+    	
+    	if (resultado) {
     		this.addScore(-15);
+    	}
+    	
+    	else {
+    		System.out.println("ERRO: Tentou sair da caverna. Nada foi alterado - COD: 003");
     	}
 		confereMovimento();
     }
 
     public void moverParaDireita(){
-    	if (this.caverna.verificarPosicao(player.getLinha(), player.getColuna()+1)) {
-    		player.desconectar();
-            player.setColuna(player.getColuna()+1);
-            player.conectar();
+    	boolean resultado = player.moverParaDireita();
+
+    	if (resultado) {
     		this.addScore(-15);
     	}
     	
@@ -281,11 +287,13 @@ public class Controle {
     }
 
     public void moverParaEsquerda(){
-    	if (this.caverna.verificarPosicao(player.getLinha(), player.getColuna()-1)) {
-    		player.desconectar();
-            player.setColuna(player.getColuna()-1);
-            player.conectar();
+    	boolean resultado = player.moverParaEsquerda();
+    	if (resultado) {
     		this.addScore(-15);
+    	}
+    	
+    	else {
+    		System.out.println("ERRO: Tentou sair da caverna. Nada foi alterado - COD: 003");
     	}
 		confereMovimento();
     }
@@ -317,8 +325,6 @@ public class Controle {
         	System.out.println("Ouro? Acho que voce se confundiu...");
         }
     }
-
-
 
     public void iniciarLeitura(){
 		String movimentos = tk.retrieveMovements();

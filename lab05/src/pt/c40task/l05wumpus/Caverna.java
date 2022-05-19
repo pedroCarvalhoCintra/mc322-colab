@@ -29,7 +29,7 @@ public class Caverna {
 		int coluna = heroi.getColuna();
 		boolean sucesso = false;
 		
-		if (verificarPosicao(linha, coluna) == true) { //verifica��o de validade de posicionamento
+		if (verificarPosicao(linha, coluna) == true) {
 			layout[linha][coluna].addComponente(heroi);
 			this.setHeroi(heroi);
 			sucesso = true;

@@ -64,5 +64,48 @@ public class Heroi extends Componente{
 		boolean retorno = caverna.conectar(this);
 		return retorno;
 	}
+	
+	public boolean moverParaCima(){
+		boolean retorno = false;
+    	if (this.caverna.verificarPosicao(this.getLinha()-1, this.getColuna())) {
+    		this.desconectar();
+            this.setLinha(this.getLinha()-1);
+            this.conectar();
+            retorno = true;
+    	}
+    	return retorno;
+    }
 
+    public boolean moverParaBaixo(){
+    	boolean retorno = false;
+    	if (this.caverna.verificarPosicao(this.getLinha()+1, this.getColuna())) {
+    		this.desconectar();
+            this.setLinha(this.getLinha()+1);
+            this.conectar();
+            retorno = true;
+    	}
+		return retorno;
+    }
+
+    public boolean moverParaDireita(){
+		boolean retorno = false;
+    	if (this.caverna.verificarPosicao(this.getLinha(), this.getColuna()+1)) {
+    		this.desconectar();
+            this.setColuna(this.getColuna()+1);
+            this.conectar();
+            retorno = true;
+    	}
+		return retorno;
+    }
+
+    public boolean moverParaEsquerda(){
+		boolean retorno = false;
+    	if (this.caverna.verificarPosicao(this.getLinha(), this.getColuna()-1)) {
+    		this.desconectar();
+            this.setColuna(this.getColuna()-1);
+            this.conectar();
+            retorno = true;
+    	}
+		return retorno;
+    }
 }
