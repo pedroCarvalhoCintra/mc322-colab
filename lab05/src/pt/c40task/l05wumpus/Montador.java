@@ -26,42 +26,42 @@ public class Montador {
 			switch(layout[i][2]) {
 			case "P":
 				if (verificarPosHeroi(linha, coluna) == false) {
-					System.out.println("ERRO: Caverna Inválida: Jogador fora da posição inicial. Desligando... - COD DE ERRO: 001");
+					System.out.println("ERRO: Caverna Invalida: Jogador fora da posicao inicial. Desligando... - COD DE ERRO: 001");
 					return null;
 				}
 				if (criarHeroi(caverna, linha, coluna) == false) {
-					System.out.println("ERRO: Caverna Inválida. Sala verificou um problema na inserção de componente. Desligando... - COD DE ERRO: 002");
+					System.out.println("ERRO: Caverna Invalida. Sala verificou um problema na insercao de componente. Desligando... - COD DE ERRO: 002");
 					return null;
 				}
 				break;
 			case "W":
 				if (criarWumpus(caverna, linha, coluna) == false) {
-					System.out.println("ERRO: Caverna Inválida. Sala verificou um problema na inserção de componente. Desligando... - COD DE ERRO: 002");
+					System.out.println("ERRO: Caverna Invalida. Sala verificou um problema na insercao de componente. Desligando... - COD DE ERRO: 002");
 					return null;
 				}
 				
 				break;
 			case "B":
 				if (criarBuraco(caverna, linha, coluna) == false) {
-					System.out.println("ERRO: Caverna Inválida. Sala verificou um problema na inserção de componente. Desligando... - COD DE ERRO: 002");
+					System.out.println("ERRO: Caverna Invalida. Sala verificou um problema na insercao de componente. Desligando... - COD DE ERRO: 002");
 					return null;
 				}
 				break;
 			case "O":
 				if (criarOuro(caverna, linha, coluna) == false) {
-					System.out.println("ERRO: Caverna Inválida. Sala verificou um problema na inserção de componente. Desligando... - COD DE ERRO: 002");
+					System.out.println("ERRO: Caverna Invalida. Sala verificou um problema na insercao de componente. Desligando... - COD DE ERRO: 002");
 					return null;
 				}
 				break;
 			case "_":
 				if (criarVazio(caverna, linha, coluna) ==  false) {
-					System.out.println("ERRO: Caverna Inválida. Sala verificou um problema na inserção de componente. Desligando... - COD DE ERRO: 002");
+					System.out.println("ERRO: Caverna Invalida. Sala verificou um problema na insercao de componente. Desligando... - COD DE ERRO: 002");
 					return null;
 				}
 				break;	
 			default:
 				if (criarVazio(caverna, linha, coluna) == false) {
-					System.out.println("ERRO: Caverna Inválida. Sala verificou um problema na inserção de componente. Desligando... - COD DE ERRO: 002");
+					System.out.println("ERRO: Caverna Invalida. Sala verificou um problema na insercao de componente. Desligando... - COD DE ERRO: 002");
 					return null;
 				}
 				break;	
@@ -74,7 +74,7 @@ public class Montador {
 		
 		
 		if (veriricarCaverna() == false) {
-			System.out.println("ERRO: Caverna Inválida. Desligando... - COD DE ERRO: 003");
+			System.out.println("ERRO: Caverna Invalida. Desligando... - COD DE ERRO: 003");
 			return null;
 		}
 		

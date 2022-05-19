@@ -41,7 +41,7 @@ public class Controle {
 		}
 		
 		else {
-			System.out.println("Matou Wumpus: Não");
+			System.out.println("Matou Wumpus: Nao");
 		}
 		
 		if (player.getPegouOuro()) {
@@ -49,14 +49,14 @@ public class Controle {
 		}
 		
 		else {
-			System.out.println("Pegou Ouro: Não");
+			System.out.println("Pegou Ouro: Nao");
 		}
 	}
 	
 	public void mensagemMorte(char causa) {
 		switch(causa) {
 		case 'w':
-			System.out.println("Causa da Morte: O Wumpus teve um ótimo jantar hoje. Prepare-se melhor na próxima!");
+			System.out.println("Causa da Morte: O Wumpus teve um otimo jantar hoje. Prepare-se melhor na proxima!");
 			break;
 		case 'b':
 			System.out.println("Causa da Morte: Testou a teoria gravitacional. Olhe melhor por onde pisa!");
@@ -74,7 +74,7 @@ public class Controle {
 		
 		imprimirEstado();
 		
-		System.out.println("Oh Não! Você perdeu! Espero que tenha melhor sorte da próxima vez!");
+		System.out.println("Oh Nao! Voce perdeu! Espero que tenha melhor sorte da proxima vez!");
 		mensagemMorte(motivo);
 
 		estaNoJogo = false;
@@ -87,7 +87,7 @@ public class Controle {
 		
 		imprimirEstado();
 
-		System.out.println("Vitória! O herói conquistou seu o seu objetivo e vai viver uma vida pacata até que o ouro acabe! Nos vemos em Valhalla!");
+		System.out.println("Vitoria! O heroi conquistou seu o seu objetivo e vai viver uma vida pacata ate que o ouro acabe! Nos vemos em Valhalla!");
 
 		estaNoJogo = false;
 	}
@@ -195,15 +195,15 @@ public class Controle {
 		boolean ehOuro = ehOuro(caverna.getSala(linha, coluna).buscarId('O'));
 		
 		if (ehFedor) {
-			System.out.println("> Você sente um odor terrível!");
+			System.out.println("> Voce sente um odor terrrvel!");
 		}
 		
 		if (ehBrisa) {
-			System.out.println("> Você sente uma leve brisa....");
+			System.out.println("> Vocr sente uma leve brisa....");
 		}
 		
 		if (ehOuro) {
-			System.out.println("> Você vê um brilho dourado!");
+			System.out.println("> Vocr vr um brilho dourado!");
 		}
 	}
 
@@ -275,7 +275,7 @@ public class Controle {
     	}
     	
     	else {
-    		System.out.println("ERRO: Tentou sair da caverna. Nada foi alterado - CÓD: 003");
+    		System.out.println("ERRO: Tentou sair da caverna. Nada foi alterado - COD: 003");
     	}
 		confereMovimento();
     }
@@ -300,7 +300,7 @@ public class Controle {
     	}
             
         else {
-        	System.out.println(">> Não há mais flechas!");
+        	System.out.println(">> Nao ha mais flechas!");
         }
     }
 
@@ -314,7 +314,7 @@ public class Controle {
     	}
             
         else {
-        	System.out.println("Ouro? Acho que você se confundiu...");
+        	System.out.println("Ouro? Acho que voce se confundiu...");
         }
     }
 
@@ -385,7 +385,7 @@ public class Controle {
 					sairJogo();
 					break;
 				default:
-					System.out.println("Inválido! Por favor, digite novamente.");
+					System.out.println("Invalido! Por favor, digite novamente.");
 					break;
             }
             if (estaNoJogo) {

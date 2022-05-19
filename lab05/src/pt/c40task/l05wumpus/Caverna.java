@@ -29,7 +29,7 @@ public class Caverna {
 		int coluna = heroi.getColuna();
 		boolean sucesso = false;
 		
-		if (verificarPosicao(linha, coluna) == true) { //verificação de validade de posicionamento
+		if (verificarPosicao(linha, coluna) == true) { //verificaï¿½ï¿½o de validade de posicionamento
 			layout[linha][coluna].addComponente(heroi);
 			this.setHeroi(heroi);
 			sucesso = true;
@@ -43,7 +43,7 @@ public class Caverna {
 		int coluna = comp.getColuna();
 		boolean sucesso = false;
 		
-		if (verificarPosicao(linha, coluna) == true) { //verificação de validade de posicionamento
+		if (verificarPosicao(linha, coluna) == true) {
 			sucesso = layout[linha][coluna].addComponente(comp);
 		}
 		
@@ -54,7 +54,7 @@ public class Caverna {
 		int linha = comp.getLinha();
 		int coluna = comp.getColuna();
 		
-		if (verificarPosicao(linha, coluna) == true) { //verificação de validade de posicionamento
+		if (verificarPosicao(linha, coluna) == true) {
 			layout[linha][coluna].removerComponente(comp);
 		}
 	}
@@ -72,7 +72,7 @@ public class Caverna {
 	}
 	
 	public char[][] getCaverna() {
-		//Retorna uma versão em char da caverna, levando em conta prioridades.
+		
 		char cavernaChar[][] = new char[4][4];
 		
 		
