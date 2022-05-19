@@ -12,10 +12,10 @@ public class Controle {
 	private boolean estaNoJogo;
 	private boolean matouWumpus;
 
-    public Controle(Toolkit tk, Caverna caverna){
+    public Controle(Toolkit tk, Caverna caverna, Heroi heroi){
 		this.tk = tk;
         this.caverna = caverna;
-		this.player = caverna.getHeroi();
+		this.player = heroi;
 		this.score = 0;
 		this.status = 'x';
 		this.nomeJogador = "Alcebiades";

@@ -1,6 +1,7 @@
 package pt.c40task.l05wumpus;
 
 public class Montador {
+	Heroi heroi;
 	String layout[][];
 	private int nPlayers;
 	private int nBuracos;
@@ -33,6 +34,7 @@ public class Montador {
 					System.out.println("ERRO: Caverna Invalida. Sala verificou um problema na insercao de componente. Desligando... - COD DE ERRO: 002");
 					return null;
 				}
+				
 				break;
 			case "W":
 				if (criarWumpus(caverna, linha, coluna) == false) {
@@ -88,6 +90,9 @@ public class Montador {
 		boolean resultado;
 		this.nPlayers += 1;
 		resultado = novo.conectar();
+		if (resultado == true) {
+			this.heroi = novo;
+		}
 		return resultado;
 	}
 	
@@ -151,5 +156,9 @@ public class Montador {
 		}
 		
 		return isValido;
+	}
+	
+	public Heroi getHeroi() {
+		return this.heroi;
 	}
 }

@@ -2,7 +2,6 @@ package pt.c40task.l05wumpus;
 
 public class Caverna {
 	private Sala[][] layout;
-	private Heroi heroi;
 	
 	public Caverna() {
 		layout = new Sala[4][4];
@@ -24,20 +23,6 @@ public class Caverna {
 		return valido;
 	}
 	
-	public boolean conectar(Heroi heroi) {
-		int linha = heroi.getLinha();
-		int coluna = heroi.getColuna();
-		boolean sucesso = false;
-		
-		if (verificarPosicao(linha, coluna) == true) {
-			layout[linha][coluna].addComponente(heroi);
-			this.setHeroi(heroi);
-			sucesso = true;
-		}
-		
-		return sucesso;
-	}
-	
 	public boolean conectar(Componente comp) {
 		int linha = comp.getLinha();
 		int coluna = comp.getColuna();
@@ -57,14 +42,6 @@ public class Caverna {
 		if (verificarPosicao(linha, coluna) == true) {
 			layout[linha][coluna].removerComponente(comp);
 		}
-	}
-	
-	public void setHeroi(Heroi heroi) {
-		this.heroi = heroi;
-	}
-	
-	public Heroi getHeroi() {
-		return this.heroi;
 	}
 	
 	public Sala getSala(int linha, int coluna) {
