@@ -77,10 +77,11 @@ public class Sala {
 		Componente desejado = null;;
 		for (int i = 0; i < nComponentes; i++) {
 			if (componentes[i].getId() == id) {
-				desejado = componentes[i];
+				desejado = componentes[i].getComponente();
 			}
 		}
 		
 		return desejado;
 	}
+	
 }

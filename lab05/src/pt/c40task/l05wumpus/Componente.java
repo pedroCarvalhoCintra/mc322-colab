@@ -40,6 +40,10 @@ public abstract class Componente {
 		caverna.desconectar(this);
 	}
 	
+	public Componente getComponente() {
+		return this;
+	}
+	
 	public abstract int getPrioridade();
 	
 	public abstract char getId();
