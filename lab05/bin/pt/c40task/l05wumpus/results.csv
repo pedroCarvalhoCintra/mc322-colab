@@ -5,86 +5,121 @@ P---
 score: 0
 status: x
 =====
-#P--
-----
+#---
+P---
 ----
 ----
 score: -15
 status: x
 =====
-##P-
-----
-----
+#---
+#---
+P---
 ----
 score: -30
 status: x
 =====
-##b-
---P-
-----
-----
+#---
+#---
+b---
+P---
 score: -45
 status: x
 =====
-##b-
---#-
---P-
-----
+#---
+#---
+b---
+P---
+score: -45
+status: x
+=====
+#---
+#---
+b---
+P---
+score: -45
+status: x
+=====
+#---
+#---
+b---
+P---
+score: -45
+status: x
+=====
+#---
+#---
+b---
+P---
+score: -45
+status: x
+=====
+#---
+#---
+b---
+P---
+score: -45
+status: x
+=====
+#---
+#---
+b---
+P---
+score: -45
+status: x
+=====
+#---
+#---
+b---
+#P--
 score: -60
 status: x
 =====
-##b-
---#-
---P-
-----
-score: -60
+#---
+#---
+b---
+#bO-
+score: -75
 status: x
 =====
-##b-
---#-
---f-
---O-
-score: -175
+#---
+#---
+b---
+#bOP
+score: -90
 status: x
 =====
-##b-
---#-
---f-
---P-
-score: -175
+#---
+#---
+b---
+#bOP
+score: -90
 status: x
 =====
-##b-
---#-
---P-
---#-
-score: -190
+#---
+#---
+b---
+#bOP
+score: -90
 status: x
 =====
-##b-
---P-
---f-
---#-
-score: -205
+#---
+#---
+b---
+#bOP
+score: -90
 status: x
 =====
-##P-
---#-
---f-
---#-
-score: -220
+#---
+#---
+b---
+#bOP
+score: -90
 status: x
 =====
-#Pb-
---#-
---f-
---#-
-score: -235
-status: x
-=====
-P#b-
---#-
---f-
---#-
-score: 750
-status: w
+#---
+#---
+b--W
+#bOf
+score: -1105
+status: n

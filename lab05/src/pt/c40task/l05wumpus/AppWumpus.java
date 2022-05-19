@@ -17,7 +17,7 @@ public class AppWumpus {
       Caverna caverna = montador.construirCaverna();
 
       if (caverna != null){
-         Controle controle = new Controle(tk, caverna);
+         Controle controle = new Controle(tk, caverna, montador.getHeroi());
          if (arquivoMovimentos == null)
         	 controle.iniciarInterativo();
          else

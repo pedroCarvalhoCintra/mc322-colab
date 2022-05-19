@@ -60,11 +60,6 @@ public class Heroi extends Componente{
 		return result;
 	}
 	
-	public boolean conectar() {
-		boolean retorno = caverna.conectar(this);
-		return retorno;
-	}
-	
 	public boolean moverParaCima(){
 		boolean retorno = false;
     	if (this.caverna.verificarPosicao(this.getLinha()-1, this.getColuna())) {
