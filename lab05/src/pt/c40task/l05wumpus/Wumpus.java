@@ -14,8 +14,8 @@ public class Wumpus extends Componente{
 		return 'W';
 	}
 
-	public void conectar() {
-		caverna.conectar(this);
+	public boolean conectar() {
+		boolean retorno = caverna.conectar(this);
 		Componente fedor1 = new Fedor(caverna, linha-1, coluna);
 		Componente fedor2 = new Fedor(caverna, linha+1, coluna);
 		Componente fedor3 = new Fedor(caverna, linha, coluna-1);
@@ -25,6 +25,8 @@ public class Wumpus extends Componente{
 		fedor2.conectar();
 		fedor3.conectar();
 		fedor4.conectar();
+		
+		return retorno;
 	}	
 
 }
