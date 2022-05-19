@@ -1,0 +1,90 @@
+P---
+----
+----
+----
+score: 0
+status: x
+=====
+#P--
+----
+----
+----
+score: -15
+status: x
+=====
+##P-
+----
+----
+----
+score: -30
+status: x
+=====
+##b-
+--P-
+----
+----
+score: -45
+status: x
+=====
+##b-
+--#-
+--P-
+----
+score: -60
+status: x
+=====
+##b-
+--#-
+--P-
+----
+score: -60
+status: x
+=====
+##b-
+--#-
+--f-
+--O-
+score: -175
+status: x
+=====
+##b-
+--#-
+--f-
+--P-
+score: -175
+status: x
+=====
+##b-
+--#-
+--P-
+--#-
+score: -190
+status: x
+=====
+##b-
+--P-
+--f-
+--#-
+score: -205
+status: x
+=====
+##P-
+--#-
+--f-
+--#-
+score: -220
+status: x
+=====
+#Pb-
+--#-
+--f-
+--#-
+score: -235
+status: x
+=====
+P#b-
+--#-
+--f-
+--#-
+score: 750
+status: w
