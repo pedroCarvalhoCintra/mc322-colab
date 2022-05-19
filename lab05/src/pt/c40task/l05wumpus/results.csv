@@ -5,23 +5,121 @@ P---
 score: 0
 status: x
 =====
-#P--
-----
+#---
+P---
 ----
 ----
 score: -15
 status: x
 =====
-##P-
-----
-----
+#---
+#---
+P---
 ----
 score: -30
 status: x
 =====
-##bB
-----
-----
-----
-score: -1045
+#---
+#---
+b---
+P---
+score: -45
+status: x
+=====
+#---
+#---
+b---
+P---
+score: -45
+status: x
+=====
+#---
+#---
+b---
+P---
+score: -45
+status: x
+=====
+#---
+#---
+b---
+P---
+score: -45
+status: x
+=====
+#---
+#---
+b---
+P---
+score: -45
+status: x
+=====
+#---
+#---
+b---
+P---
+score: -45
+status: x
+=====
+#---
+#---
+b---
+P---
+score: -45
+status: x
+=====
+#---
+#---
+b---
+#P--
+score: -60
+status: x
+=====
+#---
+#---
+b---
+#bO-
+score: -75
+status: x
+=====
+#---
+#---
+b---
+#bOP
+score: -90
+status: x
+=====
+#---
+#---
+b---
+#bOP
+score: -90
+status: x
+=====
+#---
+#---
+b---
+#bOP
+score: -90
+status: x
+=====
+#---
+#---
+b---
+#bOP
+score: -90
+status: x
+=====
+#---
+#---
+b---
+#bOP
+score: -90
+status: x
+=====
+#---
+#---
+b--W
+#bOf
+score: -1105
 status: n
