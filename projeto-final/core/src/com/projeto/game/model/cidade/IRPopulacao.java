@@ -1,5 +1,7 @@
 package com.projeto.game.model.cidade;
 
-public interface IRPopulacao {
+import com.projeto.game.model.populacao.IPopulacao;
 
+public interface IRPopulacao {
+    public void connect(IPopulacao populacao);
 }
