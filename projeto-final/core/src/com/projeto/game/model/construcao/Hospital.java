@@ -5,6 +5,14 @@ public class Hospital extends Construcao {
         super(linha, coluna, dificuldade);
     }
 
+    public String getTipo(){
+        return "Hospital";
+    }
+
+    public Hospital buildConstrução(int linha, int coluna, int dificuldade){
+        return new Hospital(linha, coluna, dificuldade)
+    }
+
     public double getPreco()(
         switch (dificuldade) {
             case 1:
@@ -20,11 +28,7 @@ public class Hospital extends Construcao {
         
     )
 
-    public abstract String getTipo(){
-        return "Hospital";
-    }
-
-    public abstract double getRenda(){
+    public double getRenda(){
         switch (dificuldade) {
             case 1:
                 return 1;        
@@ -38,7 +42,7 @@ public class Hospital extends Construcao {
         }
     }
 
-    public abstract int getSatisfacao(){
+    public int getSatisfacao(){
         switch (dificuldade) {
             case 1:
                 return 1;        

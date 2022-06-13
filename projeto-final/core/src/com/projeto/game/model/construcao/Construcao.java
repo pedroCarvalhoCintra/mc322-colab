@@ -31,9 +31,10 @@ public abstract class Construcao implements IConstrucao {
         this.coluna = coluna;
     }
 
-    public abstract double getPreco();
+    public abstract buildConstrução(int linha, int coluna. int dificuldade);
     public abstract String getTipo();
+    public abstract double getPreco();
     public abstract double getRenda();
     public abstract int getSatisfacao(); 
-
+    
 }

@@ -1,8 +1,16 @@
 package com.projeto.game.model.construcao;
 
 public class Escola extends Construcao {
-    public Escola(int linha, int coluna, int dificuldade){
+    public Escola(){
         super(linha, coluna, dificuldade);
+    }
+
+    public String getTipo(){
+        return "Escola";
+    }
+
+    public Escola buildConstrução(int linha, int coluna, int dificuldade){
+        return new Escola(linha, coluna, dificuldade)
     }
 
     public double getPreco()(
@@ -20,11 +28,7 @@ public class Escola extends Construcao {
         
     )
 
-    public abstract String getTipo(){
-        return "Escola";
-    }
-
-    public abstract double getRenda(){
+    public double getRenda(){
         switch (dificuldade) {
             case 1:
                 return 1;        
@@ -38,7 +42,7 @@ public class Escola extends Construcao {
         }
     }
 
-    public abstract int getSatisfacao(){
+    public int getSatisfacao(){
         switch (dificuldade) {
             case 1:
                 return 1;        

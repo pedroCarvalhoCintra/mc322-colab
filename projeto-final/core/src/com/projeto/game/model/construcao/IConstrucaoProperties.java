@@ -9,8 +9,8 @@ public interface IConstrucaoProperties {
 
     public int getDificuldade();
 
-    public abstract double getPreco();
     public abstract String getTipo();
+    public abstract double getPreco();
     public abstract double getRenda();
     public abstract int getSatisfacao(); 
 }
