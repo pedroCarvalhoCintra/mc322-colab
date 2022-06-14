@@ -5,10 +5,7 @@ public class Populacao implements IPopulacao{
     private int satisfacao;
     private double rendaPopulacao;
 
-    public Populacao(int numHabitantesIniciais){
-        this.numHabitantes = numHabitantesIniciais;
-        this.satisfacao = 0;
-        this.satisfacao = 0;
+    public Populacao(){
     }
 
     public int getNumHabitantes(){
