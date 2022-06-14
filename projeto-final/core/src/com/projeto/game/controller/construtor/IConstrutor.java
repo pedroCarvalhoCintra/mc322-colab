@@ -1,5 +1,4 @@
 package com.projeto.game.controller.construtor;
 
-public interface IConstrutor extends IRBuildCalendario, IRBuildCidade, IRBuildConstrucao, IRBuildGerador {
-
+public interface IConstrutor extends IBuildCalendario, IBuildCidade, IBuildConstrucao, IBuildGerador, IBuildPopulacao {
 }

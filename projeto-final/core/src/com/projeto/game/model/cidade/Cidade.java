@@ -1,28 +1,41 @@
 package com.projeto.game.model.cidade;
 
 import com.projeto.game.model.populacao.IPopulacao;
+import com.projeto.game.model.construcao.IConstrucao;
+
 
 public class Cidade implements ICidade {
-    private Construcao[][] layout;
+    private IConstrucao[][] layout;
     private IPopulacao populacao;
-    private int dinheiro;
-    private int dificuldade
+    private float dinheiro;
 
-    public Cidade( int dificuldade){
-        layout = new Construcao[4][4];
-		
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 4; j++) {
-				layout[i][j] = new Vazio(i, j, dificuldade);
-			}
-		}
-
-        this.populacao = null;
-        this.dinheiro = 100000000000000;
-        this.dificuldade = dificuldade;
+    public Cidade(){
+        
     }
 
-    public int getDinheiro()
+    public int getDinheiro() {
+    	return 0;
+    }
+
+	public IConstrucao[][] getLayout() {
+		return layout;
+	}
+
+	public void setLayout(IConstrucao[][] layout) {
+		this.layout = layout;
+	}
+
+	public IPopulacao getPopulacao() {
+		return populacao;
+	}
+
+	public void connectPopulacao(IPopulacao populacao) {
+		this.populacao = populacao;
+	}
+
+	public void setDinheiro(float dinheiro) {
+		this.dinheiro = dinheiro;
+	}
 
 
 
