@@ -11,10 +11,13 @@ public interface IConstrucaoProperties {
     public void setPreco(float preco);
     
     public int getSatisfacao();
-    public void setSatisfacao(int Satisfacao);
+    public void setSatisfacao(int satisfacao);
     
     public float getRenda();
     public void setRenda(float renda);
+    
+    public boolean getConstruido();
+    public void setConstruido(boolean estado);
     
     public abstract String getTipo();
 }

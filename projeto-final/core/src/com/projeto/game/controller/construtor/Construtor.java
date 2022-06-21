@@ -15,7 +15,6 @@ import com.projeto.game.model.populacao.Populacao;
 
 
 public class Construtor implements IConstrutor {
-	private int dificuldade;
 	
 	public ICidade buildCidade() {
 		ICidade cidade = new Cidade();
@@ -65,6 +64,5 @@ public class Construtor implements IConstrutor {
 		IPopulacao populacao =  new Populacao();
 		
 		return populacao;
-		
 	}
 }
