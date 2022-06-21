@@ -6,6 +6,7 @@ public abstract class Construcao implements IConstrucao {
     protected int satisfacao;
     protected float preco;
     protected float renda;
+    protected boolean construido;
     
     public Construcao (){
     }
@@ -29,6 +30,10 @@ public abstract class Construcao implements IConstrucao {
 	public float getRenda() {
 		return this.renda;
 	}
+	
+	public boolean getConstruido() {
+		return this.construido;
+	}
 
 	public void setLinha(int linha){
         this.linha = linha;
@@ -48,6 +53,10 @@ public abstract class Construcao implements IConstrucao {
 
 	public void setRenda(float renda) {
 		this.renda = renda;
+	}
+	
+	public void setConstruido(boolean estado) {
+		this.construido = estado;
 	}
 
 	public abstract Construcao buildConstrucao();

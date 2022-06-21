@@ -1,5 +1,8 @@
 package com.projeto.game.model.gerador;
 
-public interface IGerar {
+import com.projeto.game.model.evento.IEvento;
 
+public interface IGerar {
+	public IEvento gerarEvento();
+	
 }
