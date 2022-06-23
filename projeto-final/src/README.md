@@ -1,0 +1,1 @@
+#Instruções básicas de instalação do jogo.
