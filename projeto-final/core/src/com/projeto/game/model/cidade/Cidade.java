@@ -5,6 +5,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.projeto.game.model.construcao.IConstrucao;
 
 public class Cidade implements ICidade {
+
+	private static ICidade instancia;
     private IConstrucao[][] layout;
     private IPopulacao populacao;
     private float dinheiro;
@@ -46,7 +48,12 @@ public class Cidade implements ICidade {
 		this.tabela = tabela;
 	}
 
-
+	public static ICidade getInstancia() {
+		if ( instancia == null ) {
+			instancia = new Cidade();
+		}
+		return instancia;
+	}
 
 
 }
