@@ -1,20 +1,21 @@
 package com.projeto.game.model.cidade;
 
 import com.projeto.game.model.populacao.IPopulacao;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.projeto.game.model.construcao.IConstrucao;
-
 
 public class Cidade implements ICidade {
     private IConstrucao[][] layout;
     private IPopulacao populacao;
     private float dinheiro;
-
+    private Table tabela;
+    
     public Cidade(){
         
     }
 
-    public int getDinheiro() {
-    	return 0;
+    public float getDinheiro() {
+    	return dinheiro;
     }
 
 	public IConstrucao[][] getLayout() {
@@ -35,6 +36,14 @@ public class Cidade implements ICidade {
 
 	public void setDinheiro(float dinheiro) {
 		this.dinheiro = dinheiro;
+	}
+
+	public Table getTable() {
+		return this.tabela;
+	}
+
+	public void setTable(Table tabela) {
+		this.tabela = tabela;
 	}
 
 
