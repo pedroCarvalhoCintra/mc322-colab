@@ -2,18 +2,24 @@ package com.projeto.game.model.construcao;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton.ImageButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 public abstract class Construcao implements IConstrucao {
-	static protected Texture tex_vazio = new Texture(Gdx.files.internal("Sprites/empty_90x90.png"));
-	static protected Texture tex_overlay = new Texture(Gdx.files.internal("Sprites/whiteoverlay_90x90.png"));
-	static protected Texture tex_moldura = new Texture(Gdx.files.internal("Sprites/frame.png"));
+	final static private Texture TEX_VAZIO = new Texture(Gdx.files.internal("Sprites/empty_90x90.png"));
+	final static private Texture TEX_OVERLAY = new Texture(Gdx.files.internal("Sprites/whiteoverlay_90x90.png"));
+	final static private Texture TEX_MOLDURA= new Texture(Gdx.files.internal("Sprites/frame.png"));
 	
-	static protected Image img_vazio = new Image(tex_vazio);
-	static protected Image img_overlay = new Image(tex_overlay);
-	static protected Image img_moldura = new Image(tex_moldura);
+	final static protected Image IMG_MOLDURA = new Image(TEX_MOLDURA);
+	
+	final static protected TextureRegionDrawable TEXREG_VAZIO= new TextureRegionDrawable(TEX_VAZIO);
+	final static protected TextureRegionDrawable TEXREG_OVERLAY = new TextureRegionDrawable(TEX_OVERLAY);
 
-
+	final static protected ImageButtonStyle STYLE =  new ImageButtonStyle(null, null, null, TEXREG_VAZIO, TEXREG_VAZIO, TEXREG_OVERLAY);
+	
 	protected int linha;
     protected int coluna;
     protected int satisfacao;
@@ -73,6 +79,6 @@ public abstract class Construcao implements IConstrucao {
 	}
 
 	public abstract Construcao buildConstrucao();
-	public abstract void criarConstrucaoVisual();
+	public abstract Group criarConstrucaoVisual();
     public abstract String getTipo();
 }
