@@ -17,12 +17,17 @@ import com.projeto.game.model.populacao.Populacao;
 
 
 public class FactoryConstrutor implements IFactoryConstrutor {
+
+	private static IFactoryConstrutor instancia;
 	final static private IBuildConstrucao construtorConstrucao = ConstrutorConstrucao.getInstancia();
 	final static private IBuildPopulacao construtorPopulacao = ConstrutorPopulacao.getInstancia();
 	final static private IBuildCidade construtorCidade = ConstrutorCidade.getInstancia();
 	final static private IBuildBotao construtorBotao = ConstrutorBotao.getInstancia();
 	final static private IBuildCalendario construtorCalendario = ConstrutorCalendario.getInstancia();
 	
+	private FactoryConstrutor(){
+
+	}
 	
 	public ICidade criarCidade() {
 		ICidade cidade = construtorCidade.buildCidade(construtorPopulacao, construtorConstrucao);
@@ -64,7 +69,6 @@ public class FactoryConstrutor implements IFactoryConstrutor {
 	public IPopulacao criarPopulacao() {
 		IPopulacao populacao = construtorPopulacao.buildPopulacao();
 		
-		
 		return populacao;
 	}
 
@@ -79,7 +83,13 @@ public class FactoryConstrutor implements IFactoryConstrutor {
 		return null;
 	}
 	
-	
-	
-	
+
+
+
+	public static IFactoryConstrutor getInstancia() {
+		if (instancia == null) {
+			instancia = new FactoryConstrutor();
+		}
+		return instancia;
+	}
 }
