@@ -22,6 +22,16 @@ public class Populacao implements IPopulacao{
         return rendaPopulacao;
     }
     
+    public void addPopulacao(int num) {
+    	int novaPop = numHabitantes + num;
+    	
+    	if (novaPop < 0) {
+    		novaPop = 0;
+    	}
+    	
+    	this.numHabitantes = novaPop;
+    }
+    
     public static IPopulacao getInstancia() {
     	if ( instancia == null ) {
     		instancia = new Populacao();
