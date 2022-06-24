@@ -1,8 +1,8 @@
 package com.projeto.game.model.gerador;
 
-import com.projeto.game.model.evento.IEvento;
+import com.projeto.game.model.evento.EventoAleatorio;
 
 public interface IGerarEventoAleatorio{
-    public IEvento gerarEventoAleatorio(int data);
+    public EventoAleatorio gerarEventoAleatorio(int data);
 
 }

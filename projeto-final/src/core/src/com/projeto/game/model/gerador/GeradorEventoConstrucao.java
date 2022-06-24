@@ -1,6 +1,6 @@
 package com.projeto.game.model.gerador;
 
-import com.projeto.game.model.evento.IEvento;
+import com.projeto.game.model.evento.EventoConstrucao;
 import com.projeto.game.model.construcao.IConstrucao;
 
 public class GeradorEventoConstrucao implements IGerarEventoConstrucao {
@@ -12,7 +12,7 @@ public class GeradorEventoConstrucao implements IGerarEventoConstrucao {
     }
 
 
-    public IEvento gerarEventoConstrucao(IConstrucao construcao, int data){
+    public EventoConstrucao gerarEventoConstrucao(IConstrucao construcao, int data){
         EventoConstrucao eventoConstrucao;
         eventoConstrucao.setData(data);
         eventoConstrucao.connectConstrucao(construcao);
