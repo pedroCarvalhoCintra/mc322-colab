@@ -1,5 +1,8 @@
 package com.projeto.game.controller.construtor;
 
-public interface IBuildBotao {
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 
+public interface IBuildBotao {
+	public Button buildBotaoTexto();
+	public Button buildBotaoImagem();
 }
