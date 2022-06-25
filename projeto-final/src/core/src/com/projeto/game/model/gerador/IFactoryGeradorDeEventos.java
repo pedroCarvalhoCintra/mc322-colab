@@ -5,5 +5,5 @@ import com.projeto.game.model.construcao.IConstrucao;
 
 public interface IFactoryGeradorDeEventos {
 	public IEvento criarEventoAleatorio(int data);
-    public IEvento criadorEventoConstrucao(IConstrucao construcao, int data);
+    public IEvento criarEventoConstrucao(IConstrucao construcao, int data);
 }

@@ -25,7 +25,7 @@ public class ConstrutorConstrucao implements IBuildConstrucao{
 	}
 		
 	public Hospital buildHospital(int linha, int coluna) {
-		Hostpital hostpital = new  Hostpital();
+		Hospital hostpital = new  Hospital();
 		hostpital.setLinha(linha);
 		hostpital.setColuna(coluna);
 		hostpital.setConstruido(true);

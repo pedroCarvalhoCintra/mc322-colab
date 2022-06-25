@@ -2,19 +2,9 @@ package com.projeto.game.controller.construtor;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.projeto.game.model.calendario.ICalendario;
-import com.projeto.game.model.cidade.Cidade;
 import com.projeto.game.model.cidade.ICidade;
-import com.projeto.game.model.construcao.Escola;
-import com.projeto.game.model.construcao.Hospital;
 import com.projeto.game.model.construcao.IConstrucao;
-import com.projeto.game.model.construcao.Industria;
-import com.projeto.game.model.construcao.Mercado;
-import com.projeto.game.model.construcao.Moradia;
-import com.projeto.game.model.construcao.Prefeitura;
-import com.projeto.game.model.construcao.Vazio;
 import com.projeto.game.model.populacao.IPopulacao;
-import com.projeto.game.model.populacao.Populacao;
-
 
 public class FactoryConstrutor implements IFactoryConstrutor {
 
@@ -37,27 +27,27 @@ public class FactoryConstrutor implements IFactoryConstrutor {
 	public IConstrucao criarConstrucao(String tipo, int linha, int coluna) {
 		IConstrucao construcao;
 		
-		switch(tipo) {
+		switch (tipo) {
 			case "moradia":
-				construcao = construtorConstrucao.buildMoradia(int linha, int coluna);
+				construcao = construtorConstrucao.buildMoradia(linha,coluna);
 				break;
 			case "mercado":
-				construcao = construtorConstrucao.buildMercado(int linha, int coluna);
+				construcao = construtorConstrucao.buildMercado(linha,coluna);
 				break;
 			case "industria":
-				construcao = construtorConstrucao.buildIndustria(int linha, int coluna);
+				construcao = construtorConstrucao.buildIndustria(linha,coluna);
 				break;
 			case "prefeitura":
-				construcao = construtorConstrucao.buildPrefeitura(int linha, int coluna);
+				construcao = construtorConstrucao.buildPrefeitura(linha,coluna);
 				break;
 			case "hospital":
-				construcao = construtorConstrucao.buildHospital(int linha, int coluna);
+				construcao = construtorConstrucao.buildHospital(linha,coluna);
 				break;
 			case "escola":
-				construcao = construtorConstrucao.buildEscola(int linha, int coluna);
+				construcao = construtorConstrucao.buildEscola(linha,coluna);
 				break;
 			default:
-				construcao = construtorConstrucao.buildVazio(int linha, int coluna);
+				construcao = construtorConstrucao.buildVazio(linha,coluna);
 				break;
 		}
 	
@@ -78,9 +68,6 @@ public class FactoryConstrutor implements IFactoryConstrutor {
 		ICalendario calendario = construtorCalendario.buildCalendario();
 		return null;
 	}
-	
-
-
 
 	public static IFactoryConstrutor getInstancia() {
 		if (instancia == null) {

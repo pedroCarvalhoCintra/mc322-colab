@@ -14,18 +14,13 @@ public class FactoryGeradorDeEventos implements IFactoryGeradorDeEventos {
 		
 	}
 
-
-	public IEvento ciarEventoAleatorio(int data){
+	public IEvento criarEventoAleatorio(int data){
 		IEvento eventoAleatorio = geradorAleatorio.gerarEventoAleatorio(data);
-
-
-		return eventoAleatorio
+		return eventoAleatorio;
 	}
 
 	public IEvento criarEventoConstrucao(IConstrucao construcao, int data){
 		IEvento eventoConstrucao = geradorConstrucao.gerarEventoConstrucao(construcao, data);
-
-
 		return eventoConstrucao;
 	}
 

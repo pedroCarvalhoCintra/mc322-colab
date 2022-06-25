@@ -18,7 +18,7 @@ public class ConstrutorCidade implements IBuildCidade{
 		
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
-				layout[i][j] = construtorConstrucao.buildVazio(int linha, int coluna);
+				layout[i][j] = construtorConstrucao.buildVazio(i, j);
 			}
 		}
 		
