@@ -1,10 +1,10 @@
 package com.projeto.game.controller.controle;
 
-package com.projeto.game.controller.construtor.IFactoryConstrutor;
-package com.projeto.game.controller.construtor.FactoryConstrutor;
-package com.projeto.game.model.calendario.ICalendario;
-package com.projeto.game.model.gerador.IFactoryGeradorDeEventos;
-package com.projeto.game.model.cidade.ICidade;
+import com.projeto.game.controller.construtor.IFactoryConstrutor;
+import com.projeto.game.controller.construtor.FactoryConstrutor;
+import com.projeto.game.model.calendario.ICalendario;
+import com.projeto.game.model.gerador.IFactoryGeradorDeEventos;
+import com.projeto.game.model.cidade.ICidade;
 
 public class ControleJogo {
 
