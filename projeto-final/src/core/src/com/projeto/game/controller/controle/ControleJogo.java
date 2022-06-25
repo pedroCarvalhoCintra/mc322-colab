@@ -14,10 +14,7 @@ public class ControleJogo implements IControleJogo {
     private ICidade cidade;
     private ICalendario calendario;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> a2f8395aef3edbb88075b6462d46291c8ac963d5
+	
     private ControleJogo(){
 
     }
@@ -29,7 +26,6 @@ public class ControleJogo implements IControleJogo {
         calendario = construtor.criarCalendario();
     }
 
-<<<<<<< HEAD
     public int acharDecrescimos(IConstrucao moradia){
         int numDecrescimos = 0;
         for ( int i = moradia.getLinha() - 1; i < moradia.getLinha() + 1 && i < 10; i++){
@@ -55,19 +51,6 @@ public class ControleJogo implements IControleJogo {
         }
     }
 
-    public int achaAcrescimosMoradia(IConstrucao moradia){
-        int numAcrescimosMoradia = 0;
-        for ( int i = moradia.getLinha() - 1; i < moradia.getLinha() + 1 && i < 10; i++){
-            for ( int j = moradia.getColuna() - 1; j < moradia.getColuna() + 1 && j < 10; j++){
-                if(cidade.getLayout()[i][j].getTipo().equals("Moradia")){
-                    numAcrescimosMoradia++;
-                }
-            }
-        }
-        return numAcrescimosMoradia;
-
-    }
-
     public void interacoesMoradiaConstruiu(ICosntrucao moradia){
         int numAcrescimosMoradia = 0 ;
         int numAcrescimosEscola = 0;
@@ -89,8 +72,6 @@ public class ControleJogo implements IControleJogo {
         // realiza acrescimos
     }
 
-=======
->>>>>>> a2f8395aef3edbb88075b6462d46291c8ac963d5
     public static IControleJogo getInstancia() {
 		if (instancia == null ) {
 			instancia = new ControleJogo();
