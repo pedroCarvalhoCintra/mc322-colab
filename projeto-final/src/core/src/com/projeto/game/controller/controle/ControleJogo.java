@@ -1,20 +1,23 @@
 package com.projeto.game.controller.controle;
 
-package com.projeto.game.controller.construtor.IFactoryConstrutor;
-package com.projeto.game.controller.construtor.FactoryConstrutor;
-package com.projeto.game.model.calendario.ICalendario;
-package com.projeto.game.model.gerador.IFactoryGeradorDeEventos;
-package com.projeto.game.model.cidade.ICidade;
+import com.projeto.game.controller.construtor.IFactoryConstrutor;
+import com.projeto.game.controller.construtor.FactoryConstrutor;
+import com.projeto.game.model.calendario.ICalendario;
+import com.projeto.game.model.gerador.IFactoryGeradorDeEventos;
+import com.projeto.game.model.cidade.ICidade;
 
-public class ControleJogo {
+public class ControleJogo implements IControleJogo {
 
-    private IControleJogo instancia;
+    static private IControleJogo instancia;
     private IFactoryConstrutor construtor;
     private IFactoryGeradorDeEventos geradorDeEventos;
     private ICidade cidade;
     private ICalendario calendario;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a2f8395aef3edbb88075b6462d46291c8ac963d5
     private ControleJogo(){
 
     }
@@ -26,6 +29,7 @@ public class ControleJogo {
         calendario = construtor.criarCalendario();
     }
 
+<<<<<<< HEAD
     public int acharDecrescimos(IConstrucao moradia){
         int numDecrescimos = 0;
         for ( int i = moradia.getLinha() - 1; i < moradia.getLinha() + 1 && i < 10; i++){
@@ -85,8 +89,10 @@ public class ControleJogo {
         // realiza acrescimos
     }
 
+=======
+>>>>>>> a2f8395aef3edbb88075b6462d46291c8ac963d5
     public static IControleJogo getInstancia() {
-		if ( instancia == null ) {
+		if (instancia == null ) {
 			instancia = new ControleJogo();
 		}
 		return instancia;

@@ -5,10 +5,7 @@ import java.util.Random;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 public class Vazio extends Construcao {
 	final static private Texture TEX_GRAMA_1= new Texture(Gdx.files.internal("Sprites/grass_1.png"));
@@ -36,19 +33,7 @@ public class Vazio extends Construcao {
     }
 
 	public Group criarConstrucaoVisual() {
-		Group grupo = new Group();
-		grupo.setName(String.valueOf(getLinha()) + String.valueOf(getColuna()));
-		
-		STYLE.imageOver = TEXREG_OVERLAY;
-		
-		ImageButton botao = new ImageButton(STYLE);
-		
-		botao.addListener(new ClickListener() {
-			public void clicked (InputEvent event, float x, float y) {
-				 
-			}
-		});
-		
+		Group grupo = super.criarConstrucaoVisual();
 		Image img_fundo;
 		
 		Random rand = new Random();
@@ -66,14 +51,10 @@ public class Vazio extends Construcao {
 			img_fundo = IMG_ARVORE_1;
 		}
 		
-		IMG_MOLDURA.setSize(90, 90);
 		img_fundo.setSize(80, 80);
 		img_fundo.setPosition(botao.getX()+5, botao.getY()+5);
 		
-		grupo.addActor(img_fundo);
-		grupo.addActor(IMG_MOLDURA);
-		grupo.addActor(botao);
-		
+		grupo.addActorBefore(IMG_MOLDURA, img_fundo);
 		return grupo;
 	}
 }

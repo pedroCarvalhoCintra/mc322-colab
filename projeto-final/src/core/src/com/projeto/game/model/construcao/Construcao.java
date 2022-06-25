@@ -2,10 +2,15 @@ package com.projeto.game.model.construcao;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton.ImageButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 public abstract class Construcao implements IConstrucao {
@@ -19,6 +24,9 @@ public abstract class Construcao implements IConstrucao {
 	final static protected TextureRegionDrawable TEXREG_OVERLAY = new TextureRegionDrawable(TEX_OVERLAY);
 
 	final static protected ImageButtonStyle STYLE =  new ImageButtonStyle(null, null, null, TEXREG_VAZIO, TEXREG_VAZIO, TEXREG_OVERLAY);
+	
+	protected Button botao;
+	protected Window janela;
 	
 	protected int linha;
     protected int coluna;
@@ -53,6 +61,14 @@ public abstract class Construcao implements IConstrucao {
 	public boolean getConstruido() {
 		return this.construido;
 	}
+	
+    public Button getBotao() {
+    	return this.botao;
+    }
+    
+    public Window getJanela() {
+    	return this.janela;
+    }
 
 	public void setLinha(int linha){
         this.linha = linha;
@@ -77,7 +93,47 @@ public abstract class Construcao implements IConstrucao {
 	public void setConstruido(boolean estado) {
 		this.construido = estado;
 	}
+	
+    public void setBotao(Button botao) {
+    	this.botao = botao;
+    }
+    
+    public void setJanela(Window janela) {
+    	this.janela = janela;
+    }
 
-	public abstract Group criarConstrucaoVisual();
+	public Group criarConstrucaoVisual() {
+		Group grupo = new Group();
+		grupo.setName(String.valueOf(getLinha()) + String.valueOf(getColuna()));
+
+		ClickListener listenerClick = new ClickListener() {
+			public void clicked (InputEvent event, float x, float y) {
+				if (botao.isChecked() == false) {
+					janela.setVisible(false);
+				}
+				
+				else {
+					janela.setVisible(true);
+				}
+			}
+		};
+		
+		ChangeListener listenerChange = new ChangeListener() {
+			public void changed(ChangeEvent event, Actor actor) {
+				if (botao.isChecked() == false) {
+					janela.setVisible(false);
+				}
+			}
+		};
+		
+		this.botao.addListener(listenerClick);
+		this.botao.addListener(listenerChange);
+		
+		IMG_MOLDURA.setSize(90, 90);
+		grupo.addActor(IMG_MOLDURA);
+		grupo.addActor(botao);
+		return grupo;
+	}
+	
     public abstract String getTipo();
 }
