@@ -17,8 +17,7 @@ public class GeradorEventoAleatorio implements IGerarEventoAleatorio {
 
 
     public EventoAleatorio gerarEventoAleatorio(int data){
-        EventoAleatorio eventoAleatorio;
-        eventoAleatorio.setData(data);
+        EventoAleatorio eventoAleatorio = new EventoAleatorio();
         IStrategyEventoAleatorio strategy;
 
         Random rand = new Random();
@@ -33,9 +32,13 @@ public class GeradorEventoAleatorio implements IGerarEventoAleatorio {
               break;
           case 3:
               strategy = new EventoAleatorioRepasseEstadual();
-              break;
+              break; 
+          default:
+              strategy = new EventoAleatorioMigracao();
+        	  break;
         }
         
+        eventoAleatorio.setData(data);
         eventoAleatorio.setStrategy(strategy);
 
         return eventoAleatorio;

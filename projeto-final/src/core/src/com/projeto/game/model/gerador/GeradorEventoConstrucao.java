@@ -11,17 +11,12 @@ public class GeradorEventoConstrucao implements IGerarEventoConstrucao {
 
     }
 
-
     public EventoConstrucao gerarEventoConstrucao(IConstrucao construcao, int data){
-        EventoConstrucao eventoConstrucao;
+        EventoConstrucao eventoConstrucao = new EventoConstrucao();
         eventoConstrucao.setData(data);
         eventoConstrucao.connectConstrucao(construcao);
         return eventoConstrucao;
     }
-
-
-
-
 
     public static IGerarEventoConstrucao getInstancia() {
 		if ( instancia == null ) {
