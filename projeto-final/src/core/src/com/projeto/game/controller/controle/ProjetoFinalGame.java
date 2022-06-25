@@ -1,8 +1,10 @@
 package com.projeto.game.controller.controle;
 
 import com.badlogic.gdx.Game;
-package com.projeto.game.controller.controle.ControleJogo;
-package com.projeto.game.controller.controle.IControleJogo;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.projeto.game.controller.controle.ControleJogo;
+import com.projeto.game.controller.controle.IControleJogo;
 
 public class ProjetoFinalGame extends Game {
 	
