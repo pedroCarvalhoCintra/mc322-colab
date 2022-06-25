@@ -1,15 +1,17 @@
 package com.projeto.game.model.calendario;
 
 import java.util.ArrayList;
-import com.projeto.game.controller.construtor.IConstrutor;
+import com.projeto.game.controller.construtor.IFactoryConstrutor;
+import com.projeto.game.model.cidade.ICidade;
 import com.projeto.game.model.evento.IEvento;
 import com.projeto.game.model.gerador.IGerador;
 
 public class Calendario implements ICalendario {
 	//Singleton
 	private static ICalendario instancia;
-	private IConstrutor construtor;
+	private IFactoryConstrutor construtor;
 	private IGerador gerador;
+	private ICidade cidade;
 	private ArrayList<IEvento> eventos;
 	private int diaAtual;
 	
@@ -18,7 +20,7 @@ public class Calendario implements ICalendario {
 		this.eventos = new ArrayList<IEvento>();
 	}
 
-	public void connectConstrutor(IConstrutor construtor) {
+	public void connectConstrutor(IFactoryConstrutor construtor) {
 		this.construtor = construtor;
 	}
 
@@ -34,7 +36,7 @@ public class Calendario implements ICalendario {
 	public void executarEventos() {
 		for (IEvento evento: eventos) {
 			if (evento.getData() == this.diaAtual) {
-				evento.executarEvento();
+				evento.executarEvento(cidade);
 			}
 		}
 	}

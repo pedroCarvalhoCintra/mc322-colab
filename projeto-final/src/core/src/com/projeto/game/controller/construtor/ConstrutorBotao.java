@@ -2,11 +2,13 @@ package com.projeto.game.controller.construtor;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton.ImageButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 public class ConstrutorBotao implements IBuildBotao{
@@ -27,13 +29,35 @@ public class ConstrutorBotao implements IBuildBotao{
 		
 	}
 	
-	public Button buildBotaoTexto() {
-		TextButton botao = new TextButton(null, null);
+	public Button buildBotaoTexto(String input, float largura, float altura) {
+		TextButton botao = new TextButton(input, SKIN);
+		botao.setSize(largura, altura);
+		
+		ClickListener listener = new ClickListener() {
+			public void clicked (InputEvent event, float x, float y) {
+				
+			}
+		};
+		
+		botao.addListener(listener);
+		return botao;
 	}
 
-	public Button buildBotaoImagem() {
+	public Button buildBotaoImagem(float largura, float altura) {
+		if (STYLE_BOTAO_IMAGEM.imageOver == null) {
+			STYLE_BOTAO_IMAGEM.imageOver = TEXREG_OVERLAY;
+		}
+		
 		ImageButton botao = new ImageButton(STYLE_BOTAO_IMAGEM);
-		return null;
+		
+		ClickListener listener = new ClickListener() {
+			public void clicked (InputEvent event, float x, float y) {
+				
+			}
+		};
+		
+		botao.addListener(listener);
+		return botao;
 	} 
 	
 	public static IBuildBotao getInstancia() {

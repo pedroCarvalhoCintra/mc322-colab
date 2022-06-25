@@ -78,7 +78,6 @@ public abstract class Construcao implements IConstrucao {
 		this.construido = estado;
 	}
 
-	public abstract Construcao buildConstrucao();
 	public abstract Group criarConstrucaoVisual();
     public abstract String getTipo();
 }
