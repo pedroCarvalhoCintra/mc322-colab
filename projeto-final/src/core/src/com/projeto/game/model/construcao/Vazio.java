@@ -22,6 +22,9 @@ public class Vazio extends Construcao {
 	
     public Vazio(){
         super();
+		this.satisfacao = 0;
+		this.preco = 0;
+		this.renda = 0;
     }
 
     public String getTipo() {

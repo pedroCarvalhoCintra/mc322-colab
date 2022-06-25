@@ -42,9 +42,6 @@ public class GeradorEventoAleatorio implements IGerarEventoAleatorio {
     }
 
 
-
-
-
     public static IGerarEventoAleatorio getInstancia() {
 		    if ( instancia == null ) {
 			    instancia = new GeradorEventoAleatorio();

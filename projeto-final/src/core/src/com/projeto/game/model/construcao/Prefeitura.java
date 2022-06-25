@@ -14,6 +14,9 @@ public class Prefeitura extends Construcao {
 	
     public Prefeitura(){
         super();
+		this.satisfacao = 0;
+		this.preco = 0;
+		this.renda = 0;
     }
 
     public String getTipo(){

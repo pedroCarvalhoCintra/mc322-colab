@@ -31,35 +31,33 @@ public class FactoryConstrutor implements IFactoryConstrutor {
 	
 	public ICidade criarCidade() {
 		ICidade cidade = construtorCidade.buildCidade(construtorPopulacao, construtorConstrucao);
-		
-		
 		return cidade;
 	}
 	
-	public IConstrucao criarConstrucao(String tipo) {
+	public IConstrucao criarConstrucao(String tipo, int linha, int coluna) {
 		IConstrucao construcao;
 		
 		switch(tipo) {
 			case "moradia":
-				construcao = construtorConstrucao.buildMoradia();
+				construcao = construtorConstrucao.buildMoradia(int linha, int coluna);
 				break;
 			case "mercado":
-				construcao = construtorConstrucao.buildMercado();
+				construcao = construtorConstrucao.buildMercado(int linha, int coluna);
 				break;
 			case "industria":
-				construcao = construtorConstrucao.buildIndustria();
+				construcao = construtorConstrucao.buildIndustria(int linha, int coluna);
 				break;
 			case "prefeitura":
-				construcao = construtorConstrucao.buildPrefeitura();
+				construcao = construtorConstrucao.buildPrefeitura(int linha, int coluna);
 				break;
 			case "hospital":
-				construcao = construtorConstrucao.buildHospital();
+				construcao = construtorConstrucao.buildHospital(int linha, int coluna);
 				break;
 			case "escola":
-				construcao = construtorConstrucao.buildEscola();
+				construcao = construtorConstrucao.buildEscola(int linha, int coluna);
 				break;
 			default:
-				construcao = construtorConstrucao.buildVazio();
+				construcao = construtorConstrucao.buildVazio(int linha, int coluna);
 				break;
 		}
 	
@@ -68,7 +66,6 @@ public class FactoryConstrutor implements IFactoryConstrutor {
 	
 	public IPopulacao criarPopulacao() {
 		IPopulacao populacao = construtorPopulacao.buildPopulacao();
-		
 		return populacao;
 	}
 
@@ -79,7 +76,6 @@ public class FactoryConstrutor implements IFactoryConstrutor {
 
 	public ICalendario criarCalendario() {
 		ICalendario calendario = construtorCalendario.buildCalendario();
-		
 		return null;
 	}
 	

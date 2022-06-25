@@ -8,7 +8,7 @@ import com.projeto.game.model.populacao.IPopulacao;
 
 public interface IFactoryConstrutor{
 	public IPopulacao criarPopulacao();
-	public IConstrucao criarConstrucao(String tipo);
+	public IConstrucao criarConstrucao(String tipo, int linha, int coluna);
 	public ICidade criarCidade();
 	public Button criarBotao(String tipo);
 	public ICalendario criarCalendario();

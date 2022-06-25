@@ -16,32 +16,60 @@ public class ConstrutorConstrucao implements IBuildConstrucao{
 		
 	}
 	
-	public Escola buildEscola() {
-		
+	public Escola buildEscola(int linha, int coluna) {
+		Escola escola = new  Escola();
+		escola.setLinha(linha);
+		escola.setColuna(coluna);
+		escola.setConstruido(true);
+		return escola;
 	}
 		
-	public Hospital buildHospital() {
-		
-	}
-	
-	public Industria buildIndustria() {
-		
-	}
-	
-	public Mercado buildMercado() {
-		
-	}
-	
-	public Moradia buildMoradia() {
-		
+	public Hospital buildHospital(int linha, int coluna) {
+		Hostpital hostpital = new  Hostpital();
+		hostpital.setLinha(linha);
+		hostpital.setColuna(coluna);
+		hostpital.setConstruido(true);
+		return hostpital;
 	}
 	
-	public Prefeitura buildPrefeitura() {
-		
+	public Industria buildIndustria(int linha, int coluna) {
+		Industria industria = new  Industria();
+		industria.setLinha(linha);
+		industria.setColuna(coluna);
+		industria.setConstruido(true);
+		return industria;
 	}
 	
-	public Vazio buildVazio() {
-		
+	public Mercado buildMercado(int linha, int coluna) {
+		Mercado mercador = new Mercado();
+		mercador.setLinha(linha);
+		mercador.setColuna(coluna);
+		mercador.setConstruido(true);
+		return mercador;
+	}
+	
+	public Moradia buildMoradia(int linha, int coluna) {
+		Moradia moradia = new Moradia();
+		moradia.setLinha(linha);
+		moradia.setColuna(coluna);
+		moradia.setConstruido(true);
+		return moradia;
+	}
+	
+	public Prefeitura buildPrefeitura(int linha, int coluna) {
+		Prefeitura prefeitura = new Prefeitura();
+		prefeitura.setLinha(linha);
+		prefeitura.setColuna(coluna);
+		prefeitura.setConstruido(true);
+		return prefeitura;
+	}
+	
+	public Vazio buildVazio(int linha, int coluna) {
+		Vazio vazio = new Vazio();
+		vazio.setLinha(linha);
+		vazio.setColuna(coluna);
+		vazio.setConstruido(true);
+		return vazio;
 	}
 	
 	public static IBuildConstrucao getInstancia() {

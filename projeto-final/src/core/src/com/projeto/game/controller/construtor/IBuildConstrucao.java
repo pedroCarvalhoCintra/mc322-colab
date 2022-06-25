@@ -9,11 +9,11 @@ import com.projeto.game.model.construcao.Prefeitura;
 import com.projeto.game.model.construcao.Vazio;
 
 public interface IBuildConstrucao {
-	public Escola buildEscola();
-	public Hospital buildHospital();
-	public Industria buildIndustria();
-	public Mercado buildMercado();
-	public Moradia buildMoradia();
-	public Prefeitura buildPrefeitura();
-	public Vazio buildVazio();
+	public Escola buildEscola(int linha, int coluna);
+	public Hospital buildHospital(int linha, int coluna);
+	public Industria buildIndustria(int linha, int coluna);
+	public Mercado buildMercado(int linha, int coluna);
+	public Moradia buildMoradia(int linha, int coluna);
+	public Prefeitura buildPrefeitura(int linha, int coluna);
+	public Vazio buildVazio(int linha, int coluna);
 }

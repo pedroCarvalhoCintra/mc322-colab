@@ -14,6 +14,9 @@ public class Industria extends Construcao {
 	
     public Industria(){
         super();
+		this.satisfacao = 0;
+		this.preco = 0;
+		this.renda = 0;
     }
 
     public String getTipo(){

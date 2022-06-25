@@ -8,6 +8,9 @@ public class Populacao implements IPopulacao{
     private double rendaPopulacao;
 
     public Populacao(){
+        this.numHabitantes = 0;
+        this.satisfacao = 0;
+        this.rendaPopulacao = 0;
     }
 
     public int getNumHabitantes(){
@@ -23,15 +26,35 @@ public class Populacao implements IPopulacao{
     }
     
     public void addPopulacao(int num) {
-    	int novaPop = numHabitantes + num;
+    	int novaPopulacao = numHabitantes + num;
     	
-    	if (novaPop < 0) {
-    		novaPop = 0;
+    	if (novaPopulacao < 0) {
+    		novaPopulacao = 0;
     	}
     	
-    	this.numHabitantes = novaPop;
+    	this.numHabitantes = novaPopulacao;
     }
     
+    public void addSatisfacao(int num) {
+    	int novaSatisfacao = satisfacao + num;
+    	
+    	if (novaSatisfacao < 0) {
+    		novaSatisfacao = 0;
+    	}
+    	
+    	this.satisfacao = novaSatisfacao;
+    }
+
+    public void addRenda(double num) {
+    	double novaRenda = rendaPopulacao + num;
+    	
+    	if (novaRenda < 0) {
+    		novaRenda = 0;
+    	}
+    	
+    	this.rendaPopulacao = novaRenda;
+    }
+
     public static IPopulacao getInstancia() {
     	if ( instancia == null ) {
     		instancia = new Populacao();
