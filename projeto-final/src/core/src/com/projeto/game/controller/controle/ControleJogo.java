@@ -15,7 +15,6 @@ public class ControleJogo {
     private ICalendario calendario;
 
 
-
     private ControleJogo(){
 
     }
@@ -27,7 +26,64 @@ public class ControleJogo {
         calendario = construtor.criarCalendario();
     }
 
+    public int acharDecrescimos(IConstrucao moradia){
+        int numDecrescimos = 0;
+        for ( int i = moradia.getLinha() - 1; i < moradia.getLinha() + 1 && i < 10; i++){
+            for ( int j = moradia.getColuna() - 1; j < moradia.getColuna() + 1 && j < 10; j++){
+                if(cidade.getLayout()[i][j].getTipo().equals("Industria")){
+                    numDecrescimos++;
+                }
+            }
+        }
+        return numDecrescimos;
 
+    }
+
+    public void interacoesMoradiaPassouDia(){
+        int numDecrescimos = 0;
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j < 10; j++){
+                if ( cidade.getLayout()[i][j].getTipo().equals("Moradia")){
+                    numDecrescimos = acharDecrescimos(cidade.getLayout()[i][j]);
+                    //realiza decrescimos;
+                }
+            }
+        }
+    }
+
+    public int achaAcrescimosMoradia(IConstrucao moradia){
+        int numAcrescimosMoradia = 0;
+        for ( int i = moradia.getLinha() - 1; i < moradia.getLinha() + 1 && i < 10; i++){
+            for ( int j = moradia.getColuna() - 1; j < moradia.getColuna() + 1 && j < 10; j++){
+                if(cidade.getLayout()[i][j].getTipo().equals("Moradia")){
+                    numAcrescimosMoradia++;
+                }
+            }
+        }
+        return numAcrescimosMoradia;
+
+    }
+
+    public void interacoesMoradiaConstruiu(ICosntrucao moradia){
+        int numAcrescimosMoradia = 0 ;
+        int numAcrescimosEscola = 0;
+        int numAcrescimosHospital = 0;
+
+        for ( int i = moradia.getLinha() - 1; i < moradia.getLinha() + 1 && i < 10; i++){
+            for ( int j = moradia.getColuna() - 1; j < moradia.getColuna() + 1 && j < 10; j++){
+                if(cidade.getLayout()[i][j].getTipo().equals("Moradia")){
+                    numAcrescimosMoradia++;
+                }
+                else if(cidade.getLayout()[i][j].getTipo().equals("Escola")){
+                    numAcrescimosEscola++;
+                }
+                else if(cidade.getLayout()[i][j].getTipo().equals("Hospital")){
+                    numAcrescimosHospital++;
+                }
+            }
+        }
+        // realiza acrescimos
+    }
 
     public static IControleJogo getInstancia() {
 		if ( instancia == null ) {
