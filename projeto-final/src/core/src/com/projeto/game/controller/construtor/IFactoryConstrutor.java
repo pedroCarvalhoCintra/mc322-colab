@@ -5,6 +5,7 @@ import com.projeto.game.model.calendario.ICalendario;
 import com.projeto.game.model.cidade.ICidade;
 import com.projeto.game.model.construcao.IConstrucao;
 import com.projeto.game.model.populacao.IPopulacao;
+package com.projeto.game.model.gerador.IFactoryGeradorDeEventos;
 
 public interface IFactoryConstrutor{
 	public IPopulacao criarPopulacao();
@@ -12,5 +13,6 @@ public interface IFactoryConstrutor{
 	public ICidade criarCidade();
 	public Button criarBotao(String tipo);
 	public ICalendario criarCalendario();
+	public IFactoryGeradorDeEventos criarGeradorDeEventos();
 	
 }

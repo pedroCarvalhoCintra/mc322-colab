@@ -1,22 +1,36 @@
 package com.projeto.game.controller.controle;
 
 import com.badlogic.gdx.Game;
+package com.projeto.game.controller.controle.ControleJogo;
+package com.projeto.game.controller.controle.IControleJogo;
 
 public class ProjetoFinalGame extends Game {
-	//Aqui são definidas as variáveis globais
+	
+	SpriteBatch batch;
+	ShapeRenderer shapeRenderer;
+	IControleJogo controle;
+
+	//Aqui sï¿½o definidas as variï¿½veis globais
 		
 	
 	public void create() {
-		//Aqui é onde ocorre a instanciação das variaveis globais, essencialmente.
-		//Aqui vc chama o MainMenuScreen também.
+
+		batch = new SpriteBatch();
+        shapeRenderer = new ShapeRenderer();
+		controle = ControleJogo.getInstancia();
+
+		setScreen(new MainMenuScreen(this));
+
+		//Aqui ï¿½ onde ocorre a instanciaï¿½ï¿½o das variaveis globais, essencialmente.
+		//Aqui vc chama o MainMenuScreen tambï¿½m.
 	}
 	
 	public void dispose () {
-		//Aqui você libera os assets na memória. Não é essencial, dependendo pode até deletar.
+		//Aqui vocï¿½ libera os assets na memï¿½ria. Nï¿½o ï¿½ essencial, dependendo pode atï¿½ deletar.
     }
 	
 	public void resize () {
-		//Eu monto isso depois, só to botando pra não esquecer.
+		//Eu monto isso depois, sï¿½ to botando pra nï¿½o esquecer.
 	}
 	
 }

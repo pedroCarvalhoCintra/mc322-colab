@@ -5,6 +5,7 @@ import com.projeto.game.model.calendario.ICalendario;
 import com.projeto.game.model.cidade.ICidade;
 import com.projeto.game.model.construcao.IConstrucao;
 import com.projeto.game.model.populacao.IPopulacao;
+package com.projeto.game.model.gerador.IFactoryGeradorDeEventos;
 
 public class FactoryConstrutor implements IFactoryConstrutor {
 
@@ -14,7 +15,8 @@ public class FactoryConstrutor implements IFactoryConstrutor {
 	final static private IBuildCidade construtorCidade = ConstrutorCidade.getInstancia();
 	final static private IBuildBotao construtorBotao = ConstrutorBotao.getInstancia();
 	final static private IBuildCalendario construtorCalendario = ConstrutorCalendario.getInstancia();
-	
+	final static private IBuildGeradorDeEventos construtorGeradorDeEventos = ConstrutorGeradorDeEventos.getInstancia();
+
 	private FactoryConstrutor(){
 
 	}
@@ -67,6 +69,11 @@ public class FactoryConstrutor implements IFactoryConstrutor {
 	public ICalendario criarCalendario() {
 		ICalendario calendario = construtorCalendario.buildCalendario();
 		return null;
+	}
+
+	public IFactoryGeradorDeEventos criarGeradorDeEventos(){
+		IFactoryGeradorDeEventos geradorDeEventos = construtorGeradorDeEventos.buildGeradorDeEventos();
+		return geradorDeEventos;
 	}
 
 	public static IFactoryConstrutor getInstancia() {
