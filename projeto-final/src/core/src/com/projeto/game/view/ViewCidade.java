@@ -1,5 +1,5 @@
 package com.projeto.game.view;
 
-public ViewCidade {
+public class ViewCidade {
     
 }

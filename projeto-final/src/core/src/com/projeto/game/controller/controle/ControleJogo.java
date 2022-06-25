@@ -1,5 +1,5 @@
 package com.projeto.game.controller.controle;
 
-public class ConstroleJogo {
+public class ControleJogo {
     
 }
