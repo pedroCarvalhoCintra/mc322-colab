@@ -1,13 +1,13 @@
-package com.projeto.game.controller.construtor;
+package com.projeto.game.controller.construtor.gerador;
 
 import com.projeto.game.model.gerador.IFactoryGeradorDeEventos;
 import com.projeto.game.model.gerador.FactoryGeradorDeEventos;
 
-public class ConstrutorGeradorDeEventos implements IBuildGeradorDeEventos{
+public class ConstrutorFactoryGeradorDeEventos implements IConstrutorFactoryGeradorDeEventos {
 	
-	private static IBuildGeradorDeEventos instancia;
+	private static IConstrutorFactoryGeradorDeEventos instancia;
 	
-	private ConstrutorGeradorDeEventos() {
+	private ConstrutorFactoryGeradorDeEventos() {
 		
 	}
 	
@@ -16,9 +16,9 @@ public class ConstrutorGeradorDeEventos implements IBuildGeradorDeEventos{
 		return geradorDeEventos;
 	}
 	
-	public static IBuildGeradorDeEventos getInstancia() {
+	public static IConstrutorFactoryGeradorDeEventos getInstancia() {
 		if ( instancia == null ) {
-			instancia = new ConstrutorGeradorDeEventos();
+			instancia = new ConstrutorFactoryGeradorDeEventos();
 		}
 		return instancia;
 	} 

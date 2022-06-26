@@ -33,13 +33,6 @@ public class ConstrutorCidade implements IConstrutorCidade {
 		
 		return cidade;
 	}
-	
-	public static IConstrutorCidade getInstancia() {
-		if ( instancia == null ) {
-			instancia = new ConstrutorCidade();
-		}
-		return instancia;
-	}
 
 	public void connectConstrutorConstrucao(IFactoryConstrucao construtorConstrucao) {
 		this.construtorConstrucao = construtorConstrucao;
@@ -51,5 +44,12 @@ public class ConstrutorCidade implements IConstrutorCidade {
 
 	public void connectConstrutorPopulacao(IConstrutorPopulacao construtorPopulacao) {
 		this.construtorPopulacao = construtorPopulacao;
+	}
+
+	public static IConstrutorCidade getInstancia() {
+		if ( instancia == null ) {
+			instancia = new ConstrutorCidade();
+		}
+		return instancia;
 	}
 }

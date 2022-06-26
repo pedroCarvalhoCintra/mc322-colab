@@ -18,16 +18,20 @@ import com.projeto.game.model.cidade.ICidade;
 import com.projeto.game.model.construcao.IConstrucao;
 
 public class ControleJogo implements IControleJogo {
+
     static private IControleJogo instancia;
-    private IFactoryConstrutor construtor;
+    private IConstrutorConstrutoresEFactorys construtorGeral;
     private IConstrutorCalendario construtorCalendario;
     private IConstrutorCidade construtorCidade;
-    private IFactoryConstrucao construtorConstrucoes;
+    private IFactoryConstrucao factoryConstrucoes;
     private IFactoryGui construtorGui;
     private IConstrutorPopulacao construtorPopulacao;
-    private IFactoryGeradorDeEventos geradorDeEventos;
+    private IFactoryGeradorDeEventos FactoryGeradorDeEventos;
     private ICidade cidade;
     private ICalendario calendario;
+    private IConstrutorFactoryGeradorDeEventos ConstrutorFactoryGeradorDeEventos;
+
+    private Window janelaConstrucoes;
 
     private ControleJogo(){
 
@@ -38,24 +42,25 @@ public class ControleJogo implements IControleJogo {
     }
 
     public void criarAtores(){
-        construtor = FactoryConstrutor.getInstancia();
-        construtorCidade = ConstrutorCidade.getInstancia();
-        construtorConstrucoes = FactoryConstrucao.getInstancia();
-        construtorGui = FactoryGui.getInstancia();
-        construtorPopulacao = ConstrutorPopulacao.getInstancia();
-        construtorCalendario = ConstrutorCalendario.getInstancia();
+        construtorGeral = FactoryConstrutor.getInstancia();
+        construtorCidade = construtorGeral.criarConstrutorCidade();
+        factoryConstrucoes = construtorGeral.criarFactoryConstrucao();
+        construtorGui = construtorGeral.criarFactoryGui();
+        construtorPopulacao = construtorGeral.criarConstrutorPopulacao();
+        construtorCalendario = construtorGeral.criarConstrutorCalendario();
+        ConstrutorFactoryGeradorDeEventos = construtorGeral.criarFactoryGeradorDeEventos();
+    
         
-        
-        
-        geradorDeEventos = construtor.criarGeradorDeEventos();
-        construtorCidade.connectConstrutorConstrucao(construtorConstrucoes);
+        construtorCidade.connectConstrutorConstrucao(factoryConstrucoes);
         construtorCidade.connectConstrutorGui(construtorGui);
         construtorCidade.connectConstrutorPopulacao(construtorPopulacao);
         
-        construtorConstrucoes.connect(construtorGui);
-        
+        factoryConstrucoes.connect(construtorGui);
         construtorPopulacao.connect(construtorGui);
-        
+
+        janelaConstrucoes = construtorGui.criarJanela("construcao", "What would you like to build?", null, 750, 450);
+
+        FactoryGeradorDeEventos = ConstrutorFactoryGeradorDeEventos.buildGeradorDeEventos();
         cidade = construtorCidade.buildCidade();
         calendario = construtorCalendario.buildCalendario();
     }
