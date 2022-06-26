@@ -45,7 +45,7 @@ public class ControleJogo {
             for(int j = 0; j < 10; j++){
                 if ( cidade.getLayout()[i][j].getTipo().equals("Moradia")){
                     numDecrescimos = acharDecrescimos(cidade.getLayout()[i][j]);
-                    //realiza decrescimos;
+                    cidade.getPopulacao().addSatisfacao(numDecrescimos*1);
                 }
             }
         }
@@ -70,6 +70,9 @@ public class ControleJogo {
             }
         }
         // realiza acrescimos de cada tipo;
+        cidade.getPopulacao().addSatisfacao(numAcrescimosMoradia*1);
+        cidade.getPopulacao().addSatisfacao(numAcrescimosEscola*5);
+        cidade.getPopulacao().addSatisfacao(numAcrescimosHospital*10);
     }
 
     public static IControleJogo getInstancia() {
