@@ -7,6 +7,22 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.projeto.game.controller.construtor.calendario.ConstrutorCalendario;
+import com.projeto.game.controller.construtor.calendario.IBuildCalendario;
+import com.projeto.game.controller.construtor.cidade.ConstrutorCidade;
+import com.projeto.game.controller.construtor.cidade.IBuildCidade;
+import com.projeto.game.controller.construtor.construcoes.ConstrutorConstrucao;
+import com.projeto.game.controller.construtor.construcoes.IBuildConstrucao;
+import com.projeto.game.controller.construtor.gerador.ConstrutorGeradorDeEventos;
+import com.projeto.game.controller.construtor.gerador.IBuildGeradorDeEventos;
+import com.projeto.game.controller.construtor.gui.ConstrutorBotao;
+import com.projeto.game.controller.construtor.gui.ConstrutorJanela;
+import com.projeto.game.controller.construtor.gui.ConstrutorLabel;
+import com.projeto.game.controller.construtor.gui.IBuildBotao;
+import com.projeto.game.controller.construtor.gui.IBuildJanela;
+import com.projeto.game.controller.construtor.gui.IBuildLabel;
+import com.projeto.game.controller.construtor.populacao.ConstrutorPopulacao;
+import com.projeto.game.controller.construtor.populacao.IBuildPopulacao;
 import com.projeto.game.model.calendario.ICalendario;
 import com.projeto.game.model.cidade.ICidade;
 import com.projeto.game.model.construcao.IConstrucao;
@@ -25,26 +41,12 @@ public class FactoryConstrutor implements IFactoryConstrutor {
 	final static private IBuildCalendario CONSTRUTOR_CALENDARIO = ConstrutorCalendario.getInstancia();
 	final static private IBuildGeradorDeEventos CONSTRUTOR_GERADOR_EVENTOS = ConstrutorGeradorDeEventos.getInstancia();
 	
-	final static private Texture TEX_ICONE_MORADIA = new Texture(Gdx.files.internal("Sprites/icon_house.png"));
-	final static private Texture TEX_ICONE_ESCOLA = new Texture(Gdx.files.internal("Sprites/icon_school.png"));
-	final static private Texture TEX_ICONE_HOSPITAL = new Texture(Gdx.files.internal("Sprites/icon_hospital.png"));
-	final static private Texture TEX_ICONE_INDUSTRIA = new Texture(Gdx.files.internal("Sprites/icon_.png"));
-	final static private Texture TEX_ICONE_MERCADO = new Texture(Gdx.files.internal("Sprites/icon_commercial.png"));
-	final static private Texture TEX_ICONE_PREFEITURA = new Texture(Gdx.files.internal("Sprites/icon_towncenter.png"));
-	
-	final static private TextureRegionDrawable TEXREG_MORADIA = new TextureRegionDrawable(TEX_ICONE_MORADIA);
-	final static private TextureRegionDrawable TEXREG_ESCOLA = new TextureRegionDrawable(TEX_ICONE_ESCOLA);
-	final static private TextureRegionDrawable TEXREG_HOSPITAL = new TextureRegionDrawable(TEX_ICONE_HOSPITAL);
-	final static private TextureRegionDrawable TEXREG_INDUSTRIA = new TextureRegionDrawable(TEX_ICONE_INDUSTRIA);
-	final static private TextureRegionDrawable TEXREG_MERCADO = new TextureRegionDrawable(TEX_ICONE_MERCADO);
-	final static private TextureRegionDrawable TEXREG_PREFEITURA = new TextureRegionDrawable(TEX_ICONE_PREFEITURA);
-	
 	private FactoryConstrutor(){
 
 	}
 	
 	public ICidade criarCidade() {
-		ICidade cidade = CONSTRUTOR_CIDADE.buildCidade(CONSTRUTOR_POPULACAO, CONSTRUTOR_CONSTRUCAO);
+		ICidade cidade = CONSTRUTOR_CIDADE.buildCidade();
 		return cidade;
 	}
 	
@@ -54,27 +56,35 @@ public class FactoryConstrutor implements IFactoryConstrutor {
 		switch (tipo) {
 			case "moradia":
 				construcao = CONSTRUTOR_CONSTRUCAO.buildMoradia(linha,coluna);
+				construcao.setJanela(null);
 				break;
 			case "mercado":
 				construcao = CONSTRUTOR_CONSTRUCAO.buildMercado(linha,coluna);
+				construcao.setJanela(null);
 				break;
 			case "industria":
 				construcao = CONSTRUTOR_CONSTRUCAO.buildIndustria(linha,coluna);
+				construcao.setJanela(null);
 				break;
 			case "prefeitura":
 				construcao = CONSTRUTOR_CONSTRUCAO.buildPrefeitura(linha,coluna);
+				construcao.setJanela(null);
 				break;
 			case "hospital":
 				construcao = CONSTRUTOR_CONSTRUCAO.buildHospital(linha,coluna);
+				construcao.setJanela(null);
 				break;
 			case "escola":
 				construcao = CONSTRUTOR_CONSTRUCAO.buildEscola(linha,coluna);
+				construcao.setJanela(null);
 				break;
 			default:
 				construcao = CONSTRUTOR_CONSTRUCAO.buildVazio(linha,coluna);
+				construcao.setJanela(null);
 				break;
 		}
-	
+		construcao.setBotao(criarBotao("vazio", null, 90, 90));
+		
 		return construcao;
 	}
 	
@@ -86,30 +96,6 @@ public class FactoryConstrutor implements IFactoryConstrutor {
 	public Button criarBotao(String tipo, String texto, float largura, float altura) {
 		Button botao;
 		switch (tipo) {
-		case "texto":
-			botao = CONSTRUTOR_BOTAO.buildBotaoTexto(texto, largura, altura);
-			break;
-		case "vazio":
-			botao = CONSTRUTOR_BOTAO.buildBotaoImagemVazio(largura, altura);
-			break;
-		case "icone_moradia":
-			botao = CONSTRUTOR_BOTAO.buildBotaoImagem(TEXREG_MORADIA, largura, altura);
-			break;
-		case "icone_escola":
-			botao = CONSTRUTOR_BOTAO.buildBotaoImagem(TEXREG_ESCOLA, largura, altura);
-			break;
-		case "icone_hospital":
-			botao = CONSTRUTOR_BOTAO.buildBotaoImagem(TEXREG_HOSPITAL, largura, altura);
-			break;
-		case "icone_industria":
-			botao = CONSTRUTOR_BOTAO.buildBotaoImagem(TEXREG_INDUSTRIA, largura, altura);
-			break;
-		case "icone_mercado":
-			botao = CONSTRUTOR_BOTAO.buildBotaoImagem(TEXREG_MERCADO, largura, altura);
-			break;
-		case "icone_prefeitura":
-			botao = CONSTRUTOR_BOTAO.buildBotaoImagem(TEXREG_PREFEITURA, largura, altura);
-			break;
 		default:
 			botao = null;
 			break;
@@ -124,12 +110,12 @@ public class FactoryConstrutor implements IFactoryConstrutor {
 		
 		switch (tipo) {
 			case "texto":
-				janela = CONSTRUTOR_JANELA.buildJanelaTexto(titulo, largura, altura);
+				janela = CONSTRUTOR_JANELA.buildJanela(titulo, largura, altura);
 				janela.add(criarLabel(texto, 1)).expand();
 				break;
 			case "construcao":
 				//Nesse caso, o texto de input eh passado para o label, e nao para o botao.
-				janela = CONSTRUTOR_JANELA.buildJanelaConstrucoes(titulo, largura, altura);
+				janela = CONSTRUTOR_JANELA.buildJanela(titulo, largura, altura);
 				for (String icone : icones) {
 					Group grupo = new Group();
 					Button botao = criarBotao(icone, null, 90, 90);
@@ -150,7 +136,7 @@ public class FactoryConstrutor implements IFactoryConstrutor {
 	}
 	
 	public Label criarLabel(String texto, float tamanhoFonte) {
-		//1 = 
+		//Tamanho da fonte eh em inteiro. 1 = tamanho normal, 0.5 = metade, 2 = dobro, etc.
 		Label label = CONSTRUTOR_LABEL.criarLabel(texto, tamanhoFonte);
 		return label;
 	}
