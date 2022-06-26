@@ -21,7 +21,7 @@ public class MainMenuScreen extends ScreenAdapter {
             public boolean keyDown(int keyCode) {
                 if (keyCode == Input.Keys.SPACE) {
                     game.controle.criarAtores();
-                    game.setScreen(new GameScreen(game));
+                    game.setScreen(new NameSelectionScreen(game));
                 }
                 return true;
             }
