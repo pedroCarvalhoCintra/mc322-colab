@@ -2,7 +2,7 @@ package com.projeto.game;
 
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import com.projeto.game.AppProjetoFinal;
+import com.projeto.game.controller.controle.ProjetoFinalGame;
 
 // Please note that on macOS your application needs to be started with the -XstartOnFirstThread JVM argument
 public class DesktopLauncher {
@@ -10,6 +10,6 @@ public class DesktopLauncher {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		config.setForegroundFPS(60);
 		config.setTitle("projeto-final");
-		new Lwjgl3Application(new AppProjetoFinal(), config);
+		new Lwjgl3Application(new ProjetoFinalGame(), config);
 	}
 }

@@ -11,11 +11,6 @@ public class Vazio extends Construcao {
 	final static private Texture TEX_GRAMA_1= new Texture(Gdx.files.internal("Sprites/grass_1.png"));
 	final static private Texture TEX_GRAMA_2 = new Texture(Gdx.files.internal("Sprites/grass_2.png"));
 	final static private Texture TEX_ARVORE_1 = new Texture(Gdx.files.internal("Sprites/tree_1.png"));
-
-	final static private Image IMG_GRAMA_1= new Image(TEX_GRAMA_1);
-	final static private Image IMG_GRAMA_2= new Image(TEX_GRAMA_2);
-	final static private Image IMG_ARVORE_1= new Image(TEX_ARVORE_1);
-
 	
     public Vazio(){
         super();
@@ -40,15 +35,15 @@ public class Vazio extends Construcao {
 		int valor = rand.nextInt(100) + 1;
 		
 		if (valor <= 60) {
-			img_fundo = IMG_GRAMA_1;
+			img_fundo = new Image(TEX_GRAMA_1);
 		}
 		
 		else if (valor > 60 && valor <= 80) {
-			img_fundo = IMG_GRAMA_2;
+			img_fundo = new Image(TEX_GRAMA_2);
 		}
 		
 		else {
-			img_fundo = IMG_ARVORE_1;
+			img_fundo = new Image(TEX_ARVORE_1);
 		}
 		
 		img_fundo.setSize(80, 80);

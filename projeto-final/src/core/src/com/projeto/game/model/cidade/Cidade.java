@@ -1,6 +1,9 @@
 package com.projeto.game.model.cidade;
 
 import com.projeto.game.model.populacao.IPopulacao;
+import com.projeto.game.view.construcao.IViewConstrucao;
+import com.projeto.game.view.construcao.ViewConstrucao;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.projeto.game.model.construcao.IConstrucao;
 
@@ -10,7 +13,6 @@ public class Cidade implements ICidade {
     private IConstrucao[][] layout;
     private IPopulacao populacao;
     private float dinheiro;
-    private Table tabela;
     
     public Cidade(){
         
@@ -39,13 +41,22 @@ public class Cidade implements ICidade {
 	public void setDinheiro(float dinheiro) {
 		this.dinheiro = dinheiro;
 	}
-
-	public Table getTable() {
-		return this.tabela;
-	}
-
-	public void setTable(Table tabela) {
-		this.tabela = tabela;
+	
+	public Table criarCidadeVisual(Stage stage) {
+		Table tabela = new Table();
+		tabela.setSize(900, 900);
+		
+		for (int i = 0; i < 10; i ++) {
+			for (int j = 0; j < 10; j ++) {
+				IViewConstrucao construcao = new ViewConstrucao();
+				construcao.connect(layout[i][j]);
+				construcao.connectStage(stage);
+				tabela.add(construcao.getVisual()).expand();
+			}
+			tabela.row();
+		}
+		
+		return tabela;
 	}
 
 	public static ICidade getInstancia() {

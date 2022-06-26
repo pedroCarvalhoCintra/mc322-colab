@@ -1,29 +1,63 @@
 package com.projeto.game.controller.controle;
 
 import com.projeto.game.controller.construtor.IFactoryConstrutor;
+import com.projeto.game.controller.construtor.calendario.ConstrutorCalendario;
+import com.projeto.game.controller.construtor.calendario.IConstrutorCalendario;
+import com.projeto.game.controller.construtor.cidade.ConstrutorCidade;
+import com.projeto.game.controller.construtor.cidade.IConstrutorCidade;
+import com.projeto.game.controller.construtor.construcoes.FactoryConstrucao;
+import com.projeto.game.controller.construtor.construcoes.IFactoryConstrucao;
+import com.projeto.game.controller.construtor.gui.FactoryGui;
+import com.projeto.game.controller.construtor.gui.IFactoryGui;
+import com.projeto.game.controller.construtor.populacao.ConstrutorPopulacao;
+import com.projeto.game.controller.construtor.populacao.IConstrutorPopulacao;
 import com.projeto.game.controller.construtor.FactoryConstrutor;
 import com.projeto.game.model.calendario.ICalendario;
 import com.projeto.game.model.gerador.IFactoryGeradorDeEventos;
 import com.projeto.game.model.cidade.ICidade;
+import com.projeto.game.model.construcao.IConstrucao;
 
-public class ControleJogo {
-
-    private IControleJogo instancia;
+public class ControleJogo implements IControleJogo {
+    static private IControleJogo instancia;
     private IFactoryConstrutor construtor;
+    private IConstrutorCalendario construtorCalendario;
+    private IConstrutorCidade construtorCidade;
+    private IFactoryConstrucao construtorConstrucoes;
+    private IFactoryGui construtorGui;
+    private IConstrutorPopulacao construtorPopulacao;
     private IFactoryGeradorDeEventos geradorDeEventos;
     private ICidade cidade;
     private ICalendario calendario;
 
-
     private ControleJogo(){
 
+    }
+    
+    public ICidade getCidade() {
+    	return this.cidade;
     }
 
     public void criarAtores(){
         construtor = FactoryConstrutor.getInstancia();
+        construtorCidade = ConstrutorCidade.getInstancia();
+        construtorConstrucoes = FactoryConstrucao.getInstancia();
+        construtorGui = FactoryGui.getInstancia();
+        construtorPopulacao = ConstrutorPopulacao.getInstancia();
+        construtorCalendario = ConstrutorCalendario.getInstancia();
+        
+        
+        
         geradorDeEventos = construtor.criarGeradorDeEventos();
-        cidade = construtor.criarCidade();
-        calendario = construtor.criarCalendario();
+        construtorCidade.connectConstrutorConstrucao(construtorConstrucoes);
+        construtorCidade.connectConstrutorGui(construtorGui);
+        construtorCidade.connectConstrutorPopulacao(construtorPopulacao);
+        
+        construtorConstrucoes.connect(construtorGui);
+        
+        construtorPopulacao.connect(construtorGui);
+        
+        cidade = construtorCidade.buildCidade();
+        calendario = construtorCalendario.buildCalendario();
     }
 
     public int acharDecrescimos(IConstrucao moradia){
@@ -51,7 +85,7 @@ public class ControleJogo {
         }
     }
 
-    public void interacoesMoradiaConstruiu(ICosntrucao moradia){
+    public void interacoesMoradiaConstruiu(IConstrucao moradia){
         int numAcrescimosMoradia = 0 ;
         int numAcrescimosEscola = 0;
         int numAcrescimosHospital = 0;
@@ -76,7 +110,7 @@ public class ControleJogo {
     }
 
     public static IControleJogo getInstancia() {
-		if ( instancia == null ) {
+		if (instancia == null ) {
 			instancia = new ControleJogo();
 		}
 		return instancia;

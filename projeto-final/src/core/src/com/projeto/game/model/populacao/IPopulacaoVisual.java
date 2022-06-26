@@ -1,5 +1,7 @@
 package com.projeto.game.model.populacao;
 
-public interface IPopulacaoVisual {
+import com.badlogic.gdx.scenes.scene2d.Group;
 
+public interface IPopulacaoVisual {
+	public Group criarPopulacaoVisual();
 }

@@ -18,12 +18,12 @@ public abstract class Construcao implements IConstrucao {
 	final static private Texture TEX_OVERLAY = new Texture(Gdx.files.internal("Sprites/whiteoverlay_90x90.png"));
 	final static private Texture TEX_MOLDURA= new Texture(Gdx.files.internal("Sprites/frame.png"));
 	
-	final static protected Image IMG_MOLDURA = new Image(TEX_MOLDURA);
+	final protected Image IMG_MOLDURA = new Image(TEX_MOLDURA);
 	
-	final static protected TextureRegionDrawable TEXREG_VAZIO= new TextureRegionDrawable(TEX_VAZIO);
-	final static protected TextureRegionDrawable TEXREG_OVERLAY = new TextureRegionDrawable(TEX_OVERLAY);
+	final protected TextureRegionDrawable TEXREG_VAZIO= new TextureRegionDrawable(TEX_VAZIO);
+	final protected TextureRegionDrawable TEXREG_OVERLAY = new TextureRegionDrawable(TEX_OVERLAY);
 
-	final static protected ImageButtonStyle STYLE =  new ImageButtonStyle(null, null, null, TEXREG_VAZIO, TEXREG_VAZIO, TEXREG_OVERLAY);
+	final protected ImageButtonStyle STYLE =  new ImageButtonStyle(null, null, null, TEXREG_VAZIO, TEXREG_VAZIO, TEXREG_OVERLAY);
 	
 	protected Button botao;
 	protected Window janela;
