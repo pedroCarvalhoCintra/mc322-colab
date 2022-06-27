@@ -65,7 +65,7 @@ public void algoInteressante(…) {
 ## Componente `<nome do componente>`
 > Resumo do componente
 
-![image][]
+
 
 **Ficha Técnica**
 item | detalhamento
@@ -76,3 +76,34 @@ Interfaces | `<listagem das interfaces do componente>`
 
 ### interfaces 
 > interfaces associadas a esse componente
+
+> interface agregador do componente em java
+~~~java
+public interface IDataSet extends ITableProducer, IDataSetProperties {
+}
+~~~
+
+
+## Detalhamento das interfaces
+
+### Interface `<nome da interface>`
+
+resumo da interface
+
+~~~java
+//interface me java.
+~~~
+
+Método | Objetivo
+-------| --------
+`<id do método em Java>` | `<objetivo do método e descrição dos parâmetros>`
+
+# Plano de Exceções
+
+## Diagram de hierarquia de exceções
+
+## Descrição das classes de exceções
+
+Classe | Descrição
+----- | -----
+`<nome da classe>` | `<o que ela engloba>`
