@@ -55,3 +55,4 @@ Autores | `<nome dos membros que criaram o componente>`
 Interfaces | `<listagem das interfaces do componente>`
 
 ### interfaces 
+> interfaces associadas a esse componente
