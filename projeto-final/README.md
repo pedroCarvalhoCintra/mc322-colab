@@ -45,29 +45,39 @@ public void algoInteressante(…) {
 * Strategy
 
 ## Desing Pattern 1: Singleton
-> O Pattern Singleton foi adotado pela equipe para gerar mais coesão ao código e evitar que determinados objetos sejam instanciados mais de uma vez. O padrão foi utilizado nos seguintes componentes
+O Pattern Singleton foi adotado pela equipe para gerar mais coesão ao código e evitar que determinados objetos sejam instanciados mais de uma vez. O padrão foi utilizado nos seguintes componentes
 
 ### Diagrama do Pattern 1
 
 ### Exemplo de Código do Pattern 1
-
+Esse exemplo representa o uso do Singleton para o instanciação da Populacao no projto.
+O trecho de código foi tirado do Componente Populacao e representa como foi estruturado o Pattern.
 
 ~~~java
-// Recorte do código do pattern
-public void algoInteressante(…) {
+package com.projeto.game.model.populacao;
+…
+public class Populacao implements IPopulacao{
    …
-   trechoInteressante = 100;
+   private static IPopulacao instancia;
+    …
+   public static IPopulacao getInstancia() {
+    	if ( instancia == null ) {
+    		instancia = new Populacao();
+    	}
+    	return instancia;
+    }
 }
 ~~~
 
+
 ## Desing Pattern 2: Factory
-> O Pattern Factory foi utilizada no projeto para substituir chamadas diretas de instanciação promovendo uma organização do código no que diz respeito a criação dos objetos. As "fábricas"
+O Pattern Factory foi utilizada no projeto para substituir chamadas diretas de instanciação promovendo uma organização do código no que diz respeito a criação dos objetos. As "fábricas"
 foram utilizadas, fundamentalmente, em três momentos do código: Na construção de construções, na construção de elementos da GUI (graphical user interface) e no gerador de eventos.
 
-### Diagrama do Pattern 2 
-#### teste 
+### Diagramas do Pattern 2 
+#### 
 
-### Código do Pattern
+### Códigos do Pattern 2
 
 
 ~~~java
@@ -79,7 +89,7 @@ public void algoInteressante(…) {
 ~~~
 
 ## Desing Pattern 3: Strategy
-> O p
+O p
 
 ### Diagrama do Pattern
 
