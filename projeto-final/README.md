@@ -132,12 +132,7 @@ public class GeradorEventoAleatorio implements IGerarEventoAleatorio {
           case 1:
               strategy = new EventoAleatorioGreveGeral();
               break;
-          case 2:
-              strategy = new EventoAleatorioMigracao();
-              break;
-          case 3:
-              strategy = new EventoAleatorioRepasseEstadual();
-              break; 
+          …
           default:
               strategy = new EventoAleatorioMigracao();
         	  break;
@@ -148,7 +143,7 @@ public class GeradorEventoAleatorio implements IGerarEventoAleatorio {
     }
     …
 ~~~
-Observação : As funções `EventoAleatorioGreveGeral`, `EventoAleatorioMigracao` e `EventoAleatorioRepasseEstadual` definem os diferentes algoritmos a serem permutados pela Strategy.  
+Observação : As funções `EventoAleatorioGreveGeral` e `EventoAleatorioRepasseEstadual` (além de outras que não aprecem no trecho) definem os diferentes algoritmos a serem permutados pela Strategy e atribuídos no objeto gerado `eventoAleatorio`.  
 
 # Diagramas
 
