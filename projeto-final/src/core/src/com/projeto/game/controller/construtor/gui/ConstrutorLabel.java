@@ -12,8 +12,8 @@ public class ConstrutorLabel implements IBuildLabel{
 		
 	}
 
-	public Label criarLabel(String texto, float tamanhoFonte) {
-		Label label = new Label(texto, SKIN);
+	public Label criarLabel(String texto, float tamanhoFonte, String estilo) {
+		Label label = new Label(texto, SKIN, estilo);
 		label.setFontScale(tamanhoFonte);
 		label.setName("label");
 		return label;

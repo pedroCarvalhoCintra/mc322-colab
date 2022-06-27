@@ -1,7 +1,7 @@
 package com.projeto.game.model.calendario;
 
-import com.projeto.game.controller.construtor.IFactoryConstrutor;
+import com.projeto.game.controller.construtor.construcoes.IFactoryConstrucao;
 
 public interface IRConstrutor {
-	public void connectConstrutor(IFactoryConstrutor construtor);
+	public void connectConstrutor(IFactoryConstrucao construtor);
 }

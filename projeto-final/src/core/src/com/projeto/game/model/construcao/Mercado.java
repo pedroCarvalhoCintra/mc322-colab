@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 public class Mercado extends Construcao {
 	final static private Texture TEX_MERCADO = new Texture(Gdx.files.internal("Sprites/commercial.png"));
-	final static private Image IMG_MERCADO = new Image(TEX_MERCADO);
+	final private Image IMG_MERCADO = new Image(TEX_MERCADO);
 	
     public Mercado(){
         super();

@@ -30,6 +30,7 @@ public class ConstrutorCidade implements IConstrutorCidade {
 		
 		cidade.connectPopulacao(construtorPopulacao.buildPopulacao());
 		cidade.setLayout(layout);
+		cidade.setDinheiro(1000);
 		
 		return cidade;
 	}
