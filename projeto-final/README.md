@@ -45,16 +45,14 @@ public void algoInteressante(…) {
 * Strategy
 
 ## Desing Pattern 1: Singleton
-O Pattern Singleton foi utilizado no projeto para gerar mais coesão ao código e evitar que determinados objetos sejam instanciados mais de uma vez. O padrão foi utilizado inúmeras vezes no código estando presente em quase todos os componentes. Não possui esse Pattern apenas componentes e classes que precisam ser instanciadas mais de uma vez (`Componente construcao` e `Componente eventos`)... 
+O Pattern Singleton foi utilizado no projeto para gerar mais coesão ao código e evitar que determinados objetos sejam instanciados mais de uma vez. O padrão foi utilizado inúmeras vezes no código estando presente em quase todos os componentes. Não possui esse Pattern apenas componentes e classes que precisam ser instanciadas mais de uma vez (Componente `construcao` e Componente `eventos`)... 
 
 ### Diagrama do Pattern 1
 
 ### Exemplo de Código do Pattern 1
 Esse exemplo representa o uso do Singleton no projeto, no caso do exemplo, para o instanciação da Populacao, seguindo o mesmo padrão para o restante do código.
-* O trecho de código foi tirado do `Componente populacao` e representa como foi estruturado o Pattern.
 
-
-
+* O trecho de código foi tirado do Componente `populacao` e representa como foi estruturado o Pattern:
 ~~~java
 package com.projeto.game.model.populacao;
 …
@@ -96,8 +94,9 @@ O Pattern Strategy foi utilizado no projeto para fazer com que determinada class
 ### Diagrama do Pattern 3
 
 ### Código do Pattern 3
-Recorte de código da implementação da Strategy.
+Recortes de código da implementação da Strategy que demonstram sua definição e funionamento.
 
+* Trecho do código tirado do Componente `evento` e reprensenta como foi definida a Classe `EventoAleatorio`:
 ~~~java
 package com.projeto.game.model.evento;
 …
@@ -109,6 +108,47 @@ public class EventoAleatorio extends Evento {
 	}
 }
 ~~~
+
+* Trecho do código tirado do Componente `evento` e representa como foi definida a Interface `IStrategyEventoAleatorio`:
+~~~java
+package com.projeto.game.model.evento;
+…
+public interface IStrategyEventoAleatorio {
+	public void executarEventoAleatorio(ICidade cidade);
+}
+~~~
+
+* Trecho do código tirado do Componente `gerador` e representa como foi utilizado o Strategy:
+~~~java
+package com.projeto.game.model.gerador;
+…
+public class GeradorEventoAleatorio implements IGerarEventoAleatorio {
+    …
+    public EventoAleatorio gerarEventoAleatorio(int data){
+        EventoAleatorio eventoAleatorio = new EventoAleatorio();
+        IStrategyEventoAleatorio strategy;
+        …
+        switch (n) {
+          case 1:
+              strategy = new EventoAleatorioGreveGeral();
+              break;
+          case 2:
+              strategy = new EventoAleatorioMigracao();
+              break;
+          case 3:
+              strategy = new EventoAleatorioRepasseEstadual();
+              break; 
+          default:
+              strategy = new EventoAleatorioMigracao();
+        	  break;
+        }
+        …
+        eventoAleatorio.setStrategy(strategy);
+        …
+    }
+    …
+~~~
+Observação : As funções `EventoAleatorioGreveGeral`, `EventoAleatorioMigracao` e `EventoAleatorioRepasseEstadual` definem os algoritmos a serem permutados pela Strategy.
 
 # Diagramas
 
