@@ -89,7 +89,7 @@ public void algoInteressante(…) {
 ~~~
 
 ## Desing Pattern 3: Strategy
-O Pattern Strategy foi utilizado no projeto para fazer com que determinada classe (`EventoAleatorio`) possua algoritmos intercambiáveis, ou seja, fazer com que essa clase posso surtir diferentes efeitos, por meio da Strategy, sem que ela os defina. 
+O Pattern Strategy foi utilizado no projeto para fazer com que determinada classe (`EventoAleatorio`) possua algoritmos intercambiáveis, ou seja, fazer com que essa clase posso surtir diferentes efeitos (através dos diferentes algoritmos) sem que ela defina os algoritmos para isso. 
 
 ### Diagrama do Pattern 3
 
@@ -148,7 +148,7 @@ public class GeradorEventoAleatorio implements IGerarEventoAleatorio {
     }
     …
 ~~~
-Observação : As funções `EventoAleatorioGreveGeral`, `EventoAleatorioMigracao` e `EventoAleatorioRepasseEstadual` definem os algoritmos a serem permutados pela Strategy.
+Observação : As funções `EventoAleatorioGreveGeral`, `EventoAleatorioMigracao` e `EventoAleatorioRepasseEstadual` definem os diferentes algoritmos a serem permutados pela Strategy.  
 
 # Diagramas
 
