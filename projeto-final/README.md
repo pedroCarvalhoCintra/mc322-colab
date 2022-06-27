@@ -11,6 +11,51 @@
 
 # Slides do projeto
 
+# Diagramas
+
+## Diagrama geral de Arquitetura do Jogo
+
+
+## Diagram geral de Componentes  
+
+
+## Componente `<nome do componente>`
+> Resumo do componente
+
+
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08componentes.s20catalog.s10ds.DataSetComponent`
+Autores | `<nome dos membros que criaram o componente>`
+Interfaces | `<listagem das interfaces do componente>`
+
+### interfaces 
+> interfaces associadas a esse componente
+
+> interface agregador do componente em java
+~~~java
+public interface IDataSet extends ITableProducer, IDataSetProperties {
+}
+~~~
+
+
+## Detalhamento das interfaces
+
+### Interface `<nome da interface>`
+
+resumo da interface
+
+~~~java
+//interface me java.
+~~~
+
+Método | Objetivo
+-------| --------
+`<id do método em Java>` | `<objetivo do método e descrição dos parâmetros>`
+
+
 # Destaques de códgigo
 > Trechos relevantes do código
 
@@ -208,50 +253,6 @@ public class GeradorEventoAleatorio implements IGerarEventoAleatorio {
     …
 ~~~
 Observação : As funções `EventoAleatorioGreveGeral` e `EventoAleatorioRepasseEstadual` (além de outras que não aprecem no trecho) definem os diferentes algoritmos a serem permutados pela Strategy e atribuídos no objeto gerado `eventoAleatorio`.    
-
-# Diagramas
-
-## Diagrama geral de Arquitetura do Jogo
-
-
-## Diagram geral de Componentes  
-
-
-## Componente `<nome do componente>`
-> Resumo do componente
-
-
-
-**Ficha Técnica**
-item | detalhamento
------ | -----
-Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08componentes.s20catalog.s10ds.DataSetComponent`
-Autores | `<nome dos membros que criaram o componente>`
-Interfaces | `<listagem das interfaces do componente>`
-
-### interfaces 
-> interfaces associadas a esse componente
-
-> interface agregador do componente em java
-~~~java
-public interface IDataSet extends ITableProducer, IDataSetProperties {
-}
-~~~
-
-
-## Detalhamento das interfaces
-
-### Interface `<nome da interface>`
-
-resumo da interface
-
-~~~java
-//interface me java.
-~~~
-
-Método | Objetivo
--------| --------
-`<id do método em Java>` | `<objetivo do método e descrição dos parâmetros>`
 
 # Plano de Exceções
 
