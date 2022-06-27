@@ -80,7 +80,7 @@ foram utilizadas, fundamentalmente, em três momentos do código: Na construçã
 ### Códigos do Pattern 2
 Recortes de código da implementação das Factorys que demonstram como elas foram estruturadas.
 
-1. Trecho de código retirado do Componente `construtor` que representa como foi feita a "fábrica" de construções: 
+1. Trecho de código retirado do Componente `construtor` e representa como foi feita a "fábrica" de construções: 
 ~~~java
 package com.projeto.game.controller.construtor.construcoes;
 …
@@ -108,7 +108,7 @@ public class FactoryConstrucao implements IFactoryConstrucao {
 }
 ~~~
 
-2. Trecho de código retirado do Componente `construtor` que representa como foi feita a "fábrica" de elementos de GUI: 
+2. Trecho de código retirado do Componente `construtor` e representa como foi feita a "fábrica" de elementos de GUI: 
 ~~~java
 package com.projeto.game.controller.construtor.gui;
 …
