@@ -3,9 +3,12 @@ package com.projeto.game.controller.construtor.gui;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.projeto.game.controller.controle.ControleJogo;
@@ -16,6 +19,7 @@ public class FactoryGui implements IFactoryGui {
 	final static private IBuildBotao CONSTRUTOR_BOTAO = ConstrutorBotao.getInstancia();
 	final static private IBuildJanela CONSTRUTOR_JANELA = ConstrutorJanela.getInstancia();
 	final static private IBuildLabel CONSTRUTOR_LABEL = ConstrutorLabel.getInstancia();
+	final static private IBuildDialog CONSTRUTOR_DIALOG = ConstrutorDialog.getInstancia();
 	
 	final static private Texture TEX_ICONE_MORADIA = new Texture(Gdx.files.internal("Sprites/icon_house.png"));
 	final static private Texture TEX_ICONE_ESCOLA = new Texture(Gdx.files.internal("Sprites/icon_school.png"));
@@ -30,7 +34,7 @@ public class FactoryGui implements IFactoryGui {
 	final static private TextureRegionDrawable TEXREG_INDUSTRIA = new TextureRegionDrawable(TEX_ICONE_INDUSTRIA);
 	final static private TextureRegionDrawable TEXREG_MERCADO = new TextureRegionDrawable(TEX_ICONE_MERCADO);
 	final static private TextureRegionDrawable TEXREG_PREFEITURA = new TextureRegionDrawable(TEX_ICONE_PREFEITURA);
-	
+		
 	private FactoryGui() {
 		
 	}
@@ -114,6 +118,22 @@ public class FactoryGui implements IFactoryGui {
 		return label;
 	}
 	
+	public Dialog criarDialog(String titulo, String texto, float tamanhoFonte, float largura, float altura) {
+		Dialog dialogo = CONSTRUTOR_DIALOG.buildDialog(titulo, largura, altura);
+		Label textoDialogo = criarLabel(texto, tamanhoFonte, "default");
+		final Button botao = criarBotao("texto", "Close", 200, 200, 0, 0);
+		
+		ClickListener listenerClick = new ClickListener() {
+			public void clicked (InputEvent event, float x, float y) {
+				botao.getParent().setVisible(false);
+			}
+		};
+		botao.addListener(listenerClick);
+		dialogo.add(textoDialogo);
+		dialogo.add(botao).center();
+		
+		return dialogo;
+	}	
 	public void connect(ControleJogo controle) {
 		CONSTRUTOR_BOTAO.connect(controle);
 	}

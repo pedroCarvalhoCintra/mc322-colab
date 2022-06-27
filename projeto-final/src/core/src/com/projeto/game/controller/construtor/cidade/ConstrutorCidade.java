@@ -1,5 +1,6 @@
 package com.projeto.game.controller.construtor.cidade;
 
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.projeto.game.controller.construtor.construcoes.IFactoryConstrucao;
 import com.projeto.game.controller.construtor.gui.IFactoryGui;
 import com.projeto.game.controller.construtor.populacao.IConstrutorPopulacao;
@@ -21,6 +22,7 @@ public class ConstrutorCidade implements IConstrutorCidade {
 	public ICidade buildCidade() {
 		ICidade cidade = new Cidade();
 		IConstrucao[][] layout = new IConstrucao[10][10];
+		Label label = construtorGui.criarLabel("", 2, "white");
 		
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
@@ -31,7 +33,8 @@ public class ConstrutorCidade implements IConstrutorCidade {
 		cidade.connectPopulacao(construtorPopulacao.buildPopulacao());
 		cidade.setLayout(layout);
 		cidade.setDinheiro(1000);
-		
+		cidade.setLabel(label);
+		cidade.setRenda(0);
 		return cidade;
 	}
 

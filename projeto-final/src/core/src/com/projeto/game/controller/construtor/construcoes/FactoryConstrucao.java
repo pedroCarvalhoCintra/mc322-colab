@@ -50,7 +50,7 @@ public class FactoryConstrucao implements IFactoryConstrucao {
 		GRUPO_BOTOES.add(botao);
 		GRUPO_BOTOES.setMaxCheckCount(1);
 		GRUPO_BOTOES.setMinCheckCount(0);
-
+		GRUPO_BOTOES.uncheckAll();
 		construcao.setBotao(botao);
 
 		return construcao;

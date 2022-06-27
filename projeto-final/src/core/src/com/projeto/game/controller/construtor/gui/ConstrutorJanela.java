@@ -23,7 +23,7 @@ public class ConstrutorJanela implements IBuildJanela {
 	}
 	
 	public static IBuildJanela getInstancia() {
-		if ( instancia == null ) {
+		if (instancia == null) {
 			instancia = new ConstrutorJanela();
 		}
 		return instancia;

@@ -22,8 +22,12 @@ public class ConstrutorPopulacao implements IConstrutorPopulacao {
 	
 	public IPopulacao buildPopulacao() {
 		IPopulacao populacao =  Populacao.getInstancia();
-		Label label = construtorGui.criarLabel("", 2, "white");
-		populacao.setLabel(label);
+		Label labelSatisfacao = construtorGui.criarLabel("", 2, "white");
+		Label labelPopulacao = construtorGui.criarLabel("", 2, "white");
+
+		populacao.setLabelSatisfacao(labelSatisfacao);
+		populacao.setLabelPopulacao(labelPopulacao);
+
 		return populacao;
 	}
 	
