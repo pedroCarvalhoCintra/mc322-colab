@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 public class Hospital extends Construcao {
 	final static private Texture TEX_HOSPITAL = new Texture(Gdx.files.internal("Sprites/hospital_1.png"));
-	final static private Image IMG_HOSPITAL = new Image(TEX_HOSPITAL);
+	final private Image IMG_HOSPITAL = new Image(TEX_HOSPITAL);
 	
     public Hospital(){
         super();

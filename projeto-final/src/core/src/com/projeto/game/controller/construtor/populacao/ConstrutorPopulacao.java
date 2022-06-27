@@ -1,11 +1,14 @@
 package com.projeto.game.controller.construtor.populacao;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.projeto.game.controller.construtor.gui.IFactoryGui;
 import com.projeto.game.model.populacao.IPopulacao;
 import com.projeto.game.model.populacao.Populacao;
 
 public class ConstrutorPopulacao implements IConstrutorPopulacao {
-	
+	final static private Skin SKIN = new Skin(Gdx.files.internal("Skin/skin.json"));
 	private static IConstrutorPopulacao instancia;
 	private IFactoryGui construtorGui;
 
@@ -19,7 +22,8 @@ public class ConstrutorPopulacao implements IConstrutorPopulacao {
 	
 	public IPopulacao buildPopulacao() {
 		IPopulacao populacao =  Populacao.getInstancia();
-		populacao.setLabel(construtorGui.criarLabel("", 2));
+		Label label = construtorGui.criarLabel("", 2, "white");
+		populacao.setLabel(label);
 		return populacao;
 	}
 	

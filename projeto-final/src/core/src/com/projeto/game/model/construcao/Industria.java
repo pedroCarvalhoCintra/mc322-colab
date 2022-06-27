@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 public class Industria extends Construcao {
 	final static private Texture TEX_INDUSTRIA = new Texture(Gdx.files.internal("Sprites/industry.png"));
-	final static private Image IMG_INDUSTRIA = new Image(TEX_INDUSTRIA);
+	final private Image IMG_INDUSTRIA = new Image(TEX_INDUSTRIA);
 	
     public Industria(){
         super();

@@ -106,6 +106,9 @@ public class Populacao implements IPopulacao{
     	icone.scaleBy(5);
     	texto.setPosition(115, 50);
     	
+    	grupo.addActor(icone);
+    	grupo.addActor(texto);
+    	
     	return grupo;
     }
 

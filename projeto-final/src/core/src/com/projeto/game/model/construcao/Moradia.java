@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 public class Moradia extends Construcao {
 	final static private Texture TEX_MORADIA = new Texture(Gdx.files.internal("Sprites/house_1.png"));
-	final static private Image IMG_MORADIA = new Image(TEX_MORADIA);
+	final private Image IMG_MORADIA = new Image(TEX_MORADIA);
 	
     public Moradia(){
         super();

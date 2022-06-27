@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 public class Prefeitura extends Construcao {
 	final static private Texture TEX_PREFEITURA = new Texture(Gdx.files.internal("Sprites/towncenter.png"));
-	final static private Image IMG_PREFEITURA = new Image(TEX_PREFEITURA);
+	final private Image IMG_PREFEITURA = new Image(TEX_PREFEITURA);
 	
     public Prefeitura(){
         super();
