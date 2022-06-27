@@ -39,11 +39,18 @@ public void algoInteressante(…) {
 ~~~
 
 # Destaques de Pattern
-> Patterns adotados pela equipe
+> Foi adotado pela equipe, essencialmente, os seguintes Desing Patterns:
+* Singleton
+* Factory
+* Strategy
 
-## Diagrama do Pattern
+## Desing Pattern 1: Singleton
+> O Pattern Singleton foi adotado pela equipe para gerar mais coesão ao código e evitar que determinados objetos sejam instanciados mais de uma vez. O padrão foi utilizado nos seguintes componentes
 
-## Código do Pattern
+### Diagrama do Pattern 1
+
+### Exemplo de Código do Pattern 1
+
 
 ~~~java
 // Recorte do código do pattern
@@ -53,6 +60,39 @@ public void algoInteressante(…) {
 }
 ~~~
 
+## Desing Pattern 2: Factory
+> O Pattern Factory foi utilizada no projeto para substituir chamadas diretas de instanciação promovendo uma organização do código no que diz respeito a criação dos objetos. As "fábricas"
+foram utilizadas, fundamentalmente, em três momentos do código: Na construção de construções, na construção de elementos da GUI (graphical user interface) e no gerador de eventos.
+
+### Diagrama do Pattern 2 
+#### teste 
+
+### Código do Pattern
+
+
+~~~java
+// Recorte do código do pattern
+public void algoInteressante(…) {
+   …
+   trechoInteressante = 100;
+}
+~~~
+
+## Desing Pattern 3: Strategy
+> O p
+
+### Diagrama do Pattern
+
+### Código do Pattern
+
+
+~~~java
+// Recorte do código do pattern
+public void algoInteressante(…) {
+   …
+   trechoInteressante = 100;
+}
+~~~
 
 # Diagramas
 
