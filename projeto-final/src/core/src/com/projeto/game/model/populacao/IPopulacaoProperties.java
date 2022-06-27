@@ -7,8 +7,11 @@ public interface IPopulacaoProperties {
     public int getSatisfacao();
     public double getRendaPopulacao();
     
-    public void setLabel(Label label);
-    public Label getLabel();
+    public void setLabelSatisfacao(Label label);
+    public Label getLabelSatisfacao();
+    
+    public void setLabelPopulacao(Label label);
+    public Label getLabelPopulacao();
     
     public void addPopulacao(int num);
     public void addRenda(double num);

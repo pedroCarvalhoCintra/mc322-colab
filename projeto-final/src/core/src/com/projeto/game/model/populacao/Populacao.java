@@ -11,8 +11,10 @@ public class Populacao implements IPopulacao{
 	final static Texture ICONE_SORRISO = new Texture(Gdx.files.internal("Sprites/icon_smile.png"));
 	final static Texture ICONE_CARRANCA = new Texture(Gdx.files.internal("Sprites/icon_frown.png"));
 	final static Texture ICONE_BRAVO = new Texture(Gdx.files.internal("Sprites/icon_angry.png"));
+	final static Texture ICONE_POPULACAO = new Texture(Gdx.files.internal("Sprites/icon_people.png"));
 	
-    private Label texto;
+    private Label textoSatisfacao;
+    private Label textoPopulacao;
 	
     private static IPopulacao instancia;
     private int numHabitantes;
@@ -73,19 +75,41 @@ public class Populacao implements IPopulacao{
     	
     }
     
-    public void setLabel(Label label) {
-    	this.texto = label;
+    public void setLabelPopulacao(Label label) {
+    	this.textoPopulacao = label;
     }
     
-    public Label getLabel() {
-    	return this.texto;
+    public Label getLabelPopulacao() {
+    	return this.textoPopulacao;
+    }
+    
+    public void setLabelSatisfacao(Label label) {
+    	this.textoSatisfacao = label;
+    }
+    
+    public Label getLabelSatisfacao() {
+    	return this.textoSatisfacao;
     }
     
     public Group criarPopulacaoVisual() {
     	Group grupo = new Group();
+    	textoPopulacao.setText(String.valueOf(numHabitantes));
+    	Image icone = new Image(ICONE_POPULACAO);
+    	
+    	icone.scaleBy(5);
+    	textoPopulacao.setPosition(115, 50);
+    	
+    	grupo.addActor(icone);
+    	grupo.addActor(textoPopulacao);
+    	
+    	return grupo;
+    }
+    
+    public Group criarSatisfacaoVisual() {
+    	Group grupo = new Group();
     	Image icone;
     	
-    	texto.setText(String.valueOf(satisfacao));
+    	textoSatisfacao.setText(String.valueOf(satisfacao));
     	
     	if (satisfacao <= 15) {
     		icone = new Image(ICONE_BRAVO);
@@ -104,10 +128,10 @@ public class Populacao implements IPopulacao{
     	}
     	
     	icone.scaleBy(5);
-    	texto.setPosition(115, 50);
+    	textoSatisfacao.setPosition(115, 50);
     	
     	grupo.addActor(icone);
-    	grupo.addActor(texto);
+    	grupo.addActor(textoSatisfacao);
     	
     	return grupo;
     }

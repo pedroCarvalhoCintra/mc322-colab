@@ -47,7 +47,7 @@ public class Calendario implements ICalendario {
 	}
 
 	public void passarDia() {
-		this.diaAtual += 1;
+		this.diaAtual += 15;
 		executarEventos();
 	}
 
@@ -77,7 +77,7 @@ public class Calendario implements ICalendario {
     		icone = new Image(ICONE_VAZIO);
     	}
     	
-    	else if (tempoLimite - diaAtual <= 35) {
+    	else if (tempoLimite - diaAtual <= 45) {
     		icone = new Image(ICONE_METADE);
     	}
     	
