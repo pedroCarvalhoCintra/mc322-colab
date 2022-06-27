@@ -15,8 +15,9 @@ public class ConstrutorJanela implements IBuildJanela {
 	public Window buildJanela(String titulo, float largura, float altura) {
 		Window janela = new Window(titulo, SKIN);
 		
-		janela.setSize(altura, largura);
+		janela.setSize(largura, altura);
 		janela.setVisible(false);
+		janela.setMovable(false);
 		
 		return janela;
 	}

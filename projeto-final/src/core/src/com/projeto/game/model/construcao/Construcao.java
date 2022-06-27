@@ -43,7 +43,7 @@ public abstract class Construcao implements IConstrucao {
     }
 
     public int getColuna(){
-        return this.linha;
+        return this.coluna;
     }
     
     public int getSatisfacao() {

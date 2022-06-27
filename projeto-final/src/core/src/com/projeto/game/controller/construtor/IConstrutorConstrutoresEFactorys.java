@@ -4,13 +4,14 @@ import com.projeto.game.controller.construtor.gerador.IConstrutorFactoryGeradorD
 import com.projeto.game.controller.construtor.gui.IFactoryGui;
 import com.projeto.game.controller.construtor.calendario.IConstrutorCalendario;
 import com.projeto.game.controller.construtor.cidade.IConstrutorCidade;
+import com.projeto.game.controller.construtor.construcoes.IFactoryConstrucao;
 import com.projeto.game.controller.construtor.populacao.IConstrutorPopulacao;
-import com.projeto.game.controller.construtor.construcao.IFactoryConstrucao;
 
 public interface IConstrutorConstrutoresEFactorys {
-	public ICidade criarConstrutorCidade();
-	public IConstrucao criarFactoryConstrucao();
-	public IPopulacao criarConstrutorPopulacao();
+	public IConstrutorCidade criarConstrutorCidade();
+	public IFactoryConstrucao criarFactoryConstrucao();
+	public IFactoryGui criarFactoryGui();
+	public IConstrutorPopulacao criarConstrutorPopulacao();
 	public IConstrutorCalendario criarConstrutorCalendario();
 	public IConstrutorFactoryGeradorDeEventos criarFactoryGeradorDeEventos();
 }

@@ -13,22 +13,28 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 public class MainMenuScreen extends ScreenAdapter { 
 
 	private ProjetoFinalGame game;
+	private IControleJogo controle;
 	private Stage stage;
 
     public MainMenuScreen(ProjetoFinalGame game){
         this.game = game;
+        this.controle = game.getControle();
         this.stage = new Stage(new ExtendViewport(1920, 1080));
     }
 
     public void show(){
-    	Table a = game.viewCidade.getVisual(stage);
-    	a.debug();
-    	stage.addActor(a);
+		Gdx.input.setInputProcessor(stage);
+
+		controle.conectarVisuais(stage);
+		
+    	
+    	stage.setDebugAll(true);
     	
     }
 
     public void render(float delta) {
-    	ScreenUtils.clear(0.278f, 0.176f, 0.235f, 1);
+    	ScreenUtils.clear(0.1f, 0.1f, 0.1f, 1);
+
 		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
 		stage.draw();
     }

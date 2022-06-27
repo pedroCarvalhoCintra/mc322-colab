@@ -174,7 +174,7 @@
     background: { background: tree, minus: treeMinus, plus: treePlus, selection: selection, over: treeOver }
   },
   com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle: {
-    default: { titleFont: default, background: window, titleFontColor: fontDisabled },
-    dialog: { titleFont: default, background: window, titleFontColor: fontDisabled, stageBackground: alpha }
+    default: { titleFont: default, background: window, titleFontColor: dark-gray},
+    dialog: { titleFont: default, background: window, titleFontColor: dark-gray, stageBackground: alpha }
   }
 }

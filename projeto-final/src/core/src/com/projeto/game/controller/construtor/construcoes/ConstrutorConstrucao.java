@@ -20,6 +20,7 @@ public class ConstrutorConstrucao implements IBuildConstrucao {
 		Escola escola = new  Escola();
 		escola.setLinha(linha);
 		escola.setColuna(coluna);
+		escola.setPreco(100);
 		escola.setConstruido(false);
 		return escola;
 	}
@@ -28,6 +29,7 @@ public class ConstrutorConstrucao implements IBuildConstrucao {
 		Hospital hostpital = new  Hospital();
 		hostpital.setLinha(linha);
 		hostpital.setColuna(coluna);
+		hostpital.setPreco(100);
 		hostpital.setConstruido(false);
 		return hostpital;
 	}
@@ -36,22 +38,25 @@ public class ConstrutorConstrucao implements IBuildConstrucao {
 		Industria industria = new  Industria();
 		industria.setLinha(linha);
 		industria.setColuna(coluna);
+		industria.setPreco(200);
 		industria.setConstruido(false);
 		return industria;
 	}
 	
 	public Mercado buildMercado(int linha, int coluna) {
-		Mercado mercador = new Mercado();
-		mercador.setLinha(linha);
-		mercador.setColuna(coluna);
-		mercador.setConstruido(false);
-		return mercador;
+		Mercado mercado = new Mercado();
+		mercado.setLinha(linha);
+		mercado.setColuna(coluna);
+		mercado.setPreco(200);
+		mercado.setConstruido(false);
+		return mercado;
 	}
 	
 	public Moradia buildMoradia(int linha, int coluna) {
 		Moradia moradia = new Moradia();
 		moradia.setLinha(linha);
 		moradia.setColuna(coluna);
+		moradia.setPreco(100);
 		moradia.setConstruido(false);
 		return moradia;
 	}
@@ -60,6 +65,7 @@ public class ConstrutorConstrucao implements IBuildConstrucao {
 		Prefeitura prefeitura = new Prefeitura();
 		prefeitura.setLinha(linha);
 		prefeitura.setColuna(coluna);
+		prefeitura.setPreco(200);
 		prefeitura.setConstruido(false);
 		return prefeitura;
 	}

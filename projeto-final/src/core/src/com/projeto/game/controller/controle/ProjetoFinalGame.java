@@ -3,8 +3,6 @@ package com.projeto.game.controller.controle;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.projeto.game.controller.controle.ControleJogo;
-import com.projeto.game.controller.controle.IControleJogo;
 import com.projeto.game.view.cidade.IViewCidade;
 import com.projeto.game.view.cidade.ViewCidade;
 import com.projeto.game.view.populacao.IViewPopulacao;
@@ -40,7 +38,10 @@ public class ProjetoFinalGame extends Game {
     }
 	
 	public void resize () {
-		//Eu monto isso depois, s� to botando pra n�o esquecer.
+	}
+	
+	public IControleJogo getControle() {
+		return this.controle;
 	}
 	
 }

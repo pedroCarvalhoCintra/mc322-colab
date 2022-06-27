@@ -7,11 +7,12 @@ import com.projeto.game.controller.construtor.gui.FactoryGui;
 import com.projeto.game.controller.construtor.calendario.IConstrutorCalendario;
 import com.projeto.game.controller.construtor.calendario.ConstrutorCalendario;
 import com.projeto.game.controller.construtor.cidade.IConstrutorCidade;
+import com.projeto.game.controller.construtor.construcoes.FactoryConstrucao;
+import com.projeto.game.controller.construtor.construcoes.IFactoryConstrucao;
 import com.projeto.game.controller.construtor.cidade.ConstrutorCidade;
 import com.projeto.game.controller.construtor.populacao.IConstrutorPopulacao;
 import com.projeto.game.controller.construtor.populacao.ConstrutorPopulacao;
-import com.projeto.game.controller.construtor.construcao.IFactoryConstrucao;
-import com.projeto.game.controller.construtor.construcao.FactoryConstrucao;
+
 
 public class ConstrutorConstrutoresEFactorys implements IConstrutorConstrutoresEFactorys {
 
@@ -27,33 +28,33 @@ public class ConstrutorConstrutoresEFactorys implements IConstrutorConstrutoresE
 
 	}
 		
-	public ICidade criarConstrutorCidade() {
-		return this.CONSTRUTOR_CIDADE;
+	public IConstrutorCidade criarConstrutorCidade() {
+		return CONSTRUTOR_CIDADE;
 	}
 	
-	public IConstrucao criarFactoryConstrucao() {
-		return this.FACTORY_CONSTRUCAO;
+	public IFactoryConstrucao criarFactoryConstrucao() {
+		return FACTORY_CONSTRUCAO;
 	}
 	
-	public IConstrucao criarFactoryGui() {
-		return this.FACTORY_GUI;
+	public IFactoryGui criarFactoryGui() {
+		return FACTORY_GUI;
 	}
 
-	public IPopulacao criarConstrutorPopulacao() {
-		return this.CONSTRUTOR_POPULACAO;
+	public IConstrutorPopulacao criarConstrutorPopulacao() {
+		return CONSTRUTOR_POPULACAO;
 	}
 
 	public IConstrutorCalendario criarConstrutorCalendario() {
-		return this.CONSTRUTOR_CALENDARIO;
+		return CONSTRUTOR_CALENDARIO;
 	}
 
 	public IConstrutorFactoryGeradorDeEventos criarFactoryGeradorDeEventos(){
-		return this.CONSTRUTOR_FACTORY_GERADOR_EVENTOS;
+		return CONSTRUTOR_FACTORY_GERADOR_EVENTOS;
 	}
 
 	public static IConstrutorConstrutoresEFactorys getInstancia() {
 		if (instancia == null) {
-			instancia = new FactoryConstrutor();
+			instancia = new ConstrutorConstrutoresEFactorys();
 		}
 		return instancia;
 	}

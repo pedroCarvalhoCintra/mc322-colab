@@ -6,8 +6,8 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 public class Escola extends Construcao {
-	final static private Texture TEX_ESCOLA = new Texture(Gdx.files.internal("Sprites/icon_happy.png"));
-	final static private Image IMG_ESCOLA = new Image(TEX_ESCOLA);
+	final static private Texture TEX_ESCOLA = new Texture(Gdx.files.internal("Sprites/school_1.png"));
+	final private Image IMG_ESCOLA = new Image(TEX_ESCOLA);
 	
     public Escola(){
         super();
