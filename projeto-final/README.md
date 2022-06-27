@@ -14,12 +14,29 @@
 # Destaques de códgigo
 > Trechos relevantes do código
 
+~~~java
+// Recorte do seu código
+public void algoInteressante(…) {
+   …
+   trechoInteressante = 100;
+}
+~~~
+
+
 # Destaques de Orientação a Objetos
 > Conceitos de OO utilizados no códgigo (sobrecarga de métodos, polimorfismo ...)
 
 ## Diagrama de Classes usada no destaque
 
 ## Código do Destaque
+
+~~~java
+// Recorte do código do destaque OO
+public void algoInteressante(…) {
+   …
+   trechoInteressante = 100;
+}
+~~~
 
 # Destaques de Pattern
 > Patterns adotados pela equipe
@@ -28,10 +45,13 @@
 
 ## Código do Pattern
 
-
-
-# Documentação dos Componentes
-
+~~~java
+// Recorte do código do pattern
+public void algoInteressante(…) {
+   …
+   trechoInteressante = 100;
+}
+~~~
 
 
 # Diagramas
@@ -45,7 +65,7 @@
 ## Componente `<nome do componente>`
 > Resumo do componente
 
-
+![image][]
 
 **Ficha Técnica**
 item | detalhamento
