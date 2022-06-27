@@ -53,6 +53,8 @@ O Pattern Singleton foi utilizado no projeto para gerar mais coesão ao código 
 Esse exemplo representa o uso do Singleton no projeto, no caso do exemplo, para o instanciação da Populacao, seguindo o mesmo padrão para o restante do código.
 O trecho de código foi tirado do `Componente populacao` e representa como foi estruturado o Pattern.
 
+
+
 ~~~java
 package com.projeto.game.model.populacao;
 …
