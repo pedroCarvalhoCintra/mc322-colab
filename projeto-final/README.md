@@ -14,7 +14,8 @@
 # Diagramas
 
 ## Diagrama geral de Arquitetura do Jogo
-
+* teste image
+![Diagrama](assests4documentatio/esboço-arquitetura.png)
 
 ## Diagram geral de Componentes  
 
