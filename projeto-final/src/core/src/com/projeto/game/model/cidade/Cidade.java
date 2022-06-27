@@ -73,29 +73,37 @@ public class Cidade implements ICidade {
 		
 		return renda;
 	}
+
+	public int numMoradiasVizinhas(IConstrucao construcao){
+		int numMoradiasVizinhas = 0;
+
+		for(int i = construcao.getLinha()-1; i <= construcao.getLinha()+1  && i <= 10 && i >= 0; i++ ){
+			for(int j = construcao.getColuna()-1; j <= construcao.getColuna()+1 && j <= 10 && j >= 0; j++ ){
+				if(layout.getTipo().equals("Moradia")){
+					numMoradiasVizinhas++;
+				}
+			}
+		}
+		return numMoradiasVizinhas;
+	}
 	
     public void interacoesMoradiaConstruiu(IConstrucao moradia){
-        int numAcrescimosMoradia = 0 ;
-        int numAcrescimosEscola = 0;
-        int numAcrescimosHospital = 0;
+        int numMoradiasVizinhas = numMoradiasVizinhas(construcao);
+		String tipoConstrucao = construcao.getTipo();
 
-        for (int i = moradia.getLinha() - 1; i < moradia.getLinha() + 1 && i < 10; i++){
-            for ( int j = moradia.getColuna() - 1; j < moradia.getColuna() + 1 && j < 10; j++){
-                if(layout[i][j].getTipo().equals("Moradia")){
-                    numAcrescimosMoradia++;
-                }
-                else if(layout[i][j].getTipo().equals("Escola")){
-                    numAcrescimosEscola++;
-                }
-                else if(layout[i][j].getTipo().equals("Hospital")){
-                    numAcrescimosHospital++;
-                }
-            }
-        }
-        //realiza acrescimos de cada tipo;
-        populacao.addSatisfacao(numAcrescimosMoradia*1);
-        populacao.addSatisfacao(numAcrescimosEscola*5);
-       	populacao.addSatisfacao(numAcrescimosHospital*10);
+		switch (tipo) {
+			case "moradia":
+				Populacao.addSatisfacao(numMoradiasVizinhas*1);		
+				break;
+			case "Escola":
+				Populacao.addSatisfacao(numAcrescimosEscola*5);
+				break;
+			case "Hospital":
+				Populacao.addSatisfacao(numMoradiasVizinhas*10);
+				break;
+			default:
+				break;
+		}
     }
     
     public int acharDecrescimos(IConstrucao moradia){
@@ -108,6 +116,18 @@ public class Cidade implements ICidade {
             }
         }
         return numDecrescimos;
+    }
+
+	public void interacoesMoradiaPassouDia(){
+        int numDecrescimos = 0;
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j < 10; j++){
+                if ( cidade.getLayout()[i][j].getTipo().equals("Moradia")){
+                    numDecrescimos = acharDecrescimos(layout[i][j]);
+                    Populacao.addSatisfacao(numDecrescimos*1);
+                }
+            }
+        }
     }
 	
 	public void setRenda(float renda) {
