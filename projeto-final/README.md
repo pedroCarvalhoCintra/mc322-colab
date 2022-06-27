@@ -147,21 +147,10 @@ public class FactoryGui implements IFactoryGui {
 		}
 		return janela;
 	}
-	
-	public Label criarLabel(String texto, float tamanhoFonte, String estilo) {
-		…
-		Label label = CONSTRUTOR_LABEL.criarLabel(texto, tamanhoFonte, estilo);
-		return label;
-	}
-	
-	public Dialog criarDialog(String titulo, String texto, float tamanhoFonte, float largura, float altura) {
-		Dialog dialogo = CONSTRUTOR_DIALOG.buildDialog(titulo, largura, altura);
-		…
-		return dialogo;
-	}	
 	…
 }
 ~~~
+Observação: o `FactoryGui` também implementa as funções de construção `criarLabel` e `criarDialog`.
 
 ## Desing Pattern 3: Strategy
 O Pattern Strategy foi utilizado no projeto para fazer com que determinada classe (`EventoAleatorio`) possua algoritmos intercambiáveis, ou seja, fazer com que essa clase posso surtir diferentes efeitos (através dos diferentes algoritmos) sem que ela defina os algoritmos para isso. 
