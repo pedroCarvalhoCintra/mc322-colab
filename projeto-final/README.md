@@ -11,4 +11,47 @@
 
 # Slides do projeto
 
+# Destaques de códgigo
+> Trechos relevantes do código
+
+# Destaques de Orientação a Objetos
+> Conceitos de OO utilizados no códgigo (sobrecarga de métodos, polimorfismo ...)
+
+## Diagrama de Classes usada no destaque
+
+## Código do Destaque
+
+# Destaques de Pattern
+> Patterns adotados pela equipe
+
+## Diagrama do Pattern
+
+## Código do Pattern
+
+
+
+# Documentação dos Componentes
+
+
+
 # Diagramas
+
+## Diagrama geral de Arquitetura do Jogo
+
+
+## Diagram geral de Componentes  
+
+
+## Componente `<nome do componente>`
+> Resumo do componente
+
+
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08componentes.s20catalog.s10ds.DataSetComponent`
+Autores | `<nome dos membros que criaram o componente>`
+Interfaces | `<listagem das interfaces do componente>`
+
+### interfaces 
