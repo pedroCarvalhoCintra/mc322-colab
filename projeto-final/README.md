@@ -52,7 +52,7 @@ O Pattern Singleton foi utilizado no projeto para gerar mais coesão ao código 
 ### Exemplo de Código do Pattern 1
 Esse exemplo representa o uso do Singleton no projeto, no caso do exemplo, para o instanciação da Populacao, seguindo o mesmo padrão para o restante do código.
 
-* O trecho de código foi tirado do Componente `populacao` e representa como foi estruturado o Pattern:
+1. O trecho de código foi retirado do Componente `populacao` e representa como foi estruturado o Pattern:
 ~~~java
 package com.projeto.game.model.populacao;
 …
@@ -72,19 +72,95 @@ public class Populacao implements IPopulacao{
 
 ## Desing Pattern 2: Factory
 O Pattern Factory foi utilizado no projeto para substituir chamadas diretas de instanciação promovendo uma organização do código no que diz respeito a criação dos objetos. As "fábricas"
-foram utilizadas, fundamentalmente, em três momentos do código: Na construção de construções, na construção de elementos da GUI (graphical user interface) e no gerador de eventos.
+foram utilizadas, fundamentalmente, em três momentos do código: Na construção de construções e na construção de elementos de GUI (graphical user interface).
 
 ### Diagramas do Pattern 2 
 #### 
 
 ### Códigos do Pattern 2
+Recortes de código da implementação das Factorys que demonstram como elas foram estruturadas.
 
-
+1. Trecho de código retirado do Componente `construtor` que representa como foi feita a "fábrica" de construções: 
 ~~~java
-// Recorte do código do pattern
-public void algoInteressante(…) {
-   …
-   trechoInteressante = 100;
+package com.projeto.game.controller.construtor.construcoes;
+…
+public class FactoryConstrucao implements IFactoryConstrucao {
+	final static private IBuildConstrucao CONSTRUTOR_CONSTRUCAO = ConstrutorConstrucao.getInstancia();
+	…
+	public IConstrucao criarConstrucao(String tipo, int linha, int coluna) {
+		IConstrucao construcao;
+		
+		switch (tipo) {
+			case "Moradia":
+				construcao = CONSTRUTOR_CONSTRUCAO.buildMoradia(linha,coluna);
+				…
+				break;
+			…
+			default:
+				construcao = CONSTRUTOR_CONSTRUCAO.buildVazio(linha,coluna);
+				…
+				break;
+		}
+		…
+		return construcao;
+	}
+	…
+}
+~~~
+
+2. Trecho de código retirado do Componente `construtor` que representa como foi feita a "fábrica" de elementos de GUI: 
+~~~java
+package com.projeto.game.controller.construtor.gui;
+…
+public class FactoryGui implements IFactoryGui {
+    …
+	public Button criarBotao(String tipo, String texto, float largura, float altura, int linha, int coluna) {
+		Button botao;
+		switch (tipo) {
+		case "texto":
+			botao = CONSTRUTOR_BOTAO.buildBotaoTexto(texto, largura, altura);
+			break;
+		…
+		default:
+			botao = null;
+			break;
+		}
+		return botao;
+	}
+	
+	public Window criarJanela(String tipo, String titulo, String texto, float largura, float altura, int linha, int coluna) {
+		Window janela;
+		
+		String[] icones = {"Moradia", "Escola", "Hospital", "Industria", "Mercado", "Prefeitura"};
+		
+		switch (tipo) {
+			case "texto":
+				janela = CONSTRUTOR_JANELA.buildJanela(titulo, largura, altura);
+				…
+				break;
+			case "construcao":
+                …
+				janela = CONSTRUTOR_JANELA.buildJanela(titulo, largura, altura);
+				…
+				break;
+			default:
+				janela = null;
+		}
+		return janela;
+	}
+	
+	public Label criarLabel(String texto, float tamanhoFonte, String estilo) {
+		…
+		Label label = CONSTRUTOR_LABEL.criarLabel(texto, tamanhoFonte, estilo);
+		return label;
+	}
+	
+	public Dialog criarDialog(String titulo, String texto, float tamanhoFonte, float largura, float altura) {
+		Dialog dialogo = CONSTRUTOR_DIALOG.buildDialog(titulo, largura, altura);
+		…
+		return dialogo;
+	}	
+	…
 }
 ~~~
 
@@ -96,7 +172,7 @@ O Pattern Strategy foi utilizado no projeto para fazer com que determinada class
 ### Código do Pattern 3
 Recortes de código da implementação da Strategy que demonstram sua definição e funionamento.
 
-* Trecho do código tirado do Componente `evento` e reprensenta como foi definida a Classe `EventoAleatorio`:
+1. Trecho do código retirado do Componente `evento` e reprensenta como foi definida a Classe `EventoAleatorio`:
 ~~~java
 package com.projeto.game.model.evento;
 …
@@ -109,7 +185,7 @@ public class EventoAleatorio extends Evento {
 }
 ~~~
 
-* Trecho do código tirado do Componente `evento` e representa como foi definida a Interface `IStrategyEventoAleatorio`:
+2. Trecho do código retirado do Componente `evento` e representa como foi definida a Interface `IStrategyEventoAleatorio`:
 ~~~java
 package com.projeto.game.model.evento;
 …
@@ -118,7 +194,7 @@ public interface IStrategyEventoAleatorio {
 }
 ~~~
 
-* Trecho do código tirado do Componente `gerador` e representa como foi utilizado o Strategy:
+3. Trecho do código retirado do Componente `gerador` e representa como foi utilizado o Strategy:
 ~~~java
 package com.projeto.game.model.gerador;
 …
