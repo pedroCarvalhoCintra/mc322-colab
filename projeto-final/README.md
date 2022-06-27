@@ -89,18 +89,22 @@ public void algoInteressante(…) {
 ~~~
 
 ## Desing Pattern 3: Strategy
-O Pattern Strategy foi u
+O Pattern Strategy foi utilizado no projeto para fazer com que determinada classe (`EventoAleatorio`) possua algoritmos intercambiáveis, ou seja, fazer com que essa clase posso surtir diferentes efeitos, por meio da Strategy, sem que ela os defina. 
 
 ### Diagrama do Pattern 3
 
 ### Código do Pattern 3
-
+Recorte de código da implementação da Strategy.
 
 ~~~java
-// Recorte do código do pattern
-public void algoInteressante(…) {
-   …
-   trechoInteressante = 100;
+package com.projeto.game.model.evento;
+…
+public class EventoAleatorio extends Evento {
+	private IStrategyEventoAleatorio strategy;
+	…
+	public void executarEvento(ICidade cidade) {
+		strategy.executarEventoAleatorio(cidade);
+	}
 }
 ~~~
 
