@@ -37,7 +37,7 @@ public class Populacao implements IPopulacao{
     }
 
     public double getRendaPopulacao(){
-        return rendaPopulacao;
+        return numHabitantes * 0.025;
     }
     
     public void addPopulacao(int num) {

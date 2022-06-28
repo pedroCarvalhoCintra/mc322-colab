@@ -11,8 +11,8 @@ public class Moradia extends Construcao {
 	
     public Moradia(){
         super();
-		this.satisfacao = 0;
-		this.preco = 0;
+		this.satisfacao = 1;
+		this.preco = 150;
 		this.renda = 0;
     }
 
@@ -26,9 +26,17 @@ public class Moradia extends Construcao {
 
 	public Group criarConstrucaoVisual() {
 		Group grupo = super.criarConstrucaoVisual();
-		IMG_MORADIA.setSize(80, 80);
-		IMG_MORADIA.setPosition(botao.getX()+5, botao.getY()+5);
-		grupo.addActorBefore(IMG_MOLDURA, IMG_MORADIA);
+
+		if (this.construido == true) {
+			IMG_MORADIA.setSize(80, 80);
+			IMG_MORADIA.setPosition(botao.getX()+5, botao.getY()+5);
+			grupo.addActorBefore(IMG_MOLDURA, IMG_MORADIA);
+		}
+		else {
+			IMG_CONSTRUINDO.setSize(80, 80);
+			IMG_CONSTRUINDO.setPosition(botao.getX()+5, botao.getY()+5);
+			grupo.addActorBefore(IMG_MOLDURA, IMG_CONSTRUINDO);
+		}
 		return grupo;
 	}
 }

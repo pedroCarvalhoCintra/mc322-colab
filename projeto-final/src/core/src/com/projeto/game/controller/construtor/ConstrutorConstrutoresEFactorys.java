@@ -1,7 +1,7 @@
 package com.projeto.game.controller.construtor;
 
-import com.projeto.game.controller.construtor.gerador.ConstrutorFactoryGeradorDeEventos;
-import com.projeto.game.controller.construtor.gerador.IConstrutorFactoryGeradorDeEventos;
+import com.projeto.game.controller.construtor.gerador.ConstrutorConstrutorGeradorDeEventos;
+import com.projeto.game.controller.construtor.gerador.IConstrutorConstrutorGeradorDeEventos;
 import com.projeto.game.controller.construtor.gui.IFactoryGui;
 import com.projeto.game.controller.construtor.gui.FactoryGui;
 import com.projeto.game.controller.construtor.calendario.IConstrutorCalendario;
@@ -22,7 +22,7 @@ public class ConstrutorConstrutoresEFactorys implements IConstrutorConstrutoresE
 	final static private IConstrutorCidade CONSTRUTOR_CIDADE = ConstrutorCidade.getInstancia();
 	final static private IConstrutorCalendario CONSTRUTOR_CALENDARIO = ConstrutorCalendario.getInstancia();
 	final static private IFactoryGui FACTORY_GUI = FactoryGui.getInstancia();
-	final static private IConstrutorFactoryGeradorDeEventos CONSTRUTOR_FACTORY_GERADOR_EVENTOS = ConstrutorFactoryGeradorDeEventos.getInstancia();
+	final static private IConstrutorConstrutorGeradorDeEventos CONSTRUTOR_FACTORY_GERADOR_EVENTOS = ConstrutorConstrutorGeradorDeEventos.getInstancia();
 	
 	private ConstrutorConstrutoresEFactorys(){
 
@@ -48,7 +48,7 @@ public class ConstrutorConstrutoresEFactorys implements IConstrutorConstrutoresE
 		return CONSTRUTOR_CALENDARIO;
 	}
 
-	public IConstrutorFactoryGeradorDeEventos criarFactoryGeradorDeEventos(){
+	public IConstrutorConstrutorGeradorDeEventos criarFactoryGeradorDeEventos(){
 		return CONSTRUTOR_FACTORY_GERADOR_EVENTOS;
 	}
 

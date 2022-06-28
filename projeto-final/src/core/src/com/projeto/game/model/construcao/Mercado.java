@@ -12,8 +12,8 @@ public class Mercado extends Construcao {
     public Mercado(){
         super();
 		this.satisfacao = 0;
-		this.preco = 0;
-		this.renda = 0;
+		this.preco = 500;
+		this.renda = 25;
     }
     
     public String getTipo(){
@@ -26,9 +26,18 @@ public class Mercado extends Construcao {
     
     public Group criarConstrucaoVisual() {
 		Group grupo = super.criarConstrucaoVisual();
-		IMG_MERCADO.setSize(80, 80);
-		IMG_MERCADO.setPosition(botao.getX()+5, botao.getY()+5);
-		grupo.addActorBefore(IMG_MOLDURA, IMG_MERCADO);
+
+		if (this.construido == true) {
+			IMG_MERCADO.setSize(80, 80);
+			IMG_MERCADO.setPosition(botao.getX()+5, botao.getY()+5);
+			grupo.addActorBefore(IMG_MOLDURA, IMG_MERCADO);
+		}
+		else {
+			IMG_CONSTRUINDO.setSize(80, 80);
+			IMG_CONSTRUINDO.setPosition(botao.getX()+5, botao.getY()+5);
+			grupo.addActorBefore(IMG_MOLDURA, IMG_CONSTRUINDO);
+		}
+		
 		return grupo;
 	}
 }

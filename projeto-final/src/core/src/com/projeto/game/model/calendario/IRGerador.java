@@ -1,7 +1,7 @@
 package com.projeto.game.model.calendario;
 
-import com.projeto.game.model.gerador.IFactoryGeradorDeEventos;
+import com.projeto.game.model.gerador.IConstrutorGeradorDeEventos;
 
 public interface IRGerador {
-	public void connectGerador(IFactoryGeradorDeEventos gerador);
+	public void connectGerador(IConstrutorGeradorDeEventos gerador);
 }

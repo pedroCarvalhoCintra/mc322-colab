@@ -67,9 +67,11 @@ public class Cidade implements ICidade {
 		float renda = 0;
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
-				
+				renda += layout[i][j].getRenda();
 			}
 		}
+		
+		renda += populacao.getRendaPopulacao();
 		
 		return renda;
 	}
@@ -77,30 +79,34 @@ public class Cidade implements ICidade {
 	public int numMoradiasVizinhas(IConstrucao construcao){
 		int numMoradiasVizinhas = 0;
 
-		for(int i = construcao.getLinha()-1; i <= construcao.getLinha()+1  && i <= 10 && i >= 0; i++ ){
-			for(int j = construcao.getColuna()-1; j <= construcao.getColuna()+1 && j <= 10 && j >= 0; j++ ){
-				if(layout.getTipo().equals("Moradia")){
-					numMoradiasVizinhas++;
+		for(int i = construcao.getLinha()-1; i <= construcao.getLinha()+1; i++ ){
+			for(int j = construcao.getColuna()-1; j <= construcao.getColuna()+1; j++ ){
+				if(i <= 9 && i >= 0 && j <= 9 && j >= 0) {
+					if(layout[i][j].getTipo().equals("Moradia")){
+						numMoradiasVizinhas++;
+					}
 				}
 			}
 		}
 		return numMoradiasVizinhas;
 	}
 	
-    public void interacoesMoradiaConstruiu(IConstrucao moradia){
+    public void interacoesMoradiaConstruiu(IConstrucao construcao){
         int numMoradiasVizinhas = numMoradiasVizinhas(construcao);
 		String tipoConstrucao = construcao.getTipo();
 
-		switch (tipo) {
-			case "moradia":
-				Populacao.addSatisfacao(numMoradiasVizinhas*1);		
+		switch (tipoConstrucao) {
+			case "Moradia":
+				populacao.addSatisfacao(numMoradiasVizinhas* construcao.getSatisfacao());		
 				break;
 			case "Escola":
-				Populacao.addSatisfacao(numAcrescimosEscola*5);
+				populacao.addSatisfacao(numMoradiasVizinhas* construcao.getSatisfacao());
 				break;
 			case "Hospital":
-				Populacao.addSatisfacao(numMoradiasVizinhas*10);
+				populacao.addSatisfacao(numMoradiasVizinhas*10);
 				break;
+			case "Mercado":
+				this.setRenda(this.renda + numMoradiasVizinhas * construcao.getRenda());
 			default:
 				break;
 		}
@@ -108,11 +114,13 @@ public class Cidade implements ICidade {
     
     public int acharDecrescimos(IConstrucao moradia){
         int numDecrescimos = 0;
-        for ( int i = moradia.getLinha() - 1; i < moradia.getLinha() + 1 && i < 10; i++){
-            for ( int j = moradia.getColuna() - 1; j < moradia.getColuna() + 1 && j < 10; j++){
-                if(layout[i][j].getTipo().equals("Industria")){
-                    numDecrescimos++;
-                }
+        for (int i = moradia.getLinha() - 1; i <= moradia.getLinha()+1; i++){
+            for (int j = moradia.getColuna() - 1; j <= moradia.getColuna()+1; j++){
+            	if (i <= 9 && i >= 0 && j <= 9 && j >= 0) {
+                    if(layout[i][j].getTipo().equals("Industria")){
+                        numDecrescimos++;
+                    }
+            	}
             }
         }
         return numDecrescimos;
@@ -122,9 +130,13 @@ public class Cidade implements ICidade {
         int numDecrescimos = 0;
         for(int i = 0; i < 10; i++){
             for(int j = 0; j < 10; j++){
-                if ( cidade.getLayout()[i][j].getTipo().equals("Moradia")){
+                if (layout[i][j].getTipo().equals("Moradia")){
                     numDecrescimos = acharDecrescimos(layout[i][j]);
-                    Populacao.addSatisfacao(numDecrescimos*1);
+                    populacao.addSatisfacao(-numDecrescimos*1);
+                }
+                
+                else if (layout[i][j].getTipo().equals("Mercado")) {
+    				this.setRenda(this.renda + numMoradiasVizinhas(layout[i][j]) * layout[i][j].getRenda());
                 }
             }
         }
@@ -138,7 +150,14 @@ public class Cidade implements ICidade {
     	Group grupo = new Group();
     	Image icone = new Image(ICONE_DINHEIRO);
     	
-    	textoDinheiro.setText("$" + String.valueOf(dinheiro));
+    	String texto ="$" + String.valueOf(dinheiro) + "\n";
+    	if (renda >= 0) {
+    		texto += "+";
+    	}
+    	
+    	texto += String.valueOf(renda);
+    	
+    	textoDinheiro.setText(texto);
     	
     	
     	icone.scaleBy(5);
@@ -150,12 +169,22 @@ public class Cidade implements ICidade {
     	return grupo;
 	}
 	
+	public void passarDia() {
+		this.renda = getRenda();
+		interacoesMoradiaPassouDia();
+		dinheiro += renda;
+		populacao.addSatisfacao(Math.round(-populacao.getNumHabitantes() * 0.005f));
+	}
+	
 	public void adicionarConstrucao(IConstrucao construcao) {
 		boolean estado = false;
 		
 		if (construcao.getTipo() == "Vazio" ) {
 			estado = true;
 			layout[construcao.getLinha()][construcao.getColuna()] = construcao;
+			this.renda = getRenda();
+			this.interacoesMoradiaConstruiu(construcao);
+
 		}
 	
 		else if (dinheiro >= construcao.getPreco() && layout[construcao.getLinha()][construcao.getColuna()].getTipo() == "Vazio") {
@@ -169,9 +198,15 @@ public class Cidade implements ICidade {
 				}
 			}
 			
+			if (construcao.getTipo() == "Moradia") {
+				populacao.addPopulacao(50);
+			}
+			
 			estado = true;
 			dinheiro -= construcao.getPreco();
 			layout[construcao.getLinha()][construcao.getColuna()] = construcao;
+			this.renda = getRenda();
+			this.interacoesMoradiaConstruiu(construcao);
 		}
 		
 		if (estado == false) {
@@ -187,7 +222,6 @@ public class Cidade implements ICidade {
 				prefeituraConstruida = false;
 			}
 			estado = true;
-			dinheiro += layout[linha][coluna].getPreco()/2;
 			layout[linha][coluna] = null;
 		}
 		
