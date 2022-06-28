@@ -19,7 +19,7 @@ O `<Título do Jogo>` é um jogo de construção de cidades em que o jogador dev
 
 ![Diagrama](assets4documentation/esboço-arquitetura.png)
 
-## Diagram geral de Componentes  
+## Diagrama geral de Componentes  
 
 
 ## Componente `<nome do componente>`
@@ -259,7 +259,7 @@ Observação : As funções `EventoAleatorioGreveGeral` e `EventoAleatorioRepass
 
 # Plano de Exceções
 
-## Diagram de hierarquia de exceções
+## Diagrama de hierarquia de exceções
 
 ## Descrição das classes de exceções
 
