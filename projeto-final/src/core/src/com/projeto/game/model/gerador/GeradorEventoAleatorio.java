@@ -15,10 +15,10 @@ public class GeradorEventoAleatorio implements IGerarEventoAleatorio {
 
     }
 
-
     public EventoAleatorio gerarEventoAleatorio(int data){
         EventoAleatorio eventoAleatorio = new EventoAleatorio();
         IStrategyEventoAleatorio strategy;
+        String texto = "";
 
         Random rand = new Random();
         int n = rand.nextInt(3) + 1;
@@ -26,12 +26,15 @@ public class GeradorEventoAleatorio implements IGerarEventoAleatorio {
         switch (n) {
           case 1:
               strategy = new EventoAleatorioGreveGeral();
+              texto = "Major Strike!\nThe labour unions have called a strike for next week, within ten days!\nSorting this out will require 20% of our funds on that day, so be careful!";
               break;
           case 2:
               strategy = new EventoAleatorioMigracao();
+              texto = "More people!\nPeople from nearby cities have moved to our cities, and will arrive in ten days.\nLet's hope they enjoy their stay, and that you can handle this new challenge.";
               break;
           case 3:
               strategy = new EventoAleatorioRepasseEstadual();
+              texto = "More funds!\nThe state treasury has approved more funding for our city.\nThis extra cash will be deposited next week, withing ten days.";
               break; 
           default:
               strategy = new EventoAleatorioMigracao();
@@ -40,6 +43,7 @@ public class GeradorEventoAleatorio implements IGerarEventoAleatorio {
         
         eventoAleatorio.setData(data);
         eventoAleatorio.setStrategy(strategy);
+        eventoAleatorio.setDescricao(texto);
 
         return eventoAleatorio;
     }

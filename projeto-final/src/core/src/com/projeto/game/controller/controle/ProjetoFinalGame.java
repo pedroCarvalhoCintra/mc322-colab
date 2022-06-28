@@ -3,6 +3,16 @@ package com.projeto.game.controller.controle;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.projeto.game.controller.construtor.IConstrutorConstrutoresEFactorys;
+import com.projeto.game.controller.construtor.calendario.IConstrutorCalendario;
+import com.projeto.game.controller.construtor.cidade.IConstrutorCidade;
+import com.projeto.game.controller.construtor.construcoes.IFactoryConstrucao;
+import com.projeto.game.controller.construtor.gerador.IConstrutorConstrutorGeradorDeEventos;
+import com.projeto.game.controller.construtor.gui.IFactoryGui;
+import com.projeto.game.controller.construtor.populacao.IConstrutorPopulacao;
+import com.projeto.game.model.calendario.ICalendario;
+import com.projeto.game.model.cidade.ICidade;
+import com.projeto.game.model.gerador.IConstrutorGeradorDeEventos;
 import com.projeto.game.view.cidade.IViewCidade;
 import com.projeto.game.view.cidade.ViewCidade;
 import com.projeto.game.view.populacao.IViewPopulacao;
@@ -13,9 +23,17 @@ public class ProjetoFinalGame extends Game {
 	SpriteBatch batch;
 	ShapeRenderer shapeRenderer;
 	IControleJogo controle;
-	
-	IViewCidade viewCidade = new ViewCidade();
-	IViewPopulacao viewPopulacao = new ViewPopulacao();
+
+    IConstrutorConstrutoresEFactorys construtorGeral;
+    IConstrutorCalendario construtorCalendario;
+    IConstrutorCidade construtorCidade;
+    IFactoryConstrucao factoryConstrucoes;
+    IFactoryGui construtorGui;
+    IConstrutorPopulacao construtorPopulacao;
+    IConstrutorGeradorDeEventos ConstrutorGeradorDeEventos;
+    ICidade cidade;
+    ICalendario calendario;
+    IConstrutorConstrutorGeradorDeEventos ConstrutorFactoryGeradorDeEventos;
 	
 	public void create() {
 
@@ -23,18 +41,11 @@ public class ProjetoFinalGame extends Game {
         shapeRenderer = new ShapeRenderer();
 		controle = ControleJogo.getInstancia();
 		controle.criarAtores();
-		
-		viewCidade.connectCidade(controle.getCidade());
-		viewPopulacao.connect(controle.getCidade().getPopulacao());
 
 		setScreen(new MainMenuScreen(this));
-
-		//Aqui � onde ocorre a instancia��o das variaveis globais, essencialmente.
-		//Aqui vc chama o MainMenuScreen tamb�m.
 	}
 	
 	public void dispose () {
-		//Aqui voc� libera os assets na mem�ria. N�o � essencial, dependendo pode at� deletar.
     }
 	
 	public void resize () {

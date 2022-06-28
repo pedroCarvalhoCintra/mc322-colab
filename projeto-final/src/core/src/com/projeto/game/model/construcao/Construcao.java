@@ -16,9 +16,11 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 public abstract class Construcao implements IConstrucao {
 	final static private Texture TEX_VAZIO = new Texture(Gdx.files.internal("Sprites/empty_90x90.png"));
 	final static private Texture TEX_OVERLAY = new Texture(Gdx.files.internal("Sprites/whiteoverlay_90x90.png"));
-	final static private Texture TEX_MOLDURA= new Texture(Gdx.files.internal("Sprites/frame.png"));
+	final static private Texture TEX_MOLDURA = new Texture(Gdx.files.internal("Sprites/frame.png"));
+	final static private Texture TEX_CONSTRUINDO = new Texture(Gdx.files.internal("Sprites/building.png"));
 	
 	final protected Image IMG_MOLDURA = new Image(TEX_MOLDURA);
+	final protected Image IMG_CONSTRUINDO = new Image(TEX_CONSTRUINDO);
 	
 	final protected TextureRegionDrawable TEXREG_VAZIO= new TextureRegionDrawable(TEX_VAZIO);
 	final protected TextureRegionDrawable TEXREG_OVERLAY = new TextureRegionDrawable(TEX_OVERLAY);

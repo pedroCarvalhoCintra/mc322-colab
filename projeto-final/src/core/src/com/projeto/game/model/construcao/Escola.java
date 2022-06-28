@@ -11,9 +11,9 @@ public class Escola extends Construcao {
 	
     public Escola(){
         super();
-		this.satisfacao = 0;
-		this.preco = 0;
-		this.renda = 0;
+		this.satisfacao = 5;
+		this.preco = 200;
+		this.renda = -5;
     }
 
     public String getTipo(){
@@ -26,9 +26,17 @@ public class Escola extends Construcao {
     
 	public Group criarConstrucaoVisual() {
 		Group grupo = super.criarConstrucaoVisual();
-		IMG_ESCOLA.setSize(80, 80);
-		IMG_ESCOLA.setPosition(botao.getX()+5, botao.getY()+5);
-		grupo.addActorBefore(IMG_MOLDURA, IMG_ESCOLA);
+
+		if (this.construido == true) {
+			IMG_ESCOLA.setSize(80, 80);
+			IMG_ESCOLA.setPosition(botao.getX()+5, botao.getY()+5);
+			grupo.addActorBefore(IMG_MOLDURA, IMG_ESCOLA);
+		}
+		else {
+			IMG_CONSTRUINDO.setSize(80, 80);
+			IMG_CONSTRUINDO.setPosition(botao.getX()+5, botao.getY()+5);
+			grupo.addActorBefore(IMG_MOLDURA, IMG_CONSTRUINDO);
+		}
 		return grupo;
 	}
 }

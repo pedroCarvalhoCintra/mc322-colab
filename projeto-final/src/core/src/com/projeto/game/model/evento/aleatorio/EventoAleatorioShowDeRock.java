@@ -16,6 +16,6 @@ public class EventoAleatorioShowDeRock implements IStrategyEventoAleatorio{
 		// acabaram se mundado para nossa cidade, que virará sede desse evento. Com a sua permissão claro...
 		// ha eu já dissse que sim se não se importar :) ....
         //Aumento da população.
-        cidade.getPopulacao().addPopulacao(30);
+        cidade.getPopulacao().addPopulacao(300);
 	}
 }
