@@ -9,11 +9,11 @@ O `<Título do Jogo>` é um jogo de construção de cidades em que o jogador dev
 
 # Arquivo executável do jogo
 
-![jar](src/desktop/build/libs)
+[jar](src/desktop/build/libs)
 
 # Slides do projeto
 
-![slides](assests4documentation)
+[slides](assests4documentation)
 
 # Diagramas
 ## Diagrama geral de Arquitetura do Jogo
