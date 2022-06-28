@@ -21,6 +21,13 @@ public class ViewConstrucao implements IViewConstrucao {
         	String texto = "Renda: " + "$" + String.valueOf(construcao.getRenda()) + "\n\n" + 
         	"Satisfação: " + String.valueOf(construcao.getSatisfacao());
         	
+        	if (construcao.getConstruido() == false) {
+        		titulo.setText(construcao.getTipo() + " (Building In Progress)");
+        	}
+        	
+        	else {
+        		titulo.setText(construcao.getTipo());
+        	}
         	
         	label.setText(texto);
         	titulo.setFontScale(1.2f);
@@ -36,7 +43,7 @@ public class ViewConstrucao implements IViewConstrucao {
     
     public void connectStage(Stage stage) {
     	this.stage = stage;
-    	construcao.getJanela().setPosition(1300, 90);
+    	construcao.getJanela().setPosition(1275, 90);
     	this.stage.addActor(construcao.getJanela());
     }
     

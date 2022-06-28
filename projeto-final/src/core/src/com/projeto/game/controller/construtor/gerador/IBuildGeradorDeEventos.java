@@ -1,7 +1,7 @@
 package com.projeto.game.controller.construtor.gerador;
 
-import com.projeto.game.model.gerador.IFactoryGeradorDeEventos;
+import com.projeto.game.model.gerador.IConstrutorGeradorDeEventos;
 
 public interface IBuildGeradorDeEventos {
-    public IFactoryGeradorDeEventos buildGeradorDeEventos();
+    public IConstrutorGeradorDeEventos buildGeradorDeEventos();
 }

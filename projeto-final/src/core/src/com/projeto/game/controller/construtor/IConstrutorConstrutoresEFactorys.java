@@ -1,6 +1,6 @@
 package com.projeto.game.controller.construtor;
 
-import com.projeto.game.controller.construtor.gerador.IConstrutorFactoryGeradorDeEventos;
+import com.projeto.game.controller.construtor.gerador.IConstrutorConstrutorGeradorDeEventos;
 import com.projeto.game.controller.construtor.gui.IFactoryGui;
 import com.projeto.game.controller.construtor.calendario.IConstrutorCalendario;
 import com.projeto.game.controller.construtor.cidade.IConstrutorCidade;
@@ -13,5 +13,5 @@ public interface IConstrutorConstrutoresEFactorys {
 	public IFactoryGui criarFactoryGui();
 	public IConstrutorPopulacao criarConstrutorPopulacao();
 	public IConstrutorCalendario criarConstrutorCalendario();
-	public IConstrutorFactoryGeradorDeEventos criarFactoryGeradorDeEventos();
+	public IConstrutorConstrutorGeradorDeEventos criarFactoryGeradorDeEventos();
 }

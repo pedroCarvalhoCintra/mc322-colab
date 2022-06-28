@@ -5,19 +5,17 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.projeto.game.controller.construtor.ConstrutorConstrutoresEFactorys;
 import com.projeto.game.controller.construtor.IConstrutorConstrutoresEFactorys;
 import com.projeto.game.controller.construtor.calendario.IConstrutorCalendario;
 import com.projeto.game.controller.construtor.cidade.IConstrutorCidade;
 import com.projeto.game.controller.construtor.construcoes.IFactoryConstrucao;
-import com.projeto.game.controller.construtor.gerador.IConstrutorFactoryGeradorDeEventos;
+import com.projeto.game.controller.construtor.gerador.IConstrutorConstrutorGeradorDeEventos;
 import com.projeto.game.controller.construtor.gui.IFactoryGui;
 import com.projeto.game.controller.construtor.populacao.IConstrutorPopulacao;
 import com.projeto.game.model.calendario.ICalendario;
-import com.projeto.game.model.gerador.IFactoryGeradorDeEventos;
-import com.projeto.game.model.populacao.Populacao;
+import com.projeto.game.model.gerador.IConstrutorGeradorDeEventos;
 import com.projeto.game.view.calendario.IViewCalendario;
 import com.projeto.game.view.calendario.ViewCalendario;
 import com.projeto.game.view.cidade.IViewCidade;
@@ -26,6 +24,7 @@ import com.projeto.game.view.populacao.IViewPopulacao;
 import com.projeto.game.view.populacao.ViewPopulacao;
 import com.projeto.game.model.cidade.ICidade;
 import com.projeto.game.model.construcao.IConstrucao;
+import com.projeto.game.model.evento.IEvento;
 
 public class ControleJogo implements IControleJogo {
 
@@ -36,10 +35,10 @@ public class ControleJogo implements IControleJogo {
     private IFactoryConstrucao factoryConstrucoes;
     private IFactoryGui construtorGui;
     private IConstrutorPopulacao construtorPopulacao;
-    private IFactoryGeradorDeEventos FactoryGeradorDeEventos;
+    private IConstrutorGeradorDeEventos ConstrutorGeradorDeEventos;
     private ICidade cidade;
     private ICalendario calendario;
-    private IConstrutorFactoryGeradorDeEventos ConstrutorFactoryGeradorDeEventos;
+    private IConstrutorConstrutorGeradorDeEventos ConstrutorFactoryGeradorDeEventos;
     
 	private IViewCidade viewCidade = new ViewCidade();
 	private IViewPopulacao viewPopulacao = new ViewPopulacao();
@@ -80,9 +79,10 @@ public class ControleJogo implements IControleJogo {
         construtorCalendario.connect(construtorGui);
         construtorGui.connect(this);
 
-        FactoryGeradorDeEventos = ConstrutorFactoryGeradorDeEventos.buildGeradorDeEventos();
+        ConstrutorGeradorDeEventos = ConstrutorFactoryGeradorDeEventos.buildGeradorDeEventos();
         cidade = construtorCidade.buildCidade();
         calendario = construtorCalendario.buildCalendario();
+        calendario.connectCidade(cidade);
         
 		viewCidade.connectCidade(cidade);
 		viewPopulacao.connect(cidade.getPopulacao());
@@ -121,10 +121,8 @@ public class ControleJogo implements IControleJogo {
 		
 		try {
 			cidade.adicionarConstrucao(novo);
-	    	cidade.getPopulacao().addSatisfacao(10);
-	    	cidade.getPopulacao().addPopulacao(200);
-	    	this.atualizarVisualPopulacao();
-	    	passarDia();
+			calendario.addEvento(ConstrutorGeradorDeEventos.criarEventoConstrucao(novo, calendario.getData() + 3));
+	    	atualizarVisualPopulacao();
 			
 		} catch (NullPointerException nullPoint) {
 			String texto = "You don't have enough money to build this!\nYou're missing $" + String.valueOf(novo.getPreco() - cidade.getDinheiro()) + "!";
@@ -148,10 +146,9 @@ public class ControleJogo implements IControleJogo {
 		}
 		
 		finally {
-			
+	    	atualizarVisualCidade();
 		}
 		
-    	atualizarVisualCidade();
     }
     
     public void removerConstrucao(int linha, int coluna) {
@@ -160,9 +157,7 @@ public class ControleJogo implements IControleJogo {
 			cidade.removerConstrucao(linha, coluna);
 			novo = factoryConstrucoes.criarConstrucao("Vazio", linha, coluna);
 			cidade.adicionarConstrucao(novo);
-	    	cidade.getPopulacao().addSatisfacao(10);
-	    	this.atualizarVisualPopulacao();
-	    	passarDia();
+	    	atualizarVisualPopulacao();
 			
 		} catch (Exception exception) {
 			String texto = "It seems our engineers found a problem as they were demolishing this building.\nMaybe it's haunted!";
@@ -176,7 +171,12 @@ public class ControleJogo implements IControleJogo {
     }
     
     public void passarDia() {
+    	if (calendario.getData() % 5 == 0 && calendario.getData() != 0) {
+    		eventoAleatorio();
+    	}
+    	
     	this.calendario.passarDia();
+    	this.cidade.passarDia();
     	atualizarVisualPopulacao();
     	atualizarVisualCalendario();
     	atualizarVisualCidade();
@@ -211,6 +211,17 @@ public class ControleJogo implements IControleJogo {
 		
 		passarDia.addListener(listenerClick);
 		return passarDia;
+    }
+    
+    public void eventoAleatorio() {
+    	IEvento eventoAleatorio = ConstrutorGeradorDeEventos.criarEventoAleatorio(calendario.getData()+5);
+    	Dialog dialogo = construtorGui.criarDialog("Random Event!", eventoAleatorio.getDescricao(), 1, 1000, 250);
+    	calendario.addEvento(eventoAleatorio);
+    	dialogo.show(stage);
+    }
+    
+    public IFactoryGui getFactoryGui() {
+    	return this.construtorGui;
     }
     
     public static IControleJogo getInstancia() {

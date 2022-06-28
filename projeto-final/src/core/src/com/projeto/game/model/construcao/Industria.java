@@ -12,8 +12,8 @@ public class Industria extends Construcao {
     public Industria(){
         super();
 		this.satisfacao = 0;
-		this.preco = 0;
-		this.renda = 0;
+		this.preco = 1200;
+		this.renda = 100;
     }
 
     public String getTipo(){
@@ -26,9 +26,18 @@ public class Industria extends Construcao {
     
     public Group criarConstrucaoVisual() {
 		Group grupo = super.criarConstrucaoVisual();
-		IMG_INDUSTRIA.setSize(80, 80);
-		IMG_INDUSTRIA.setPosition(botao.getX()+5, botao.getY()+5);
-		grupo.addActorBefore(IMG_MOLDURA, IMG_INDUSTRIA);
+		
+		if (this.construido == true) {
+			IMG_INDUSTRIA.setSize(80, 80);
+			IMG_INDUSTRIA.setPosition(botao.getX()+5, botao.getY()+5);
+			grupo.addActorBefore(IMG_MOLDURA, IMG_INDUSTRIA);
+		}
+		
+		else {
+			IMG_CONSTRUINDO.setSize(80, 80);
+			IMG_CONSTRUINDO.setPosition(botao.getX()+5, botao.getY()+5);
+			grupo.addActorBefore(IMG_MOLDURA, IMG_CONSTRUINDO);
+		}
 		return grupo;
 	}
 }

@@ -12,8 +12,8 @@ public class Prefeitura extends Construcao {
     public Prefeitura(){
         super();
 		this.satisfacao = 0;
-		this.preco = 0;
-		this.renda = 0;
+		this.preco = 5000;
+		this.renda = -25;
     }
 
     public String getTipo(){
@@ -26,9 +26,17 @@ public class Prefeitura extends Construcao {
     
     public Group criarConstrucaoVisual() {
 		Group grupo = super.criarConstrucaoVisual();
-		IMG_PREFEITURA.setSize(80, 80);
-		IMG_PREFEITURA.setPosition(botao.getX()+5, botao.getY()+5);
-		grupo.addActorBefore(IMG_MOLDURA, IMG_PREFEITURA);
+		
+		if (this.construido == true) {
+			IMG_PREFEITURA.setSize(80, 80);
+			IMG_PREFEITURA.setPosition(botao.getX()+5, botao.getY()+5);
+			grupo.addActorBefore(IMG_MOLDURA, IMG_PREFEITURA);
+		}
+		else {
+			IMG_CONSTRUINDO.setSize(80, 80);
+			IMG_CONSTRUINDO.setPosition(botao.getX()+5, botao.getY()+5);
+			grupo.addActorBefore(IMG_MOLDURA, IMG_CONSTRUINDO);
+		}
 		return grupo;
 	}
 }

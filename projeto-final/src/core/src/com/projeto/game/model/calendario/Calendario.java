@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.projeto.game.controller.construtor.construcoes.IFactoryConstrucao;
 import com.projeto.game.model.cidade.ICidade;
 import com.projeto.game.model.evento.IEvento;
-import com.projeto.game.model.gerador.IFactoryGeradorDeEventos;
+import com.projeto.game.model.gerador.IConstrutorGeradorDeEventos;
 
 public class Calendario implements ICalendario {
 	final static Texture ICONE_CHEIO = new Texture(Gdx.files.internal("Sprites/icon_time_full.png"));
@@ -19,8 +19,6 @@ public class Calendario implements ICalendario {
 	
 	//Singleton
 	private static ICalendario instancia;
-	private IFactoryConstrucao construtor;
-	private IFactoryGeradorDeEventos gerador;
 	private ICidade cidade;
 	private ArrayList<IEvento> eventos;
 	private int diaAtual;
@@ -33,13 +31,15 @@ public class Calendario implements ICalendario {
 		this.tempoLimite = 100;
 		this.eventos = new ArrayList<IEvento>();
 	}
-
-	public void connectConstrutor(IFactoryConstrucao construtor) {
-		this.construtor = construtor;
+	
+	public int getData() {
+		return this.diaAtual;
 	}
 
-	public void connectGerador(IFactoryGeradorDeEventos gerador) {
-		this.gerador = gerador;
+	public void connectConstrutor(IFactoryConstrucao construtor) {
+	}
+
+	public void connectGerador(IConstrutorGeradorDeEventos gerador) {
 	}
 	
 	public void connectCidade(ICidade cidade) {
@@ -47,8 +47,12 @@ public class Calendario implements ICalendario {
 	}
 
 	public void passarDia() {
-		this.diaAtual += 15;
+		this.diaAtual += 1;
 		executarEventos();
+	}
+	
+	public void addEvento(IEvento evento) {
+		eventos.add(evento);
 	}
 
 	public void executarEventos() {

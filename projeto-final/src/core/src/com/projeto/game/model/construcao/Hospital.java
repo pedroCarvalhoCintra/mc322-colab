@@ -11,9 +11,9 @@ public class Hospital extends Construcao {
 	
     public Hospital(){
         super();
-		this.satisfacao = 0;
-		this.preco = 0;
-		this.renda = 0;
+		this.satisfacao = 10;
+		this.preco = 350;
+		this.renda = -25;
     }
 
     public String getTipo(){
@@ -26,9 +26,18 @@ public class Hospital extends Construcao {
     
 	public Group criarConstrucaoVisual() {
 		Group grupo = super.criarConstrucaoVisual();
-		IMG_HOSPITAL.setSize(80, 80);
-		IMG_HOSPITAL.setPosition(botao.getX()+5, botao.getY()+5);
-		grupo.addActorBefore(IMG_MOLDURA, IMG_HOSPITAL);
+		
+		if (this.construido == true) {
+			IMG_HOSPITAL.setSize(80, 80);
+			IMG_HOSPITAL.setPosition(botao.getX()+5, botao.getY()+5);
+			grupo.addActorBefore(IMG_MOLDURA, IMG_HOSPITAL);
+		}
+		
+		else {
+			IMG_CONSTRUINDO.setSize(80, 80);
+			IMG_CONSTRUINDO.setPosition(botao.getX()+5, botao.getY()+5);
+			grupo.addActorBefore(IMG_MOLDURA, IMG_CONSTRUINDO);
+		}
 		return grupo;
 	}
 }

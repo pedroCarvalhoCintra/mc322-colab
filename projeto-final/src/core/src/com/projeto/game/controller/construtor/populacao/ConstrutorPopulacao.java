@@ -8,7 +8,6 @@ import com.projeto.game.model.populacao.IPopulacao;
 import com.projeto.game.model.populacao.Populacao;
 
 public class ConstrutorPopulacao implements IConstrutorPopulacao {
-	final static private Skin SKIN = new Skin(Gdx.files.internal("Skin/skin.json"));
 	private static IConstrutorPopulacao instancia;
 	private IFactoryGui construtorGui;
 
@@ -27,6 +26,8 @@ public class ConstrutorPopulacao implements IConstrutorPopulacao {
 
 		populacao.setLabelSatisfacao(labelSatisfacao);
 		populacao.setLabelPopulacao(labelPopulacao);
+		populacao.addSatisfacao(50);
+		populacao.addPopulacao(250);
 
 		return populacao;
 	}
@@ -36,8 +37,5 @@ public class ConstrutorPopulacao implements IConstrutorPopulacao {
 			instancia = new ConstrutorPopulacao();
 		}
 		return instancia;
-	} 
-	
-	
-	
+	}
 }
