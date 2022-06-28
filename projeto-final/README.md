@@ -12,90 +12,11 @@ O `<Título do Jogo>` é um jogo de construção de cidades em que o jogador dev
 # Slides do projeto
 
 # Diagramas
-* help: classe abstrata
-
-~~~java
-package com.projeto.game.model.construcao;
-…
-public abstract class Construcao implements IConstrucao {
-	…
-	public Group criarConstrucaoVisual() {
-		Group grupo = new Group();
-		…
-		return grupo;
-	}
-	
-	public abstract String getTipo();
-}
-
-~~~
-* help: classe abstrata e herança e sobrecarga de metodos
-~~~java
-package com.projeto.game.model.construcao;
-…
-public class Escola extends Construcao {
-	…
-	public Group criarConstrucaoVisual() {
-		Group grupo = super.criarConstrucaoVisual();
-		…
-		return grupo;
-	}
-}
-~~~
-
-* help: polimorfismo
-~~~java
-package com.projeto.game.model.cidade;
-…
-public class Cidade implements ICidade {
-	…
-    	private IConstrucao[][] layout;
-	…
-}
-~~~
-
-~~~java
-package com.projeto.game.controller.construtor.cidade;
-…
-public class ConstrutorCidade implements IConstrutorCidade {
-	…
-	private IFactoryConstrucao construtorConstrucao;
-	…
-	public ICidade buildCidade() {
-		ICidade cidade = new Cidade();
-		IConstrucao[][] layout = new IConstrucao[10][10];
-		…
-		
-		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 10; j++) {
-				layout[i][j] = construtorConstrucao.criarConstrucao("vazio", i, j);
-			}
-		}
-		…
-		return cidade;
-	}
-	…
-}
-~~~
-
-~~~java
-package com.projeto.game.controller.construtor.construcoes;
-…
-public class ConstrutorConstrucao implements IBuildConstrucao {
-	…
-	public Escola buildEscola(int linha, int coluna) {
-		Escola escola = new  Escola();
-		…
-		return escola;
-	}
-	…
-}
-~~~
 ## Diagrama geral de Arquitetura do Jogo
 
 * teste image
 
-![Diagrama](assets4documentation/esboço-arquitetura.png)
+![Diagrama](assets4documentation/arquitetura-geral-projeto.png)
 
 ## Diagrama geral de Componentes  
 
