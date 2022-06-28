@@ -18,4 +18,5 @@ public class EventoAleatorioApagao implements IStrategyEventoAleatorio{
         //População insatistfeita
 		cidade.setDinheiro(cidade.getDinheiro() * 0.9f);
         cidade.getPopulacao().addPopulacao(250);
+	}
 }
