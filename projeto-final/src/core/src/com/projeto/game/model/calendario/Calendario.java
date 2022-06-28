@@ -7,10 +7,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.projeto.game.controller.construtor.construcoes.IFactoryConstrucao;
 import com.projeto.game.model.cidade.ICidade;
 import com.projeto.game.model.evento.IEvento;
-import com.projeto.game.model.gerador.IConstrutorGeradorDeEventos;
 
 public class Calendario implements ICalendario {
 	final static Texture ICONE_CHEIO = new Texture(Gdx.files.internal("Sprites/icon_time_full.png"));
@@ -36,11 +34,6 @@ public class Calendario implements ICalendario {
 		return this.diaAtual;
 	}
 
-	public void connectConstrutor(IFactoryConstrucao construtor) {
-	}
-
-	public void connectGerador(IConstrutorGeradorDeEventos gerador) {
-	}
 	
 	public void connectCidade(ICidade cidade) {
 		this.cidade = cidade;
@@ -48,6 +41,7 @@ public class Calendario implements ICalendario {
 
 	public void passarDia() {
 		this.diaAtual += 1;
+		this.cidade.passarDia();
 		executarEventos();
 	}
 	

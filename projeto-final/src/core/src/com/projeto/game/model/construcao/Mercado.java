@@ -17,7 +17,11 @@ public class Mercado extends Construcao {
     }
     
     public String getTipo(){
-        return "Mercado";
+        return "Market";
+    }
+    
+    public int getTempoConstrucao() {
+    	return 5;
     }
 
     public Mercado buildConstrucao(){

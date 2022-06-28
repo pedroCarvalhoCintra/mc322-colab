@@ -7,6 +7,9 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.projeto.game.controller.controle.exception.ConstrucaoInvalida;
+import com.projeto.game.controller.controle.exception.DinheiroInsuficiente;
+import com.projeto.game.controller.controle.exception.PrefeituraInvalida;
 import com.projeto.game.model.construcao.IConstrucao;
 
 public class Cidade implements ICidade {
@@ -82,7 +85,7 @@ public class Cidade implements ICidade {
 		for(int i = construcao.getLinha()-1; i <= construcao.getLinha()+1; i++ ){
 			for(int j = construcao.getColuna()-1; j <= construcao.getColuna()+1; j++ ){
 				if(i <= 9 && i >= 0 && j <= 9 && j >= 0) {
-					if(layout[i][j].getTipo().equals("Moradia")){
+					if(layout[i][j].getTipo().equals("Household")){
 						numMoradiasVizinhas++;
 					}
 				}
@@ -96,16 +99,16 @@ public class Cidade implements ICidade {
 		String tipoConstrucao = construcao.getTipo();
 
 		switch (tipoConstrucao) {
-			case "Moradia":
+			case "Household":
 				populacao.addSatisfacao(numMoradiasVizinhas* construcao.getSatisfacao());		
 				break;
-			case "Escola":
+			case "School":
 				populacao.addSatisfacao(numMoradiasVizinhas* construcao.getSatisfacao());
 				break;
 			case "Hospital":
 				populacao.addSatisfacao(numMoradiasVizinhas*10);
 				break;
-			case "Mercado":
+			case "Market":
 				this.setRenda(this.renda + numMoradiasVizinhas * construcao.getRenda());
 			default:
 				break;
@@ -117,7 +120,7 @@ public class Cidade implements ICidade {
         for (int i = moradia.getLinha() - 1; i <= moradia.getLinha()+1; i++){
             for (int j = moradia.getColuna() - 1; j <= moradia.getColuna()+1; j++){
             	if (i <= 9 && i >= 0 && j <= 9 && j >= 0) {
-                    if(layout[i][j].getTipo().equals("Industria")){
+                    if(layout[i][j].getTipo().equals("Factory")){
                         numDecrescimos++;
                     }
             	}
@@ -125,17 +128,17 @@ public class Cidade implements ICidade {
         }
         return numDecrescimos;
     }
-
+    
 	public void interacoesMoradiaPassouDia(){
         int numDecrescimos = 0;
         for(int i = 0; i < 10; i++){
             for(int j = 0; j < 10; j++){
-                if (layout[i][j].getTipo().equals("Moradia")){
+                if (layout[i][j].getTipo().equals("Household")){
                     numDecrescimos = acharDecrescimos(layout[i][j]);
                     populacao.addSatisfacao(-numDecrescimos*1);
                 }
                 
-                else if (layout[i][j].getTipo().equals("Mercado")) {
+                else if (layout[i][j].getTipo().equals("Market")) {
     				this.setRenda(this.renda + numMoradiasVizinhas(layout[i][j]) * layout[i][j].getRenda());
                 }
             }
@@ -173,7 +176,7 @@ public class Cidade implements ICidade {
 		this.renda = getRenda();
 		interacoesMoradiaPassouDia();
 		dinheiro += renda;
-		populacao.addSatisfacao(Math.round(-populacao.getNumHabitantes() * 0.005f));
+		populacao.addSatisfacao(Math.round(-populacao.getNumHabitantes() * 0.0025f));
 	}
 	
 	public void adicionarConstrucao(IConstrucao construcao) {
@@ -188,17 +191,17 @@ public class Cidade implements ICidade {
 		}
 	
 		else if (dinheiro >= construcao.getPreco() && layout[construcao.getLinha()][construcao.getColuna()].getTipo() == "Vazio") {
-			if (construcao.getTipo() == "Prefeitura") {
+			if (construcao.getTipo() == "Town Hall") {
 				if (prefeituraConstruida == false) {
 					prefeituraConstruida = true;
 				}
 				
 				else {
-					throw new IllegalArgumentException();
+					throw new PrefeituraInvalida();
 				}
 			}
 			
-			if (construcao.getTipo() == "Moradia") {
+			if (construcao.getTipo() == "Household") {
 				populacao.addPopulacao(50);
 			}
 			
@@ -210,7 +213,7 @@ public class Cidade implements ICidade {
 		}
 		
 		if (estado == false) {
-			throw new NullPointerException();
+			throw new DinheiroInsuficiente();
 		}
 	}
 	
@@ -218,20 +221,26 @@ public class Cidade implements ICidade {
 		boolean estado = false;
 		
 		if (layout[linha][coluna].getTipo() != "Vazio" && layout[linha][coluna] != null) {
-			if (layout[linha][coluna].getTipo() == "Prefeitura" && prefeituraConstruida == true) {
+			if (layout[linha][coluna].getTipo() == "Town Hall" && prefeituraConstruida == true) {
 				prefeituraConstruida = false;
 			}
 			estado = true;
+			
+			if (layout[linha][coluna].getConstruido() == false) {
+				dinheiro += layout[linha][coluna].getPreco();
+			}
+			
+			populacao.addSatisfacao(-layout[linha][coluna].getSatisfacao()*numMoradiasVizinhas(layout[linha][coluna]));
 			layout[linha][coluna] = null;
 		}
 		
 		if (estado == false) {
-			throw new NullPointerException();
+			throw new ConstrucaoInvalida();
 		}
 	}
 
 	public static ICidade getInstancia() {
-		if ( instancia == null ) {
+		if (instancia == null) {
 			instancia = new Cidade();
 		}
 		return instancia;

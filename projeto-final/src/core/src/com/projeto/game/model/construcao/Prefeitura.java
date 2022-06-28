@@ -17,7 +17,11 @@ public class Prefeitura extends Construcao {
     }
 
     public String getTipo(){
-        return "Prefeitura";
+        return "Town Hall";
+    }
+    
+    public int getTempoConstrucao() {
+    	return 10;
     }
 
     public Prefeitura buildConstrucao(){

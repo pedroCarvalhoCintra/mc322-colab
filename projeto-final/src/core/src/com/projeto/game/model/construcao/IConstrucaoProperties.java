@@ -29,4 +29,5 @@ public interface IConstrucaoProperties {
     public void setJanela(Window janela);
     
     public abstract String getTipo();
+    public abstract int getTempoConstrucao();
 }

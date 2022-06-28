@@ -20,6 +20,10 @@ public class Vazio extends Construcao {
         return "Vazio";
     }
     
+    public int getTempoConstrucao() {
+    	return 0;
+    }
+    
     public Vazio buildConstrucao() {
     	return new Vazio();
     }

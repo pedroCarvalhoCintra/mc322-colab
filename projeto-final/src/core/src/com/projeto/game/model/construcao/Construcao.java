@@ -57,7 +57,11 @@ public abstract class Construcao implements IConstrucao {
 	}
 
 	public float getRenda() {
-		return this.renda;
+		float renda = 0;
+    	if (construido == true) {
+    		renda = this.renda;
+    	}
+		return renda;
 	}
 	
 	public boolean getConstruido() {
@@ -138,4 +142,5 @@ public abstract class Construcao implements IConstrucao {
 	}
 	
     public abstract String getTipo();
+    public abstract int getTempoConstrucao();
 }

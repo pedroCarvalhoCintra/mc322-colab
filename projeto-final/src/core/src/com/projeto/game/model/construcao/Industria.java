@@ -17,7 +17,11 @@ public class Industria extends Construcao {
     }
 
     public String getTipo(){
-        return "Industria";
+        return "Factory";
+    }
+    
+    public int getTempoConstrucao() {
+    	return 10;
     }
 
     public Industria buildConstrucao(){
