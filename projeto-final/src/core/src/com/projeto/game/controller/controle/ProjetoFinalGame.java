@@ -13,10 +13,6 @@ import com.projeto.game.controller.construtor.populacao.IConstrutorPopulacao;
 import com.projeto.game.model.calendario.ICalendario;
 import com.projeto.game.model.cidade.ICidade;
 import com.projeto.game.model.gerador.IConstrutorGeradorDeEventos;
-import com.projeto.game.view.cidade.IViewCidade;
-import com.projeto.game.view.cidade.ViewCidade;
-import com.projeto.game.view.populacao.IViewPopulacao;
-import com.projeto.game.view.populacao.ViewPopulacao;
 
 public class ProjetoFinalGame extends Game {
 	

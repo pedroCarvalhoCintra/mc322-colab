@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
-import com.projeto.game.controller.controle.ControleJogo;
+import com.projeto.game.controller.controle.subcontroles.cidade.ISubControleCidade;
 
 public class FactoryGui implements IFactoryGui {
 	static private IFactoryGui instancia;
@@ -48,22 +48,22 @@ public class FactoryGui implements IFactoryGui {
 		case "vazio":
 			botao = CONSTRUTOR_BOTAO.buildBotaoImagemVazio(largura, altura);
 			break;
-		case "Moradia":
+		case "Household":
 			botao = CONSTRUTOR_BOTAO.buildBotaoImagem(TEXREG_MORADIA, largura, altura, linha, coluna, tipo);
 			break;
-		case "Escola":
+		case "School":
 			botao = CONSTRUTOR_BOTAO.buildBotaoImagem(TEXREG_ESCOLA, largura, altura, linha, coluna, tipo);
 			break;
 		case "Hospital":
 			botao = CONSTRUTOR_BOTAO.buildBotaoImagem(TEXREG_HOSPITAL, largura, altura, linha, coluna, tipo);
 			break;
-		case "Industria":
+		case "Factory":
 			botao = CONSTRUTOR_BOTAO.buildBotaoImagem(TEXREG_INDUSTRIA, largura, altura, linha, coluna, tipo);
 			break;
-		case "Mercado":
+		case "Market":
 			botao = CONSTRUTOR_BOTAO.buildBotaoImagem(TEXREG_MERCADO, largura, altura, linha, coluna, tipo);
 			break;
-		case "Prefeitura":
+		case "Town Hall":
 			botao = CONSTRUTOR_BOTAO.buildBotaoImagem(TEXREG_PREFEITURA, largura, altura, linha, coluna, tipo);
 			break;
 		case "Destruir":
@@ -79,7 +79,8 @@ public class FactoryGui implements IFactoryGui {
 	public Window criarJanela(String tipo, String titulo, String texto, float largura, float altura, int linha, int coluna) {
 		Window janela;
 		
-		String[] icones = {"Moradia", "Escola", "Hospital", "Industria", "Mercado", "Prefeitura"};
+		String[] icones = {"Household", "School", "Hospital", "Factory", "Market", "Town Hall"};
+		String[] precos = {"$150.0", "$200.0", "$350.0", "$1200.0", "$500.0", "$5000.0"};
 		
 		switch (tipo) {
 			case "texto":
@@ -95,10 +96,10 @@ public class FactoryGui implements IFactoryGui {
 					}
 					Group grupo = new Group();
 					Button botao = criarBotao(icones[i], null, 90, 90, linha, coluna);
-					Label label = criarLabel(icones[i], 1, "default");
+					Label label = criarLabel(icones[i] + "\n" + precos[i], 1, "default");
 					
 					botao.setPosition(0, 20, Align.center);
-					label.setPosition(0, -35, Align.center);
+					label.setPosition(0, -45, Align.center);
 					
 					grupo.addActor(botao);
 					grupo.addActor(label);
@@ -134,7 +135,7 @@ public class FactoryGui implements IFactoryGui {
 		
 		return dialogo;
 	}	
-	public void connect(ControleJogo controle) {
+	public void connect(ISubControleCidade controle) {
 		CONSTRUTOR_BOTAO.connect(controle);
 	}
 	

@@ -10,8 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton.ImageButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.projeto.game.controller.controle.ControleJogo;
-import com.projeto.game.controller.controle.IControleJogo;
+import com.projeto.game.controller.controle.subcontroles.cidade.ISubControleCidade;
 
 public class ConstrutorBotao implements IBuildBotao{
 	final static private Texture TEX_VAZIO = new Texture(Gdx.files.internal("Sprites/empty_90x90.png"));
@@ -25,7 +24,7 @@ public class ConstrutorBotao implements IBuildBotao{
 	final static private Skin SKIN = new Skin(Gdx.files.internal("Skin/skin.json"));
 
 	private static IBuildBotao instancia;
-	private IControleJogo controle;
+	private ISubControleCidade controleCidade;
 	
 	private ConstrutorBotao() {
 		
@@ -58,7 +57,7 @@ public class ConstrutorBotao implements IBuildBotao{
 		
 		ClickListener listenerClick = new ClickListener() {
 			public void clicked (InputEvent event, float x, float y) {
-				controle.construirConstrucao(tipo, linha, coluna);
+				controleCidade.construirConstrucao(tipo, linha, coluna);
 				botao.getParent().getParent().setVisible(false);
 			}
 		};
@@ -76,7 +75,7 @@ public class ConstrutorBotao implements IBuildBotao{
 		botao.setName("destruir");
 		ClickListener listenerClick = new ClickListener() {
 			public void clicked (InputEvent event, float x, float y) {
-				controle.removerConstrucao(linha, coluna);
+				controleCidade.removerConstrucao(linha, coluna);
 				botao.getParent().setVisible(false);
 			}
 		};
@@ -85,10 +84,10 @@ public class ConstrutorBotao implements IBuildBotao{
 		return botao;
 	}
 	
-	public void connect(ControleJogo controle) {
-		this.controle = controle;
+	public void connect(ISubControleCidade controle) {
+		this.controleCidade = controle;
 	}
-	
+		
 	public static IBuildBotao getInstancia() {
 		if ( instancia == null ) {
 			instancia = new ConstrutorBotao();

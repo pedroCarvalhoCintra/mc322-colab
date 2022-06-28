@@ -16,33 +16,33 @@ public class FactoryConstrucao implements IFactoryConstrucao {
 		IConstrucao construcao;
 		
 		switch (tipo) {
-			case "Moradia":
+			case "Household":
 				construcao = CONSTRUTOR_CONSTRUCAO.buildMoradia(linha,coluna);
-				construcao.setJanela(construtorGui.criarJanela("texto", "Moradia", "" , 750, 450, linha, coluna));
+				construcao.setJanela(construtorGui.criarJanela("texto", "Household", "" , 750, 450, linha, coluna));
 				break;
-			case "Mercado":
+			case "Market":
 				construcao = CONSTRUTOR_CONSTRUCAO.buildMercado(linha,coluna);
-				construcao.setJanela(construtorGui.criarJanela("texto", "Mercado", "" , 750, 450, linha, coluna));
+				construcao.setJanela(construtorGui.criarJanela("texto", "Market", "" , 750, 450, linha, coluna));
 				break;
-			case "Industria":
+			case "Factory":
 				construcao = CONSTRUTOR_CONSTRUCAO.buildIndustria(linha,coluna);
-				construcao.setJanela(construtorGui.criarJanela("texto", "Industria", "" , 750, 450, linha, coluna));
+				construcao.setJanela(construtorGui.criarJanela("texto", "Factory", "" , 750, 450, linha, coluna));
 				break;
-			case "Prefeitura":
+			case "Town Hall":
 				construcao = CONSTRUTOR_CONSTRUCAO.buildPrefeitura(linha,coluna);
-				construcao.setJanela(construtorGui.criarJanela("texto", "Prefeitura", "" , 750, 450, linha, coluna));
+				construcao.setJanela(construtorGui.criarJanela("texto", "Town Hall", "" , 750, 450, linha, coluna));
 				break;
 			case "Hospital":
 				construcao = CONSTRUTOR_CONSTRUCAO.buildHospital(linha,coluna);
 				construcao.setJanela(construtorGui.criarJanela("texto", "Hospital", "" , 750, 450, linha, coluna));
 				break;
-			case "Escola":
+			case "School":
 				construcao = CONSTRUTOR_CONSTRUCAO.buildEscola(linha,coluna);
-				construcao.setJanela(construtorGui.criarJanela("texto", "Escola", "" , 750, 450, linha, coluna));
+				construcao.setJanela(construtorGui.criarJanela("texto", "School", "" , 750, 450, linha, coluna));
 				break;
 			default:
 				construcao = CONSTRUTOR_CONSTRUCAO.buildVazio(linha,coluna);
-				construcao.setJanela(construtorGui.criarJanela("construcao", "Escola o que gostaria de construir", "", 750, 450, linha, coluna));
+				construcao.setJanela(construtorGui.criarJanela("construcao", "What should we build?", "", 750, 450, linha, coluna));
 				break;
 		}
 		Button botao = construtorGui.criarBotao("vazio", "", 90, 90, linha, coluna);

@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.projeto.game.controller.construtor.gui.IFactoryGui;
 
 public class GameScreen extends ScreenAdapter {
@@ -18,7 +18,7 @@ public class GameScreen extends ScreenAdapter {
         this.game = game;
         this.controle = game.getControle();
         this.construtorGui = controle.getFactoryGui();
-        this.stage = new Stage(new ExtendViewport(1920, 1080));
+        this.stage = new Stage(new FitViewport(1920, 1080));
         
     }
 
