@@ -19,6 +19,10 @@ public class Hospital extends Construcao {
     public String getTipo(){
         return "Hospital";
     }
+    
+    public int getTempoConstrucao() {
+    	return 7;
+    }
 
     public Hospital buildConstrucao(){
         return new Hospital();

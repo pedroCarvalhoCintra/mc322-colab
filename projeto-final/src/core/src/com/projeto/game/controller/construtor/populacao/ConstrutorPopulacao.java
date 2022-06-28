@@ -1,8 +1,6 @@
 package com.projeto.game.controller.construtor.populacao;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.projeto.game.controller.construtor.gui.IFactoryGui;
 import com.projeto.game.model.populacao.IPopulacao;
 import com.projeto.game.model.populacao.Populacao;

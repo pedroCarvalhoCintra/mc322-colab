@@ -17,7 +17,11 @@ public class Escola extends Construcao {
     }
 
     public String getTipo(){
-        return "Escola";
+        return "School";
+    }
+    
+    public int getTempoConstrucao() {
+    	return 5;
     }
 
     public Escola buildConstrucao(){

@@ -18,8 +18,8 @@ public class ViewConstrucao implements IViewConstrucao {
     	if (construcao.getTipo().equals("Vazio") == false) {
     		Label titulo = construcao.getJanela().getTitleLabel();
         	Label label = construcao.getJanela().findActor("label");
-        	String texto = "Renda: " + "$" + String.valueOf(construcao.getRenda()) + "\n\n" + 
-        	"Satisfação: " + String.valueOf(construcao.getSatisfacao());
+        	String texto = "Income: " + "$" + String.valueOf(construcao.getRenda()) + "\n\n" + 
+        	"Happiness: " + String.valueOf(construcao.getSatisfacao());
         	
         	if (construcao.getConstruido() == false) {
         		titulo.setText(construcao.getTipo() + " (Building In Progress)");
@@ -33,7 +33,7 @@ public class ViewConstrucao implements IViewConstrucao {
         	titulo.setFontScale(1.2f);
         	
         	if (construcao.getJanela().findActor("destruir") == null) {
-            	Button botaoDestruir = fabricaGui.criarBotao("Destruir", "Destruir", 1000, 1000, construcao.getLinha(), construcao.getColuna());
+            	Button botaoDestruir = fabricaGui.criarBotao("Destruir", "Demolish", 1000, 1000, construcao.getLinha(), construcao.getColuna());
             	construcao.getJanela().row();
             	construcao.getJanela().add(botaoDestruir).expand();
         	}
@@ -43,7 +43,7 @@ public class ViewConstrucao implements IViewConstrucao {
     
     public void connectStage(Stage stage) {
     	this.stage = stage;
-    	construcao.getJanela().setPosition(1275, 90);
+    	construcao.getJanela().setPosition(1075, 80);
     	this.stage.addActor(construcao.getJanela());
     }
     

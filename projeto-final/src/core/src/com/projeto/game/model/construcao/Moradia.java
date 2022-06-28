@@ -17,7 +17,11 @@ public class Moradia extends Construcao {
     }
 
     public String getTipo(){
-        return "Moradia";
+        return "Household";
+    }
+    
+    public int getTempoConstrucao() {
+    	return 2;
     }
 
     public Moradia buildConstrucao(){
