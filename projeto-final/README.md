@@ -146,7 +146,7 @@ Método | Objetivo
 
 
 #### Interface `ICidadeDinamica`
-Interface responsável pelas interações com a cidade, como .
+Interface responsável pelas interações com a cidade.
 
 ~~~java
 package com.projeto.game.model.cidade;
