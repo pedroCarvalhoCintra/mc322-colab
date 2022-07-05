@@ -255,11 +255,7 @@ Método | Objetivo
 `setJanela` | método.
 `getTipo` | método.
 `getTempoConstrucao` | método.
-
-
 `criarDinheiroVisual` | método que cria um Group que contém o ícone e o texto referentes ao dinheiro e o retorna.
-
-
 `getDinheiro` | método que retorna o dinheiro da cidade.
 `getLayout` | método que retorna o layout da cidade.
 `setLayout` | método que recebe como parâmetro uma matriz de IConstrucao e a defini no atributo layout da cidade.
@@ -267,21 +263,19 @@ Método | Objetivo
 
 
 #### Interface `IConstrucaoVisual`
-Interface responsável pela criação visual da cidade e do dinheiro.
+Interface responsável pela criação visual das construções.
 
 ~~~java
 package com.projeto.game.model.cidade;
 …
-public interface ICidadeVisual {
-	public Table criarCidadeVisual();
-	public Group criarDinheiroVisual();
+public interface  {
 }
 ~~~
 
 Método | Objetivo
 -------| --------
-`criarCidadeVisual` | método que cria uma Table, configura suas dimensões e a retorna.
-`criarDinheiroVisual` | método que cria um Group que contém o ícone e o texto referentes ao dinheiro e o retorna.
+`>` | método .
+`>` | método .
 
 
 
