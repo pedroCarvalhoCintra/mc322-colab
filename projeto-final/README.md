@@ -1,4 +1,4 @@
-# Projeto `<Título do Jogo>`.
+# Projeto `Untitled City Game`.
 
 # Descrição
 O `<Título do Jogo>` é um jogo de construção de cidades em que o jogador deve assumir o papel de um prefeito e organizar sua cidade de modo a fazer com que ela prospere e que sua população fique satisfeita. Portanto, o jogo tem como próposito fazer com o que o jogador entenda como planejar de maneira eficiente e criativa o arranjo de construções da cidade fazendo com que ela progrida de acordo com as regras de jogo. 
@@ -32,8 +32,8 @@ Componente que contem o layout de construcoes
 **Ficha Técnica**
 item | detalhamento
 ----- | -----
-Classe | `com.projeto.game.model.cidade`
-Autores | `Riccardo Carvalho Sofer e Pedro Carvalho Cintra`
+Classe | Cidade: `com.projeto.game.model.cidade`
+Autores | Riccardo Carvalho Sofer e Pedro Carvalho Cintra
 Interfaces | `ICidade, ICidadeVisual, IRPopulacao, ICidadeProperties, IModificarCidade, ICidadeDinamica `
 
 ### interfaces 
@@ -181,9 +181,10 @@ Componente que
 **Ficha Técnica**
 item | detalhamento
 ----- | -----
-Classe | `com.projeto.game.model.construcao`
-Autores | `Riccardo Carvalho Sofer e Pedro Carvalho Cintra`
-Interfaces | `<IConstrucao, IConstrucaoProperties, IConstrucaoVisual>`
+Classe | Construcao: `com.projeto.game.model.construcao`
+Subclasses (Construcao) | Escola, Moradia, Mercado, Industria, Prefeitura, Hospital e Vazio 
+Autores | Riccardo Carvalho Sofer e Pedro Carvalho Cintra
+Interfaces | `IConstrucao, IConstrucaoProperties, IConstrucaoVisual`
 
 ### interfaces 
 > interfaces associadas a esse componente
@@ -195,6 +196,92 @@ package com.projeto.game.model.construcao;
 public interface IConstrucao extends IConstrucaoProperties, IConstrucaoVisual {
 }
 ~~~
+
+### Detalhamento das interfaces
+
+#### Interface `IConstrucaoProperties`
+Interface responsável pelos métodos relacionados as propriedades da construcao.
+
+~~~java
+package com.projeto.game.model.construcao;
+…
+public interface IConstrucaoProperties {
+    public int getLinha();
+    public void setLinha(int linha);
+
+    public int getColuna();
+    public void setColuna(int coluna);
+    
+    public float getPreco();
+    public void setPreco(float preco);
+    
+    public int getSatisfacao();
+    public void setSatisfacao(int satisfacao);
+    
+    public float getRenda();
+    public void setRenda(float renda);
+    
+    public boolean getConstruido();
+    public void setConstruido(boolean estado);
+    
+    public Button getBotao();
+    public void setBotao(Button botao);
+    
+    public Window getJanela();
+    public void setJanela(Window janela);
+    
+    public abstract String getTipo();
+    public abstract int getTempoConstrucao();
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`getLinha` | método que retorna a posição da linha da construcao.
+`setLinha` | método que recebe como parâmetro um int e o defini no atributo linha da construcao.
+`getColuna` | método que retorna a posição da coluna da construcao.
+`setColuna` | método que recebe como parâmetro um int e o defini no atributo coluna da construcao.
+`getPreco` | método que retorna o preco da construcao.
+`setPreco` | método que recebe como parâmetro um float e o defini no atributo preco da construcao.
+`getSatisfacao` | m
+`setSatisfacao` | método.
+`getRenda` | método.
+`setRenda` | método.
+`getConstruido` | método.
+`setConstruido` | método.
+`getBotao` | método.
+`setBotao` | método.
+`getJanela` | método.
+`setJanela` | método.
+`getTipo` | método.
+`getTempoConstrucao` | método.
+
+
+`criarDinheiroVisual` | método que cria um Group que contém o ícone e o texto referentes ao dinheiro e o retorna.
+
+
+`getDinheiro` | método que retorna o dinheiro da cidade.
+`getLayout` | método que retorna o layout da cidade.
+`setLayout` | método que recebe como parâmetro uma matriz de IConstrucao e a defini no atributo layout da cidade.
+
+
+
+#### Interface `IConstrucaoVisual`
+Interface responsável pela criação visual da cidade e do dinheiro.
+
+~~~java
+package com.projeto.game.model.cidade;
+…
+public interface ICidadeVisual {
+	public Table criarCidadeVisual();
+	public Group criarDinheiroVisual();
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`criarCidadeVisual` | método que cria uma Table, configura suas dimensões e a retorna.
+`criarDinheiroVisual` | método que cria um Group que contém o ícone e o texto referentes ao dinheiro e o retorna.
 
 
 
