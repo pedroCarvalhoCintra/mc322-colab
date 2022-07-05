@@ -14,6 +14,9 @@ O `Untitled City Game` é um jogo de construção de cidades em que o jogador de
 # Slides do projeto
 [Link Slides](https://docs.google.com/presentation/d/1TJfkO0ycISbAXsCrqyaSoHrUhCPaGAkyrBRW4GFfrWY/edit?usp=sharing)
 
+# Mecânica do Jogo 
+Descrever (detalhadamente) mecânicas do jogo
+
 # Diagramas
 ## Diagrama geral de Arquitetura do Jogo
 
