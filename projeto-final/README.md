@@ -13,7 +13,6 @@ O `<Título do Jogo>` é um jogo de construção de cidades em que o jogador dev
 
 # Slides do projeto
 [Link Slides](https://docs.google.com/presentation/d/1TJfkO0ycISbAXsCrqyaSoHrUhCPaGAkyrBRW4GFfrWY/edit?usp=sharing)
-[slides](assests4documentation)
 
 # Diagramas
 ## Diagrama geral de Arquitetura do Jogo
@@ -25,41 +24,188 @@ O `<Título do Jogo>` é um jogo de construção de cidades em que o jogador dev
 ## Diagrama geral de Componentes  
 
 
-## Componente `<nome do componente>`
-Resumo do componente
+## Componente `Cidade`
+Componente que contem o layout de construcoes 
 
 
 
 **Ficha Técnica**
 item | detalhamento
 ----- | -----
-Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08componentes.s20catalog.s10ds.DataSetComponent`
-Autores | `<nome dos membros que criaram o componente>`
-Interfaces | `<listagem das interfaces do componente>`
+Classe | `com.projeto.game.model.cidade`
+Autores | `Riccardo Carvalho Sofer e Pedro Carvalho Cintra`
+Interfaces | `ICidade, ICidadeVisual, IRPopulacao, ICidadeProperties, IModificarCidade, ICidadeDinamica `
 
 ### interfaces 
 > interfaces associadas a esse componente
 
 > interface agregador do componente em java
 ~~~java
-public interface IDataSet extends ITableProducer, IDataSetProperties {
+public interface ICidade extends ICidadeVisual, IRPopulacao, ICidadeProperties, IModificarCidade, ICidadeDinamica {
 }
 ~~~
 
 
-## Detalhamento das interfaces
+### Detalhamento das interfaces
 
-### Interface `<nome da interface>`
-
-resumo da interface
+#### Interface `ICidadeVisual`
+Interface responsável pela criação visual da cidade e do dinheiro.
 
 ~~~java
-//interface me java.
+package com.projeto.game.model.cidade;
+…
+public interface ICidadeVisual {
+	public Table criarCidadeVisual();
+	public Group criarDinheiroVisual();
+}
 ~~~
 
 Método | Objetivo
 -------| --------
-`<id do método em Java>` | `<objetivo do método e descrição dos parâmetros>`
+`criarCidadeVisual` | `método que cria uma Table, configura suas dimensões e a retorna.`
+`criarDinheiroVisual` | `método que cria um Group que contém o ícone e o texto referentes ao dinheiro e o retorna.`
+
+
+
+
+#### Interface `IRPopulacao`
+Interface responsável por conectar populacao na cidade.
+
+~~~java
+package com.projeto.game.model.cidade;
+…
+public interface IRPopulacao {
+    public void connectPopulacao(IPopulacao populacao);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectPopulacao` | `método que recebe a interface IPopulacao como parâmetro e a conecta com a cidade.`
+
+
+
+
+
+
+#### Interface `ICidadeProperties`
+Interface responsável pelos métodos relacionados as propriedades da cidade.
+
+~~~java
+
+package com.projeto.game.model.cidade;
+…
+public interface ICidadeProperties {
+	public float getDinheiro();
+	public IConstrucao[][] getLayout();
+	public void setLayout(IConstrucao[][] layout);
+	public IPopulacao getPopulacao();
+	public void setDinheiro(float dinheiro);
+	public void setLabel(Label label);
+	public Label getLabel();
+	public float getRenda();
+	public void setRenda(float renda);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`getDinheiro` | `método que retorna o dinheiro da cidade.`
+`getLayout` | `método que retorna o layout da cidade.`
+`setLayout` | `método que recebe como parâmetro uma matriz de IConstrucao e a defini no atributo layout da cidade.`
+`getPopulacao` | `método que retorna a populacao da cidade.`
+`setDinheiro` | `método que recebe como parâmetro um float e o defini no atributo dinheiro da cidade.`
+`setLabel` | `método que recbe como parâmetro um Label e o defini no atributo label da cidade.`
+`getLabel` | `método que retorna o label da cidade.`
+`getRenda` | `método que retorna a renda da cidade.`
+`setRenda` | `método que recebe como parâmetro um float e o defini no atributo renda da cidade.`
+
+
+
+
+
+#### Interface `IModificarCidade`
+Interface responsável pela adição e remoção de construcao na cidade.
+
+~~~java
+package com.projeto.game.model.cidade;
+…
+public interface IModificarCidade {
+	public void adicionarConstrucao(IConstrucao construcao);
+	public void removerConstrucao(int linha, int coluna);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`adicionaConstrucao` | `método que realiza a construção de uma nova construcao na cidade, realizando as alterações necessárias na cidade.`
+`removerConstrucao` | `método que realiza a demolição de uma construcao na cidade, realizando as alterações necessárias na cidade.`
+
+
+
+
+
+#### Interface `ICidadeDinamica`
+Interface responsável pelas interações com a cidade, como .
+
+~~~java
+package com.projeto.game.model.cidade;
+…
+public interface ICidadeDinamica {
+	public int numMoradiasVizinhas(IConstrucao construcao);
+	public void interacoesMoradiaConstruiu(IConstrucao construcao);
+	public int acharDecrescimos(IConstrucao moradia);
+	public void interacoesMoradiaPassouDia();
+	public void passarDia();
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`numMoradiasVizinhas` | `método que recebe como parâmetro uma IConstrucao e retorna a quantidade de construções do tipo Moradia ao redor.`
+`interacoesMoradiaConstruiu` | `método que realiza a interação, nesse caso a possível adição de satisfacao da populacao,apos uma construcao ser construída.`
+`acharDecrescimos` | `método que recebe como parâmetro uma IConstrucao do tipo Moradia e retorna a quantidade de decrèscimos, nesse caso a quantidade de construções do tipo Industria.`
+`interacoesMoradiaPassouDia` | `método que passa por todas as contruções do tipo Moradia e realiza os decrésimos de satisfacao da populacao.`
+`passarDia` | `método que realiza os efeitos na cidade ao passar o dia.`
+
+
+
+
+
+
+## Componente `construcao`
+Componente que
+
+
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | `com.projeto.game.model.construcao`
+Autores | `Riccardo Carvalho Sofer e Pedro Carvalho Cintra`
+Interfaces | `<IConstrucao, IConstrucaoProperties, IConstrucaoVisual>`
+
+### interfaces 
+> interfaces associadas a esse componente
+
+> interface agregador do componente em java
+~~~java
+package com.projeto.game.model.construcao;
+
+public interface IConstrucao extends IConstrucaoProperties, IConstrucaoVisual {
+}
+~~~
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Destaques de códgigo
