@@ -62,8 +62,8 @@ public interface ICidadeVisual {
 
 Método | Objetivo
 -------| --------
-`criarCidadeVisual` | `método que cria uma Table, configura suas dimensões e a retorna.`
-`criarDinheiroVisual` | `método que cria um Group que contém o ícone e o texto referentes ao dinheiro e o retorna.`
+`criarCidadeVisual` | método que cria uma Table, configura suas dimensões e a retorna.
+`criarDinheiroVisual` | método que cria um Group que contém o ícone e o texto referentes ao dinheiro e o retorna.
 
 
 
@@ -81,7 +81,7 @@ public interface IRPopulacao {
 
 Método | Objetivo
 -------| --------
-`connectPopulacao` | `método que recebe a interface IPopulacao como parâmetro e a conecta com a cidade.`
+`connectPopulacao` | método que recebe a interface IPopulacao como parâmetro e a conecta com a cidade.
 
 
 
@@ -110,15 +110,15 @@ public interface ICidadeProperties {
 
 Método | Objetivo
 -------| --------
-`getDinheiro` | `método que retorna o dinheiro da cidade.`
-`getLayout` | `método que retorna o layout da cidade.`
-`setLayout` | `método que recebe como parâmetro uma matriz de IConstrucao e a defini no atributo layout da cidade.`
-`getPopulacao` | `método que retorna a populacao da cidade.`
-`setDinheiro` | `método que recebe como parâmetro um float e o defini no atributo dinheiro da cidade.`
-`setLabel` | `método que recbe como parâmetro um Label e o defini no atributo label da cidade.`
-`getLabel` | `método que retorna o label da cidade.`
-`getRenda` | `método que retorna a renda da cidade.`
-`setRenda` | `método que recebe como parâmetro um float e o defini no atributo renda da cidade.`
+`getDinheiro` | método que retorna o dinheiro da cidade.
+`getLayout` | método que retorna o layout da cidade.
+`setLayout` | método que recebe como parâmetro uma matriz de IConstrucao e a defini no atributo layout da cidade.
+`getPopulacao` | método que retorna a populacao da cidade.
+`setDinheiro` | método que recebe como parâmetro um float e o defini no atributo dinheiro da cidade.
+`setLabel` | método que recbe como parâmetro um Label e o defini no atributo label da cidade.
+`getLabel` | método que retorna o label da cidade.
+`getRenda` | método que retorna a renda da cidade.
+`setRenda` | método que recebe como parâmetro um float e o defini no atributo renda da cidade.
 
 
 
@@ -138,8 +138,8 @@ public interface IModificarCidade {
 
 Método | Objetivo
 -------| --------
-`adicionaConstrucao` | `método que realiza a construção de uma nova construcao na cidade, realizando as alterações necessárias na cidade.`
-`removerConstrucao` | `método que realiza a demolição de uma construcao na cidade, realizando as alterações necessárias na cidade.`
+`adicionaConstrucao` | método que realiza a construção de uma nova construcao na cidade, realizando as alterações necessárias na cidade.
+`removerConstrucao` | método que realiza a demolição de uma construcao na cidade, realizando as alterações necessárias na cidade.
 
 
 
@@ -162,11 +162,11 @@ public interface ICidadeDinamica {
 
 Método | Objetivo
 -------| --------
-`numMoradiasVizinhas` | `método que recebe como parâmetro uma IConstrucao e retorna a quantidade de construções do tipo Moradia ao redor.`
-`interacoesMoradiaConstruiu` | `método que realiza a interação, nesse caso a possível adição de satisfacao da populacao,apos uma construcao ser construída.`
-`acharDecrescimos` | `método que recebe como parâmetro uma IConstrucao do tipo Moradia e retorna a quantidade de decrèscimos, nesse caso a quantidade de construções do tipo Industria.`
-`interacoesMoradiaPassouDia` | `método que passa por todas as contruções do tipo Moradia e realiza os decrésimos de satisfacao da populacao.`
-`passarDia` | `método que realiza os efeitos na cidade ao passar o dia.`
+`numMoradiasVizinhas` | método que recebe como parâmetro uma IConstrucao e retorna a quantidade de construções do tipo Moradia ao redor.
+`interacoesMoradiaConstruiu` | método que realiza a interação, nesse caso a possível adição de satisfacao da populacao,apos uma construcao ser construída.
+`acharDecrescimos` | método que recebe como parâmetro uma IConstrucao do tipo Moradia e retorna a quantidade de decrèscimos, nesse caso a quantidade de construções do tipo Industria.
+`interacoesMoradiaPassouDia` | método que passa por todas as contruções do tipo Moradia e realiza os decrésimos de satisfacao da populacao.
+`passarDia` | método que realiza os efeitos na cidade ao passar o dia.
 
 
 
