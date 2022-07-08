@@ -423,38 +423,71 @@ Componente que
 **Ficha Técnica**
 item | detalhamento
 ----- | -----
-Classes | ConstrutorGeradorDeEventos : `com.projeto.game.model.gerador`                                                                                                GeradorEventoAleatorio : `com.projeto.game.model.gerador`                                                                                                              GeradorEventoConstrucao  : `com.projeto.game.model.gerador`
+Classes | ConstrutorGeradorDeEventos : `com.projeto.game.model.gerador`; GeradorEventoAleatorio : `com.projeto.game.model.gerador`; GeradorEventoConstrucao  : `com.projeto.game.model.gerador`
 Autores | Riccardo Carvalho Sofer e Pedro Carvalho Cintra
-Interfaces | `ICalendario, IRCidade, IPassarDia, ICalendarioVisual, IExecutarEventos, `
+Interfaces | `IConstrutorGeradorDeEventos, IGerarEventoAleatorio, IGerarEventoConstrucao`
 
 ### interfaces 
 > interfaces associadas a esse componente
 
-> interface agregador do componente em java
-~~~java
-package com.projeto.game.model.calendario;
-
-public interface ICalendario extends IRCidade, IPassarDia, ICalendarioVisual, IExecutarEventos, ICalendarioProperties {
-}
-~~~
 
 ### Detalhamento das interfaces
 
-#### Interface `IRCidade`
-Interface responsável por conectar a cidade no calendario.
+#### Interface `IConstrutorGeradorDeEventos`
+Interface responsável por acionar a criarção de eventos.
 
 ~~~java
-package com.projeto.game.model.calendario;
+package com.projeto.game.model.gerador;
 …
-public interface IRCidade {
-	public void connectCidade(ICidade cidade);
+public interface IConstrutorGeradorDeEventos {
+	public IEvento criarEventoAleatorio(int data);
+    public IEvento criarEventoConstrucao(IConstrucao construcao, int data);
 }
 ~~~
 
 Método | Objetivo
 -------| --------
-`connectCidade` | método que recebe a interface ICidade como parâmetro e a conecta com o calendario.
+`criarEventoAleatorio` | método que aciona a geração de um evento aleatorio.
+`criarEventoConstrucao` | método que aciona a geração de um evento construcao.
 
+
+
+
+
+
+#### Interface `IGerarEventoAleatorio`
+Interface responsável por gerar e definir o evento aleatorio.
+
+~~~java
+package com.projeto.game.model.gerador;
+…
+public interface IGerarEventoAleatorio{
+    public EventoAleatorio gerarEventoAleatorio(int data);
+
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`gerarEventoAleatorio` | método que cria e defini um novo evento aleatorio.
+
+
+
+
+#### Interface `IGerarEventoAleatorio`
+Interface responsável por gerar e definir o evento construcao.
+
+~~~java
+package com.projeto.game.model.gerador;
+…
+public interface IGerarEventoConstrucao {
+    public EventoConstrucao gerarEventoConstrucao(IConstrucao construcao, int data);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`gerarEventoConstrucao` | método que cria e defini um novo evento construcao.
 
 
 
