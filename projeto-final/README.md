@@ -382,7 +382,7 @@ public interface IExecutarEventos {
 Método | Objetivo
 -------| --------
 `addEvento` | método que adiciona eventos a lista de eventos.
-`executarEventos` | método 
+`executarEventos` | método percorre a lista de eventos e aciona a execução dos eventos do dia.
 
 
 
