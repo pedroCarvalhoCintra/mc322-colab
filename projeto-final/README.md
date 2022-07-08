@@ -24,7 +24,7 @@ Descrever (detalhadamente) mecânicas do jogo
 
 ## Diagrama geral de Componentes  
 
-![Diagrama](assets4documentation/diagrama-geral-final.png)
+![Diagrama](assets4documentation/arquitetura-geral-final.png)
 
 ## Componente `Cidade`
 Componente que contem o layout de construcoes 
