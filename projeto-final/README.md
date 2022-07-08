@@ -359,8 +359,30 @@ public interface ICalendarioVisual {
 
 Método | Objetivo
 -------| --------
-`criarCalendarioVisual` | método 
+`criarCalendarioVisual` | método .
 
+
+
+
+
+
+
+#### Interface `IExecutarEventos`
+Interface responsável por adicionar e executar os eventos do calendário.
+
+~~~java
+package com.projeto.game.model.calendario;
+…
+public interface IExecutarEventos {
+	public void addEvento(IEvento evento);
+	public void executarEventos();
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`addEvento` | método que adiciona eventos a lista de eventos.
+`executarEventos` | método 
 
 
 
