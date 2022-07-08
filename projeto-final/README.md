@@ -22,7 +22,7 @@ Descrever (detalhadamente) mecânicas do jogo
 
 * teste image
 
-![Diagrama](assets4documentation/arquitetura-geral-projeto.png)
+![Diagrama](assets4documentation/diagrama-geral-arquitetura-final.png)
 
 ## Diagrama geral de Componentes  
 
