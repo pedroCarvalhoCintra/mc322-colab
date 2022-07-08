@@ -184,7 +184,7 @@ Componente que
 **Ficha Técnica**
 item | detalhamento
 ----- | -----
-Classe | Construcao: `com.projeto.game.model.construcao`
+Classe | Construcao: `com.projeto.game.model.construcao` (abstract class)
 Subclasses (Construcao) | Escola, Moradia, Mercado, Industria, Prefeitura, Hospital e Vazio 
 Autores | Riccardo Carvalho Sofer e Pedro Carvalho Cintra
 Interfaces | `IConstrucao, IConstrucaoProperties, IConstrucaoVisual`
@@ -246,35 +246,120 @@ Método | Objetivo
 `setColuna` | método que recebe como parâmetro um int e o defini no atributo coluna da construcao.
 `getPreco` | método que retorna o preco da construcao.
 `setPreco` | método que recebe como parâmetro um float e o defini no atributo preco da construcao.
-`getSatisfacao` | m
-`setSatisfacao` | método.
-`getRenda` | método.
-`setRenda` | método.
-`getConstruido` | método.
-`setConstruido` | método.
-`getBotao` | método.
-`setBotao` | método.
-`getJanela` | método.
-`setJanela` | método.
-`getTipo` | método.
-`getTempoConstrucao` | método.
+`getSatisfacao` |  método que retorna a satisfacao associada à construcao.
+`setSatisfacao` | método que recebe como parâmetro um int e o defini no atributo satisfacao da construcao.
+`getRenda` |  método que retorna a reanda da construcao.
+`setRenda` | método que recebe como parâmetro um float e o defini no atributo renda da construcao.
+`getConstruido` |  método que retorna a estado estado construido da construcao .
+`setConstruido` | método que recebe como parâmetro um boolean e o defini no atributo construido da construcao.
+`getBotao` |  método que retorna o botão associado à construcao.
+`setBotao` | método que recebe como parâmetro um Button e o defini no atributo botao da construcao.
+`getJanela` |  método que retorna a janela associada à construcao.
+`setJanela` | método que recebe como parâmetro uma Window e a defini no atributo janela da construcao.
+`getTipo` |  método (abstract) que retorna uma String representando o tipo da construcao.
+`getTempoConstrucao` |  método (abstract) que retorna o tempo para construir a construcao.
+
+
+
 
 #### Interface `IConstrucaoVisual`
 Interface responsável pela criação visual das construções.
 
 ~~~java
-package com.projeto.game.model.cidade;
+package com.projeto.game.model.construcao;
 …
-public interface  {
+public interface IConstrucaoVisual {
+	public Group criarConstrucaoVisual();
 }
 ~~~
 
 Método | Objetivo
 -------| --------
-`>` | método .
-`>` | método .
+`criarConstrucaoVisual` | método que cria um Group que contém .
 
 
+
+
+
+
+
+
+## Componente `calendario`
+Componente que
+
+
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | Construcao: `com.projeto.game.model.calendario` 
+Autores | Riccardo Carvalho Sofer e Pedro Carvalho Cintra
+Interfaces | `ICalendario, IRCidade, IPassarDia, ICalendarioVisual, IExecutarEventos, `
+
+### interfaces 
+> interfaces associadas a esse componente
+
+> interface agregador do componente em java
+~~~java
+package com.projeto.game.model.calendario;
+
+public interface ICalendario extends IRCidade, IPassarDia, ICalendarioVisual, IExecutarEventos, ICalendarioProperties {
+}
+~~~
+
+### Detalhamento das interfaces
+
+#### Interface `IRCidade`
+Interface responsável por conectar a cidade no calendario.
+
+~~~java
+package com.projeto.game.model.calendario;
+…
+public interface IRCidade {
+	public void connectCidade(ICidade cidade);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectCidade` | método que recebe a interface ICidade como parâmetro e a conecta com o calendario.
+
+
+
+
+
+#### Interface `IPassarDia`
+Interface responsável por passar o dia e acionar as modificações ao passar o dia.
+
+~~~java
+package com.projeto.game.model.calendario;
+
+public interface IPassarDia {
+	public void passarDia();
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`passarDia` | método que realiza a alteração do dia do calendario, pede para que cidade realiza as modificações necessárias ao passar o dia e aciona a execução de eventos.
+
+
+
+
+#### Interface `ICalendarioVisual`
+Interface responsável pela criação visual do calendario.
+
+~~~java
+package com.projeto.game.model.calendario;
+…
+public interface ICalendarioVisual {
+	public Group criarCalendarioVisual();
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`criarCalendarioVisual` | método 
 
 
 
