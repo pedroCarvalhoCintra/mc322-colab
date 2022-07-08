@@ -498,6 +498,160 @@ Método | Objetivo
 
 
 
+## Componente `Evento`
+Componente que
+
+
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | Evento: `com.projeto.game.model.evento` (abstract class)
+Subclasses (Evento) | EventoAleatorio e EventoConstrucao 
+Autores | Riccardo Carvalho Sofer e Pedro Carvalho Cintra
+Interfaces | `IEvento, IEventoProperties, IExecutarEvento `
+
+### interfaces 
+> interfaces associadas a esse componente
+
+> interface agregador do componente em java
+~~~java
+package com.projeto.game.model.evento;
+
+public interface IEvento extends IEventoProperties, IExecutarEvento{
+}
+~~~
+
+### Detalhamento das interfaces
+
+#### Interface `IEventoProperties`
+Interface responsável pelos métodos relacionados as propriedades do evento.
+
+~~~java
+package com.projeto.game.model.evento;
+
+public interface IEventoProperties {
+	public String getDescricao();
+	public void setDescricao(String descricao);
+	public void setData(int data);
+	public int getData();
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`getDescricao` | método que retorna a descricao do evento.
+`setDescricao` | método que recebe como parâmetro uma String e a defini no atributo descricao da construcao.
+`setData` | método que recebe como parâmetro um int e o defini no atributo data da construcao.
+`getData` | método que retorna a data do evento.
+
+
+
+
+
+#### Interface `IExecutarEvento`
+Interface responsável pela execução do evento.
+
+~~~java
+package com.projeto.game.model.evento;
+…
+public interface IExecutarEvento {
+	public void executarEvento(ICidade cidade);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`executarEvento` | método (abstract) que realiza a execução de cada evento. No caso de um EventoAleatorio aciona o strategy, enquanto que, para o EventoConstrucao, altera o estado construido da construcao.
+
+
+
+
+
+
+
+
+
+## Componente `Populacao`
+Componente que
+
+
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | Populacao: `com.projeto.game.model.evento` 
+Autores | Riccardo Carvalho Sofer e Pedro Carvalho Cintra
+Interfaces | `IPopulacao, IPopulacaoProperties, IPopulacaoVisual`
+
+### interfaces 
+> interfaces associadas a esse componente
+
+> interface agregador do componente em java
+~~~java
+package com.projeto.game.model.populacao;
+
+public interface IPopulacao extends IPopulacaoProperties, IPopulacaoVisual {
+
+}
+~~~
+
+### Detalhamento das interfaces
+
+#### Interface `IPopulacaoProperties`
+Interface responsável pelos métodos relacionados as propriedades da populacao.
+
+~~~java
+package com.projeto.game.model.populacao;
+
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+
+public interface IPopulacaoProperties {
+    public int getNumHabitantes();
+    public int getSatisfacao();
+    public double getRendaPopulacao();
+    
+    public void setLabelSatisfacao(Label label);
+    public Label getLabelSatisfacao();
+    
+    public void setLabelPopulacao(Label label);
+    public Label getLabelPopulacao();
+    
+    public void addPopulacao(int num);
+    public void addRenda(double num);
+    public void addSatisfacao(int num);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`getNumHabitantes` | método que retorna o numHabitantes da populacao.
+`getSatisfacao` | método que retorna a satisfacao da populacao.
+`getRendaPopulacao` | método que retorna a rendaPopulacao da populacao.
+`setLabelSatisfacao` | método que recebe como parâmetro uma Label e a defini no atributo textoSatisfacao da populacao.
+`getLabelSatisfacao` | método que retorna o textoSatisfacao da populacao.
+`setLabelPopulacao` | método que recebe como parâmetro uma Label e a defini no atributo descricao da construcao.
+`getLabelPopulacao` | método que retorna a descricao do evento.
+`addPopulacao` | método que retorna a descricao do evento.
+`addRenda` | método que retorna a descricao do evento.
+`addSatisfacao` | método que retorna a descricao do evento.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Destaques de códgigo
