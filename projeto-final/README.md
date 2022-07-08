@@ -20,12 +20,11 @@ Descrever (detalhadamente) mecânicas do jogo
 # Diagramas
 ## Diagrama geral de Arquitetura do Jogo
 
-* teste image
-
 ![Diagrama](assets4documentation/diagrama-geral-arquitetura-final.png)
 
 ## Diagrama geral de Componentes  
 
+![Diagrama](assets4documentation/diagrama-geral-final.png)
 
 ## Componente `Cidade`
 Componente que contem o layout de construcoes 
