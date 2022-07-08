@@ -388,6 +388,81 @@ Método | Objetivo
 
 
 
+#### Interface `ICalendarioProperties`
+Interface responsável pelos métodos relacionados as propriedades do calendario.
+
+~~~java
+package com.projeto.game.model.calendario;
+…
+public interface ICalendarioProperties {
+	public int getData();
+    public void setLabel(Label label);
+    public Label getLabel();
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`getData` | método que retorna a diaAtual do calendario.
+`setLabel` | método que recebe como parâmetro uma Label e o defini no atributo texto da construcao.
+`getLabel` | método que retorna o texto do calendario.
+
+
+
+
+
+
+
+
+
+## Componente `gerador`
+Componente que
+
+
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classes | ConstrutorGeradorDeEventos : `com.projeto.game.model.gerador`                                                                                                GeradorEventoAleatorio : `com.projeto.game.model.gerador`                                                                                                              GeradorEventoConstrucao  : `com.projeto.game.model.gerador`
+Autores | Riccardo Carvalho Sofer e Pedro Carvalho Cintra
+Interfaces | `ICalendario, IRCidade, IPassarDia, ICalendarioVisual, IExecutarEventos, `
+
+### interfaces 
+> interfaces associadas a esse componente
+
+> interface agregador do componente em java
+~~~java
+package com.projeto.game.model.calendario;
+
+public interface ICalendario extends IRCidade, IPassarDia, ICalendarioVisual, IExecutarEventos, ICalendarioProperties {
+}
+~~~
+
+### Detalhamento das interfaces
+
+#### Interface `IRCidade`
+Interface responsável por conectar a cidade no calendario.
+
+~~~java
+package com.projeto.game.model.calendario;
+…
+public interface IRCidade {
+	public void connectCidade(ICidade cidade);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectCidade` | método que recebe a interface ICidade como parâmetro e a conecta com o calendario.
+
+
+
+
+
+
+
+
+
 
 
 
