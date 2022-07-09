@@ -53,6 +53,8 @@ Interfaces | `ICidade, ICidadeVisual, IRPopulacao, ICidadeProperties, IModificar
 ### interfaces 
 > interfaces associadas a esse componente
 
+![Interfaces](assets4documentation/interfaces/cidade-interfaces.jpg)
+
 > interface agregador do componente em java
 ~~~java
 public interface ICidade extends ICidadeVisual, IRPopulacao, ICidadeProperties, IModificarCidade, ICidadeDinamica {
@@ -80,8 +82,6 @@ Método | Objetivo
 `criarDinheiroVisual` | método que cria um Group que contém o ícone e o texto referentes ao dinheiro e o retorna.
 
 
-
-
 #### Interface `IRPopulacao`
 Interface responsável por conectar populacao na cidade.
 
@@ -98,15 +98,10 @@ Método | Objetivo
 `connectPopulacao` | método que recebe a interface IPopulacao como parâmetro e a conecta com a cidade.
 
 
-
-
-
-
 #### Interface `ICidadeProperties`
 Interface responsável pelos métodos relacionados as propriedades da cidade.
 
 ~~~java
-
 package com.projeto.game.model.cidade;
 …
 public interface ICidadeProperties {
@@ -135,9 +130,6 @@ Método | Objetivo
 `setRenda` | método que recebe como parâmetro um float e o defini no atributo renda da cidade.
 
 
-
-
-
 #### Interface `IModificarCidade`
 Interface responsável pela adição e remoção de construcao na cidade.
 
@@ -154,8 +146,6 @@ Método | Objetivo
 -------| --------
 `adicionaConstrucao` | método que realiza a construção de uma nova construcao na cidade, realizando as alterações necessárias na cidade.
 `removerConstrucao` | método que realiza a demolição de uma construcao na cidade, realizando as alterações necessárias na cidade.
-
-
 
 
 
@@ -177,7 +167,7 @@ public interface ICidadeDinamica {
 Método | Objetivo
 -------| --------
 `numMoradiasVizinhas` | método que recebe como parâmetro uma IConstrucao e retorna a quantidade de construções do tipo Moradia ao redor.
-`interacoesMoradiaConstruiu` | método que realiza a interação, nesse caso a possível adição de satisfacao da populacao,apos uma construcao ser construída.
+`interacoesMoradiaConstruiu` | método que realiza a interação, nesse caso a possível adição de satisfacao da populacao, após uma construcao ser construída.
 `acharDecrescimos` | método que recebe como parâmetro uma IConstrucao do tipo Moradia e retorna a quantidade de decrèscimos, nesse caso a quantidade de construções do tipo Industria.
 `interacoesMoradiaPassouDia` | método que passa por todas as contruções do tipo Moradia e realiza os decrésimos de satisfacao da populacao.
 `passarDia` | método que realiza os efeitos na cidade ao passar o dia.
@@ -185,10 +175,8 @@ Método | Objetivo
 
 
 
-
-
 ## Componente `construcao`
-Componente que
+Componente que representa as construções da cidade.
 
 ![Componente](assets4documentation/componentes/construcao-component.png)
 
@@ -202,6 +190,8 @@ Interfaces | `IConstrucao, IConstrucaoProperties, IConstrucaoVisual`
 
 ### interfaces 
 > interfaces associadas a esse componente
+
+![Interfaces](assets4documentation/interfaces/construcao-interfaces.jpg)
 
 > interface agregador do componente em java
 ~~~java
@@ -272,7 +262,6 @@ Método | Objetivo
 
 
 
-
 #### Interface `IConstrucaoVisual`
 Interface responsável pela criação visual das construções.
 
@@ -293,8 +282,6 @@ Método | Objetivo
 
 
 
-
-
 ## Componente `calendario`
 Componente que
 
@@ -309,6 +296,8 @@ Interfaces | `ICalendario, IRCidade, IPassarDia, ICalendarioVisual, IExecutarEve
 
 ### interfaces 
 > interfaces associadas a esse componente
+
+![Interfaces](assets4documentation/interfaces/calendario-interfaces.jpg)
 
 > interface agregador do componente em java
 ~~~java
@@ -337,8 +326,6 @@ Método | Objetivo
 
 
 
-
-
 #### Interface `IPassarDia`
 Interface responsável por passar o dia e acionar as modificações ao passar o dia.
 
@@ -356,7 +343,6 @@ Método | Objetivo
 
 
 
-
 #### Interface `ICalendarioVisual`
 Interface responsável pela criação visual do calendario.
 
@@ -370,10 +356,7 @@ public interface ICalendarioVisual {
 
 Método | Objetivo
 -------| --------
-`criarCalendarioVisual` | método .
-
-
-
+`criarCalendarioVisual` | método que cria um Group, adiciona os icones padrôes e o retorna.
 
 
 
@@ -394,9 +377,6 @@ Método | Objetivo
 -------| --------
 `addEvento` | método que adiciona eventos a lista de eventos.
 `executarEventos` | método percorre a lista de eventos e aciona a execução dos eventos do dia.
-
-
-
 
 
 
@@ -424,11 +404,8 @@ Método | Objetivo
 
 
 
-
-
-
 ## Componente `gerador`
-Componente que
+Componente que representa o ambiente de geração de eventos no jogo.
 
 ![Componente](assets4documentation/componentes/gerador-component.png)
 
@@ -442,6 +419,7 @@ Interfaces | `IConstrutorGeradorDeEventos, IGerarEventoAleatorio, IGerarEventoCo
 ### interfaces 
 > interfaces associadas a esse componente
 
+![Interfaces](assets4documentation/interfaces/gerador-interfaces.jpg)
 
 ### Detalhamento das interfaces
 
@@ -461,9 +439,6 @@ Método | Objetivo
 -------| --------
 `criarEventoAleatorio` | método que aciona a geração de um evento aleatorio.
 `criarEventoConstrucao` | método que aciona a geração de um evento construcao.
-
-
-
 
 
 
@@ -506,12 +481,8 @@ Método | Objetivo
 
 
 
-
-
-
-
 ## Componente `Evento`
-Componente que
+Componente que representa os eventos do jogo, podendo ser eventos construtivos realizados pelo jogador ou eventos aleatorios, que são surpresas e acontecem durante fluxo de jogo.
 
 ![Componente](assets4documentation/componentes/evento-component.png)
 
@@ -525,6 +496,8 @@ Interfaces | `IEvento, IEventoProperties, IExecutarEvento `
 
 ### interfaces 
 > interfaces associadas a esse componente
+
+![Interfaces](assets4documentation/interfaces/evento-interfaces.jpg)
 
 > interface agregador do componente em java
 ~~~java
@@ -553,11 +526,9 @@ public interface IEventoProperties {
 Método | Objetivo
 -------| --------
 `getDescricao` | método que retorna a descricao do evento.
-`setDescricao` | método que recebe como parâmetro uma String e a defini no atributo descricao da construcao.
-`setData` | método que recebe como parâmetro um int e o defini no atributo data da construcao.
+`setDescricao` | método que recebe como parâmetro uma String e a defini no atributo descricao do evento.
+`setData` | método que recebe como parâmetro um int e o defini no atributo data do evento.
 `getData` | método que retorna a data do evento.
-
-
 
 
 
@@ -580,12 +551,8 @@ Método | Objetivo
 
 
 
-
-
-
-
 ## Componente `Populacao`
-Componente que
+Componente que representa a população da cidade tendo como fatores principais sua satisfação, numero de habitantes e renda diária.
 
 ![Componente](assets4documentation/componentes/populacao-component.png)
 
@@ -598,6 +565,8 @@ Interfaces | `IPopulacao, IPopulacaoProperties, IPopulacaoVisual`
 
 ### interfaces 
 > interfaces associadas a esse componente
+
+![Interfaces](assets4documentation/interfaces/populacao-interface.jpg)
 
 > interface agregador do componente em java
 ~~~java
@@ -648,7 +617,6 @@ Método | Objetivo
 
 
 
-
 #### Interface `IPopulacaoVisual`
 Interface responsável 
 
@@ -669,14 +637,8 @@ Método | Objetivo
 
 
 
-
-
-
-
-
-
 ## Componente `construtorCalendario`
-Componente que
+Componente é um componente construtor que realiza as criação do calendario no jogo.
 
 ![Componente](assets4documentation/componentes/construtorCalendario-component.jpg)
 
@@ -689,6 +651,8 @@ Interfaces | `IConstrutorCalendario, IBuildCalendario, IRConstrutorGui`
 
 ### interfaces 
 > interfaces associadas a esse componente
+
+![Interfaces](assets4documentation/interfaces/construtorCalendario-interfaces.jpg)
 
 > interface agregador do componente em java
 ~~~java
@@ -714,8 +678,7 @@ public interface IBuildCalendario {
 
 Método | Objetivo
 -------| --------
-`buildCalendario` | método que instancia o calendario e defini seu atributo texto.
-
+`buildCalendario` | método que instancia o calendario, defini seu atributo texto e o retorna.
 
 
 
@@ -734,9 +697,6 @@ public interface IRConstrutorGui {
 Método | Objetivo
 -------| --------
 `connect` | método que recebe a interface IFactoryGui como parâmetro e a conecta com o construtorCalendario.
-
-
-
 
 
 
