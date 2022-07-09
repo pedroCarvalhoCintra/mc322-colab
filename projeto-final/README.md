@@ -26,7 +26,7 @@ Observação: você deve ter o JDK instalado em sua máquina.
 # Mecânica do Jogo 
 Descrever (detalhadamente) mecânicas do jogo
 
-#Relatório de Evolução
+# Relatório de Evolução
 A ideia geral do jogo permaneceu a mesma durante a maioria do desenvolvimento, e de fato isso é visível se compararmos o primeiro diagrama imaginário de arquitetura (visto nos slides da apresentação introdutória) e o diagrama de de arquitetura final do projeto. Porém, isso não significa que houveram desafios, e várias mudanças precisaram ser feitas.
 	A maior dificuldade foi o tempo, em especial pela escolha do grupo de usar o framework LibGDX. Apesar de muito poderoso, aprender a usar o framework demandou muito tempo, o que acabou prejudicando certos aspectos do jogo. Alguns conceitos, como dificuldade, tiveram que ser cortados inteiramente, e certas simplificações foram adotadas para obter maior funcionalidade do framework.
 	Algumas outras decisões, dessa vez positivas, foram tomadas durante o rumo. Vimos que certos design patters facilitariam muito em algumas partes do jogo. Por exemplo, a adoção de Strategies para eventos aleatórios significou muita agilidade em criar esses eventos. Ademais, o uso de Factories facilita a adição de novas construções no futuro, padronizando a criação de objetos. Por fim, optamos por separar nosso Controle de Jogo em vários subcontroles, que, apesar de interligados por interfaces, permitem correções e alterações de maneira mais ágil. Por exemplo, se quisermos mudar algo no calendário do jogo, precisariamos apenas alterar o Subcontrole relacionado ao mesmo.
