@@ -181,7 +181,7 @@ Método | Objetivo
 ## Componente `construcao`
 Componente que
 
-
+![Componente](assets4documentation/componentes/construcao-component.png)
 
 **Ficha Técnica**
 item | detalhamento
@@ -289,7 +289,7 @@ Método | Objetivo
 ## Componente `calendario`
 Componente que
 
-
+![Componente](assets4documentation/componentes/calendario-component.png)
 
 **Ficha Técnica**
 item | detalhamento
@@ -421,7 +421,7 @@ Método | Objetivo
 ## Componente `gerador`
 Componente que
 
-
+![Componente](assets4documentation/componentes/gerador-component.png)
 
 **Ficha Técnica**
 item | detalhamento
@@ -504,7 +504,7 @@ Método | Objetivo
 ## Componente `Evento`
 Componente que
 
-
+![Componente](assets4documentation/componentes/evento-component.png)
 
 **Ficha Técnica**
 item | detalhamento
@@ -578,7 +578,7 @@ Método | Objetivo
 ## Componente `Populacao`
 Componente que
 
-
+![Componente](assets4documentation/componentes/populacao-component.png)
 
 **Ficha Técnica**
 item | detalhamento
@@ -606,9 +606,7 @@ Interface responsável pelos métodos relacionados as propriedades da populacao.
 
 ~~~java
 package com.projeto.game.model.populacao;
-
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-
+…
 public interface IPopulacaoProperties {
     public int getNumHabitantes();
     public int getSatisfacao();
@@ -633,11 +631,351 @@ Método | Objetivo
 `getRendaPopulacao` | método que retorna a rendaPopulacao da populacao.
 `setLabelSatisfacao` | método que recebe como parâmetro uma Label e a defini no atributo textoSatisfacao da populacao.
 `getLabelSatisfacao` | método que retorna o textoSatisfacao da populacao.
-`setLabelPopulacao` | método que recebe como parâmetro uma Label e a defini no atributo descricao da construcao.
-`getLabelPopulacao` | método que retorna a descricao do evento.
-`addPopulacao` | método que retorna a descricao do evento.
-`addRenda` | método que retorna a descricao do evento.
-`addSatisfacao` | método que retorna a descricao do evento.
+`setLabelPopulacao` | método que recebe como parâmetro uma Label e a defini no atributo textoPopulacao da populacao.
+`getLabelPopulacao` | método que retorna o textoPopulacao da populacao.
+`addPopulacao` | método que recebe como parâmetro um int e o adiciona ao valor do numHabitantes da populacao.
+`addRenda` | método que recebe como parâmetro um float e o adiciona ao valor do rendaPopulacao da populacao.
+`addSatisfacao` | método que recebe como parâmetro um int e o adiciona ao valor do satisfacao da populacao.
+
+
+
+
+#### Interface `IPopulacaoVisual`
+Interface responsável 
+
+~~~java
+package com.projeto.game.model.populacao;
+…
+public interface IPopulacaoVisual {
+	public Group criarSatisfacaoVisual();
+	public Group criarPopulacaoVisual();
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`criarSatisfacaoVisual` | método que.
+`criarPopulacaoVisual` | método que.
+
+
+
+
+
+
+
+
+
+
+## Componente `construtorCalendario`
+Componente que
+
+![Componente](assets4documentation/componentes/construtorCalendario-component.jpg)
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | ConstrutorCalendario: `com.projeto.game.controller.construtor.calendario` 
+Autores | Riccardo Carvalho Sofer e Pedro Carvalho Cintra
+Interfaces | `IConstrutorCalendario, IBuildCalendario, IRConstrutorGui`
+
+### interfaces 
+> interfaces associadas a esse componente
+
+> interface agregador do componente em java
+~~~java
+package com.projeto.game.controller.construtor.calendario;
+
+public interface IConstrutorCalendario extends IBuildCalendario, IRConstrutorGui {
+
+}
+~~~
+
+### Detalhamento das interfaces
+
+#### Interface `IBuildCalendario`
+Interface responsável pela criação do calendario.
+
+~~~java
+package com.projeto.game.controller.construtor.calendario;
+…
+public interface IBuildCalendario {
+	public ICalendario buildCalendario();
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`buildCalendario` | método que instancia o calendario e defini seu atributo texto.
+
+
+
+
+#### Interface `IRConstrutorGui`
+Interface responsável por conectar o construtorGui no construtorCalendario .
+
+~~~java
+package com.projeto.game.controller.construtor.calendario;
+…
+public interface IRConstrutorGui {
+	public void connect(IFactoryGui construtorGui);
+
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connect` | método que recebe a interface IFactoryGui como parâmetro e a conecta com o construtorCalendario.
+
+
+
+
+
+
+
+
+## Componente `construtorCidade`
+Componente que
+
+![Componente](assets4documentation/componentes/construtorcidade-component.jpg)
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | ConstrutorCidade: `com.projeto.game.controller.construtor.cidade` 
+Autores | Riccardo Carvalho Sofer e Pedro Carvalho Cintra
+Interfaces | `IConstrutorCidade, IRConstrutorConstrucao, IRConstrutorGui, IRConstrutorPopulacao, IBuildCidade`
+
+### interfaces 
+> interfaces associadas a esse componente
+
+> interface agregador do componente em java
+~~~java
+package com.projeto.game.controller.construtor.cidade;
+
+public interface IConstrutorCidade extends IRConstrutorConstrucao, IRConstrutorGui, IRConstrutorPopulacao, IBuildCidade {
+
+}
+~~~
+
+### Detalhamento das interfaces
+
+#### Interface `IRConstrutorConstrucao`
+Interface responsável por conectar o construtorConstrucao no construtorCidade.
+
+~~~java
+package com.projeto.game.controller.construtor.cidade;
+…
+public interface IRConstrutorConstrucao {
+	public void connectConstrutorConstrucao(IFactoryConstrucao construtorConstrucao);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectConstrutorConstrucao` | método que recebe a interface IFactoryConstrucao como parâmetro e a conecta com o construtorCidade.
+
+
+
+
+#### Interface `IRConstrutorGui`
+Interface responsável por conectar o construtorGui no construtorCidade.
+
+~~~java
+package com.projeto.game.controller.construtor.cidade;
+…
+public interface IRConstrutorGui {
+	public void connectConstrutorGui(IFactoryGui construtorGui);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectConstrutorGui` | método que recebe a interface IFactoryGui como parâmetro e a conecta com o construtorCidade.
+
+
+
+#### Interface `IRConstrutorPopulacao`
+Interface responsável por conectar o construtorPopulacao no construtorCidade.
+
+~~~java
+package com.projeto.game.controller.construtor.cidade;
+…
+public interface IRConstrutorPopulacao {
+	public void connectConstrutorPopulacao(IConstrutorPopulacao construtorPopulacao);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectConstrutorPopulacao` | método que recebe a interface IConstrutorPopulacao como parâmetro e a conecta com o construtorCidade.
+
+
+
+
+#### Interface `IBuildCidade`
+Interface responsável pela criação da cidade.
+
+~~~java
+package com.projeto.game.controller.construtor.cidade;
+…
+public interface IBuildCidade {
+	public ICidade buildCidade();
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`buildCidade` | método que instancia a cidade, cria seu layout, conecta a populacao e defini seu dinheiro, seu textoDinheiro e sua renda.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Componente `construtorConstrucoes`
+Componente que
+
+![Componente](assets4documentation/componentes/construtorconstrucao-component.jpg)
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classes | ConstrutorConstrucoes: `com.projeto.game.controller.construtor.construcoes`; FactoryConstrucao: `com.projeto.game.controller.construtor.construcoes`
+Autores | Riccardo Carvalho Sofer e Pedro Carvalho Cintra
+Interfaces | `IFactoryConstrucao, IRConstrutorGui, IBuildConstrucao`
+
+### interfaces 
+> interfaces associadas a esse componente
+
+
+### Detalhamento das interfaces
+
+#### Interface `IFactoryConstrucao`
+Interface que extende a interface IRConstrutorGui e é responsável pela criação das contruções, usando o Desing Pattern Factory. 
+
+~~~java
+package com.projeto.game.controller.construtor.construcoes;
+…
+public interface IFactoryConstrucao extends IRConstrutorGui {
+	public IConstrucao criarConstrucao(String tipo, int linha, int coluna);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`criarConstrucao` | método que fabrica e retorna uma contrucao.
+
+
+
+#### Interface `IRConstrutorGui`
+Interface responsável por conectar o construtorGui no construtorConstrucoes.
+
+~~~java
+package com.projeto.game.controller.construtor.construcoes;
+…
+public interface IRConstrutorGui {
+	public void connect(IFactoryGui fabrica);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connect` |  método que recebe a interface IFactoryGui como parâmetro e a conecta com o construtorConstrucoes.
+
+
+
+#### Interface `IBuildConstrucao`
+Interface responsável pela criação das construções.
+
+~~~java
+package com.projeto.game.controller.construtor.construcoes;
+…
+public interface IBuildConstrucao {
+	public Escola buildEscola(int linha, int coluna);
+	public Hospital buildHospital(int linha, int coluna);
+	public Industria buildIndustria(int linha, int coluna);
+	public Mercado buildMercado(int linha, int coluna);
+	public Moradia buildMoradia(int linha, int coluna);
+	public Prefeitura buildPrefeitura(int linha, int coluna);
+	public Vazio buildVazio(int linha, int coluna);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`buildEscola` | método instancia uma Escola e defini sua posição e sua estado construido.
+`buildHospital` | método instancia uma Hospital e defini sua posição e sua estado construido.
+`buildIndustria` | método instancia uma Industria e defini sua posição e sua estado construido.
+`buildMercado` | método instancia uma Mercado e defini sua posição e sua estado construido.
+`buildMoradia` | método instancia uma Moradia e defini sua posição e sua estado construido.
+`buildPrefeitura` | método instancia uma Prefeitura e defini sua posição e sua estado construido.
+`buildVazio` | método instancia uma Vazio e defini sua posição e sua estado construido.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Componente `construtorGerador`
+Componente que
+
+![Componente](assets4documentation/componentes/construtorGerador-component.jpg)
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classes | ConstrutorConstrutorGeradorDeEventos: `com.projeto.game.controller.construtor.gerador`
+Autores | Riccardo Carvalho Sofer e Pedro Carvalho Cintra
+Interfaces | `IFactoryConstrucao, IRConstrutorGui, IBuildGerador`
+
+### interfaces 
+> interfaces associadas a esse componente
+
+
+### Detalhamento das interfaces
+
+#### Interface `IFactoryConstrucao`
+Interface que extende a interface IRConstrutorGui e é responsável pela criação das contruções, usando o Desing Pattern Factory. 
+
+~~~java
+package com.projeto.game.controller.construtor.construcoes;
+…
+public interface IFactoryConstrucao extends IRConstrutorGui {
+	public IConstrucao criarConstrucao(String tipo, int linha, int coluna);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`criarConstrucao` | método que fabrica e retorna uma contrucao.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
