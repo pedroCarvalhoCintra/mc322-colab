@@ -7,20 +7,21 @@ O `Untitled City Game` é um jogo de construção de cidades em que o jogador de
 * `Riccardo Carvalho Sofer - RA 247362`
 * `Pedro Carvalho Cintra - RA 247315`
 
+# Slides do projeto
+[Link Slides](https://docs.google.com/presentation/d/1TJfkO0ycISbAXsCrqyaSoHrUhCPaGAkyrBRW4GFfrWY/edit?usp=sharing)
+
+
 # Arquivo executável do jogo
 
 [jar](src/desktop/build/libs)
 
 # Para jogar...
-Para jogar basta baixar o arquivo [jar](src/desktop/build/libs) e, em um terminal, navegar até o diretório o qual o arquivo jar está e digitar o seguinte comando: 
-java -jar desktop-1.0.jar
+Para jogar, baixe o arquivo [jar](src/desktop/build/libs) e, em um terminal, navegue até o diretório o qual o arquivo jar foi salvo e insira o seguinte comando: 
+`java -jar desktop-1.0.jar`
 
 ![tutorial](assets4documentation/tutorial-jogo.png)
 
-
-# Slides do projeto
-[Link Slides](https://docs.google.com/presentation/d/1TJfkO0ycISbAXsCrqyaSoHrUhCPaGAkyrBRW4GFfrWY/edit?usp=sharing)
-
+Observação: você deve ter o JDK instalado em sua máquina.
 
 # Mecânica do Jogo 
 Descrever (detalhadamente) mecânicas do jogo
@@ -38,7 +39,7 @@ Descrever (detalhadamente) mecânicas do jogo
 
 
 ## Componente `Cidade`
-Componente que contem o layout de construcoes 
+Componente que contem o layout de construcoes.
 
 ![Componente](assets4documentation/componentes/cidade-component.png)
 
