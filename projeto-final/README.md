@@ -27,9 +27,6 @@ Para jogar, baixe o arquivo [jar](src/desktop/build/libs) e, em um terminal, nav
 
 Observação: você deve ter o JDK instalado em sua máquina.
 
-# Mecânica do Jogo 
-Descrever (detalhadamente) mecânicas do jogo
-
 # Relatório de Evolução
 A ideia geral do jogo permaneceu a mesma durante a maioria do desenvolvimento, e de fato isso é visível se compararmos o primeiro diagrama imaginário de arquitetura (visto nos slides da apresentação introdutória) e o diagrama de de arquitetura final do projeto. Porém, isso não significa que houveram desafios, e várias mudanças precisaram ser feitas.
 
