@@ -11,8 +11,16 @@ O `Untitled City Game` é um jogo de construção de cidades em que o jogador de
 
 [jar](src/desktop/build/libs)
 
+# Para jogar...
+Para jogar basta baixar o arquivo [jar](src/desktop/build/libs) e, em um terminal, navegar até o diretório o qual o arquivo jar está e digitar o seguinte comando: 
+java -jar desktop-1.0.jar
+
+![tutorial](assets4documentation/diagrama-geral-arquitetura-final.png)
+
+
 # Slides do projeto
 [Link Slides](https://docs.google.com/presentation/d/1TJfkO0ycISbAXsCrqyaSoHrUhCPaGAkyrBRW4GFfrWY/edit?usp=sharing)
+
 
 # Mecânica do Jogo 
 Descrever (detalhadamente) mecânicas do jogo
