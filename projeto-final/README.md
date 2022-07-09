@@ -1197,7 +1197,7 @@ Método | Objetivo
 ## Componente `subcontrolesCalendario`
 Componente que
 
-![Componente](assets4documentation/componentes/construtorPopulacao-component.jpg)
+![Componente](assets4documentation/componentes/subControleCalendario-component.jpg)
 
 **Ficha Técnica**
 item | detalhamento
@@ -1291,9 +1291,685 @@ Método | Objetivo
 
 
 
+#### Interface `IPassarDia`
+Interface responsável por acionar a passagem de dia no calendario.
+
+~~~java
+package com.projeto.game.controller.controle.subcontroles.calendario;
+
+public interface IPassarDia {
+	public void passarDia();
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`passarDia` | método que confere se é o calendario está em um dia de geração de evento aleatorio e aciona a passagem de dia no calendario.
 
 
 
+#### Interface `IAddEventoConstrucao `
+Interface responsável por adicionar um eventoConstrucao no calendario.
+
+~~~java
+package com.projeto.game.controller.controle.subcontroles.calendario;
+…
+public interface IAddEventoConstrucao {
+	public void addEventoConstrucao(IConstrucao construcao, int prefeituraConstruida);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`addEventoConstrucao` | método que aciona a criação de um eventoConstrucao da construcao fornecida e adiciona esse evento no calendario.
+
+
+
+
+
+
+
+## Componente `subcontrolesCidade`
+Componente que
+
+![Componente](assets4documentation/componentes/subControleCidade-component.jpg)
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | SubControleCidade: `com.projeto.game.controller.controle.subcontroles.cidade`
+Interfaces | `ISubControleCidade, IRCidade, IRFactoryConstrucoes, IRSubControleCalendario, IRSubControleGui, IRSubControleVisual, IModificarCidade`
+
+### interfaces 
+> interfaces associadas a esse componente
+
+
+> interface agregador do componente em java
+~~~java
+package com.projeto.game.controller.controle.subcontroles.cidade;
+
+public interface ISubControleCidade extends IRCidade, IRFactoryConstrucoes, IRSubControleCalendario, IRSubControleGui, IRSubControleVisual, IModificarCidade {
+
+}
+~~~
+
+### Detalhamento das interfaces
+
+#### Interface `IRCidade`
+Interface responsável por conectar a cidade no subcontrolesCidade.
+
+~~~java
+package com.projeto.game.controller.controle.subcontroles.cidade;
+…
+public interface IRCidade {
+	public void connectCidade(ICidade cidade);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectCidade` | método que recebe a interface ICidade como parâmetro e a conecta com o subcontrolesCidade.
+
+
+
+
+#### Interface `IRFactoryConstrucoes`
+Interface responsável por conectar a FactoryConstrucao no subcontrolesCidade.
+
+~~~java
+package com.projeto.game.controller.controle.subcontroles.cidade;
+…
+public interface IRFactoryConstrucoes {
+	public void connectFactoryConstrucoes(IFactoryConstrucao factory);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectFactoryConstrucoes` | método que recebe a interface IFactoryConstrucao como parâmetro e a conecta com o subcontrolesCidade.
+
+
+
+#### Interface `IRSubControleCalendario`
+Interface responsável por conectar o SubControleCalendario no subcontrolesCidade.
+
+~~~java
+package com.projeto.game.controller.controle.subcontroles.cidade;
+…
+public interface IRSubControleCalendario {
+	public void connectSubControleCalendario(ISubControleCalendario subControleCalendario);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectSubControleCalendario` | método que recebe a interface ISubControleCalendario como parâmetro e a conecta com o subcontrolesCidade.
+
+
+
+#### Interface `IRSubControleGui`
+Interface responsável por conectar o SubContrleGui no subcontrolesCidade.
+
+~~~java
+package com.projeto.game.controller.controle.subcontroles.cidade;
+…
+public interface IRSubControleGui  {
+	public void connectSubControleVisual (ISubControleGui subControleGui);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectSubControleVisual ` | método que recebe a interface ISubControleGui como parâmetro e a conecta com o subcontrolesCidade.
+
+
+
+
+
+
+#### Interface `IRSubControleVisual`
+Interface responsável por conectar o SubContrleVizual no subcontrolesCidade.
+
+~~~java
+package com.projeto.game.controller.controle.subcontroles.cidade;
+…
+public interface IRSubControleVisual   {
+	public void connectSubControleVisual (ISubControleVisual subControleVisual);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectSubControleVisual ` | método que recebe a interface ISubControleVisual como parâmetro e a conecta com o subcontrolesCidade.
+
+
+
+
+
+
+#### Interface `IModificarCidade`
+Interface responsável por acionar a criação e destruição de uma construcao.
+
+~~~java
+package com.projeto.game.controller.controle.subcontroles.cidade;
+
+public interface IModificarCidade {
+    public void construirConstrucao(String tipo, int linha, int coluna);
+    public void removerConstrucao(int linha, int coluna);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`construirConstrucao ` | método que aciona a criação de uma construcao fornecendo à fabrica os parametros recebidos.
+`removerConstrucao ` | método que aciona a remoção de uma cidade fornecendo a cidade os parametros recebidos.
+
+
+
+
+
+## Componente `subcontrolesGui`
+Componente que
+
+![Componente](assets4documentation/componentes/subControleGui-component.jpg)
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | SubControleGui: `com.projeto.game.controller.controle.subcontroles.gui`
+Interfaces | `ISubControleGui, IRSubControleVisual, IRFactoryGui, IRConnectStage, IRSubControleCalendario, ICriarGuiCalendario, IGuiEvento, IExcecoes`
+
+### interfaces 
+> interfaces associadas a esse componente
+
+
+> interface agregador do componente em java
+~~~java
+package com.projeto.game.controller.controle.subcontroles.gui;
+
+public interface ISubControleGui extends IRSubControleVisual, IRFactoryGui, IRConnectStage, IRSubControleCalendario, ICriarGuiCalendario, IGuiEvento, IExcecoes {
+
+}
+~~~
+
+### Detalhamento das interfaces
+
+#### Interface `IRSubControleVisual`
+Interface responsável por conectar o SubControleVisual no subcontrolesGui.
+
+~~~java
+package com.projeto.game.controller.controle.subcontroles.gui;
+…
+public interface IRSubControleVisual {
+	public void connectSubControleVisual(ISubControleVisual subControleVisual);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectSubControleVisual` | método que recebe a interface ICidade como parâmetro e a conecta com o subcontrolesGui.
+
+
+
+
+#### Interface `IRFactoryGui`
+Interface responsável por conectar a FactoryGui no subcontrolesGui.
+
+~~~java
+package com.projeto.game.controller.controle.subcontroles.gui;
+…
+public interface IRFactoryGui  {
+	public void connectFactoryGui(IFactoryGui factory);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectFactoryGui` | método que recebe a interface IFactoryGui como parâmetro e a conecta com o subcontrolesGui.
+
+
+
+
+#### Interface `IRConnectStage`
+Interface responsável por conectar o stage no subcontrolesGui.
+
+~~~java
+package com.projeto.game.controller.controle.subcontroles.gui;
+…
+public interface IRConnectStage {
+	public void connectStage(Stage stage);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectStage` | método que recebe a interface Stage como parâmetro e a conecta com o subcontrolesGui.
+
+
+
+
+#### Interface `IRSubControleCalendario`
+Interface responsável por conectar o stage no subcontrolesGui.
+
+~~~java
+package com.projeto.game.controller.controle.subcontroles.gui;
+…
+public interface IRSubControleCalendario {
+	public void connectSubControleCalendario(ISubControleCalendario subControleCalendario);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectSubControleCalendario` | método que recebe a interface ISubControleCalendario como parâmetro e a conecta com o subcontrolesGui.
+
+
+
+
+
+
+#### Interface `ICriarGuiCalendario`
+Interface responsável pelo vizual do botao passarDia.
+
+~~~java
+package com.projeto.game.controller.controle.subcontroles.gui;
+…
+public interface ICriarGuiCalendario {
+	public Button adicionarBotaoPassarDia();
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`adicionarBotaoPassarDia` | método que aciona a criação de um botao passarDia por meio da do construtorGui e o retorna.
+
+
+
+
+#### Interface `IGuiEvento`
+Interface responsável pela vizualização dos eventos aleatorios.
+
+~~~java
+package com.projeto.game.controller.controle.subcontroles.gui;
+…
+public interface IGuiEvento {
+	public void adicionarDialogoEvento(IEvento eventoAleatorio);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`adicionarDialogoEvento` | método que cria e mostra um Dialog de acordo com o eventoAleatorio fornecido no parâmetro.
+
+
+#### Interface `IExcecoes`
+Interface responsável pela vizualização das execoes encontradas.
+
+~~~java
+package com.projeto.game.controller.controle.subcontroles.gui;
+
+public interface IExcecoes {
+	public void adicionarDialogoExcecao(String error);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`adicionarDialogoExcecao` | método que cria e mostra um Dialog com o erro fornecido no parâmetro.
+
+
+
+
+
+
+
+
+
+
+
+
+## Componente `subcontrolesVisual`
+Componente que
+
+![Componente](assets4documentation/componentes/subControleVisual-component.jpg)
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | SubControleVisual: `com.projeto.game.controller.controle.subcontroles.visual`
+Interfaces | `ISubControleVisual, IRFactoryGui, IRConnectStage, IRConnectSubControleGui, IRConnectViews, IAtualizar`
+
+### interfaces 
+> interfaces associadas a esse componente
+
+
+> interface agregador do componente em java
+~~~java
+package com.projeto.game.controller.controle.subcontroles.visual;
+
+public interface ISubControleVisual extends IRFactoryGui, IRConnectStage, IRConnectSubControleGui, IRConnectViews, IAtualizar {
+	…
+}
+~~~
+
+### Detalhamento das interfaces
+
+#### Interface `IRFactoryGui`
+Interface responsável por conectar a FactoryGui no subcontrolesVisual.
+
+~~~java
+package com.projeto.game.controller.controle.subcontroles.visual;
+…
+public interface IRFactoryGui {
+	public void connectFactoryGui(IFactoryGui factory);
+
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectFactoryGui` | método que recebe a interface IFactoryGui como parâmetro e a conecta com o subcontrolesVisual.
+
+
+
+
+
+
+#### Interface `IRConnectStage`
+Interface responsável por conectar o satge no subcontrolesVisual.
+
+~~~java
+package com.projeto.game.controller.controle.subcontroles.visual;
+…
+public interface IRConnectStage {
+	public void connectStage(Stage stage);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectStage` | método que recebe a interface Stage como parâmetro e a conecta com o subcontrolesVisual.
+
+
+
+#### Interface `IRConnectSubControleGui`
+Interface responsável por conectar o SubContrleGui no subcontrolesVisual.
+
+~~~java
+package com.projeto.game.controller.controle.subcontroles.visual;
+…
+public interface IRConnectSubControleGui {
+	public void connectSubControleGui(ISubControleGui subControleGui);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectSubControleGui` | método que recebe a interface ISubControleGui como parâmetro e a conecta com o subcontrolesVisual.
+
+
+
+
+#### Interface `IRConnectViews`
+Interface responsável por conectar o viewCidade, o viewPopulacao e o viewCalendario no subcontrolesVisual.
+
+~~~java
+package com.projeto.game.controller.controle.subcontroles.visual;
+…
+public interface IRConnectViews {
+	public void connectViewCidade(IViewCidade viewCidade);
+	public void connectViewPopulacao(IViewPopulacao viewPopulacao);
+	public void connectViewCalendario(IViewCalendario viewCalendario);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectViewCidade` | método que recebe a interface IViewCidade como parâmetro e a conecta com o subcontrolesVisual.
+`connectViewPopulacao` | método que recebe a interface IViewPopulacao como parâmetro e a conecta com o subcontrolesVisual.
+`connectViewCalendario` | método que recebe a interface IViewCalendario como parâmetro e a conecta com o subcontrolesVisual.
+
+
+
+#### Interface `IAtualizar`
+Interface responsável por atualizar a tela de jogo.
+
+~~~java
+package com.projeto.game.controller.controle.subcontroles.visual;
+
+public interface IAtualizar {
+	public void atualizar();
+    public void atualizarVisualCidade();
+    public void atualizarVisualPopulacao();
+    public void atualizarVisualCalendario();
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`atualizar` | método que aciona a atuzalização da cidade, da populacao e do calendario.
+`atualizarVisualCidade` | método que atualiza a cidade na tela de jogo.
+`atualizarVisualPopulacao` | método que atualiza a populacao na tela de jogo.
+`atualizarVisualCalendario` | método que atualiza a calendario na tela de jogo.
+
+
+
+
+
+
+
+## Componente `viewCalendario`
+Componente que
+
+![Componente](assets4documentation/componentes/viewCalendario-component.png)
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | ViewCalendario: `com.projeto.game.view.calendario`
+Interfaces | `IViewCalendario, IRCalendario`
+
+### interfaces 
+> interfaces associadas a esse componente
+
+
+> interface agregador do componente em java
+~~~java
+package com.projeto.game.view.calendario;
+…
+public interface IViewCalendario extends IRCalendario {
+	public Group getVisual();
+
+}
+~~~
+
+### Detalhamento das interfaces
+
+#### Interface `IRCalendario`
+Interface responsável por conectar o calendario no viewCalendario.
+
+~~~java
+package com.projeto.game.view.calendario;
+…
+public interface IRCalendario {
+	public void connect(ICalendario calendario);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connect` | método que recebe a interface ICalendario como parâmetro e o conecta com o viewCalendario.
+
+
+
+
+
+## Componente `viewCidade`
+Componente que
+
+![Componente](assets4documentation/componentes/viewCidade-component.png)
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | ViewCidade: `com.projeto.game.view.cidade`
+Interfaces | ` IViewCidade, IRCidade`
+
+### interfaces 
+> interfaces associadas a esse componente
+
+
+> interface agregador do componente em java
+~~~java
+package com.projeto.game.view.cidade;
+…
+public interface IViewCidade extends IRCidade {
+	…
+}
+~~~
+
+### Detalhamento das interfaces
+
+#### Interface `IRCidade`
+Interface responsável por conectar a cidade no viewCidade.
+
+~~~java
+package com.projeto.game.view.cidade;
+…
+public interface IRCidade {
+	public void connectCidade(ICidade cidade);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectCidade` | método que recebe a interface ICidade como parâmetro e a conecta com o viewCidade.
+
+
+
+
+
+## Componente `viewConstrucao`
+Componente que
+
+![Componente](assets4documentation/componentes/viewConstrucao-component.png)
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | ViewConstrucao: `com.projeto.game.view.construcao`
+Interfaces | `IViewConstrucao, IRConstrucao, IRStage, IRGui`
+
+### interfaces 
+> interfaces associadas a esse componente
+
+
+> interface agregador do componente em java
+~~~java
+package com.projeto.game.view.construcao;
+…
+public interface IViewConstrucao extends IRConstrucao, IRStage, IRGui {
+	…
+}
+~~~
+
+### Detalhamento das interfaces
+
+#### Interface `IRConstrucao`
+Interface responsável por conectar a construcao no viewConstrucao.
+
+~~~java
+package com.projeto.game.view.construcao;
+…
+public interface IRConstrucao {
+	public void connect(IConstrucao construcao);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connect` | método que recebe a interface IConstrucao como parâmetro e a conecta com o viewConstrucao.
+
+
+
+#### Interface `IRStage`
+Interface responsável por conectar o stage no viewConstrucao.
+
+~~~java
+package com.projeto.game.view.construcao;
+…
+public interface IRStage {
+	public void connectStage(Stage stage);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectStage` | método que recebe a interface Stage como parâmetro e a conecta com o viewConstrucao.
+
+
+
+#### Interface `IRGui`
+Interface responsável por conectar a FactorGui no viewConstrucao.
+
+~~~java
+package com.projeto.game.view.construcao;
+…
+public interface IRGui {
+	public void connectGui(IFactoryGui factoryGui);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectGui` | método que recebe a interface IFactoryGui como parâmetro e a conecta com o viewConstrucao.
+
+
+
+
+
+
+
+## Componente `viewPopulacao`
+Componente que
+
+![Componente](assets4documentation/componentes/viewPopulacao-component.png)
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | ViewPopulacao: `com.projeto.game.view.populacao`
+Interfaces | `IViewPopulacao, IRPopulacao`
+
+### interfaces 
+> interfaces associadas a esse componente
+
+
+> interface agregador do componente em java
+~~~java
+package com.projeto.game.view.populacao;
+…
+public interface IViewPopulacao extends IRPopulacao {
+	…
+}
+~~~
+
+### Detalhamento das interfaces
+
+#### Interface `IRPopulacao`
+Interface responsável por conectar a populacao no viewConstrucao.
+
+~~~java
+package com.projeto.game.view.populacao;
+…
+public interface IRPopulacao {
+	public void connect(IPopulacao populacao);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connect` | método que recebe a interface IPopulacao como parâmetro e a conecta com o viewPopulacao.
 
 
 
