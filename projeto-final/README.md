@@ -1999,17 +1999,6 @@ Método | Objetivo
 
 
 
-# Destaques de códgigo
-Trechos relevantes do código
-
-~~~java
-// Recorte do seu código
-public void algoInteressante(…) {
-   …
-   trechoInteressante = 100;
-}
-~~~
-
 
 # Destaques de Orientação a Objetos
 Conceitos de OO utilizados no códgigo (sobrecarga de métodos, polimorfismo ...)
