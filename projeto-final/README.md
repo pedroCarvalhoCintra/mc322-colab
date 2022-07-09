@@ -941,33 +941,352 @@ Componente que
 **Ficha Técnica**
 item | detalhamento
 ----- | -----
-Classes | ConstrutorConstrutorGeradorDeEventos: `com.projeto.game.controller.construtor.gerador`
+Classe | ConstrutorConstrutorGeradorDeEventos: `com.projeto.game.controller.construtor.gerador`
 Autores | Riccardo Carvalho Sofer e Pedro Carvalho Cintra
-Interfaces | `IFactoryConstrucao, IRConstrutorGui, IBuildGerador`
+Interfaces | `IConstrutorConstrutorGeradorDeEventos, IBuildGeradorDeEventos`
 
 ### interfaces 
 > interfaces associadas a esse componente
 
 
+> interface agregador do componente em java
+~~~java
+package com.projeto.game.controller.construtor.gerador;
+
+public interface IConstrutorConstrutorGeradorDeEventos extends IBuildGeradorDeEventos{
+    
+}
+~~~
+
 ### Detalhamento das interfaces
 
-#### Interface `IFactoryConstrucao`
-Interface que extende a interface IRConstrutorGui e é responsável pela criação das contruções, usando o Desing Pattern Factory. 
+#### Interface `IBuildGeradorDeEventos`
+Interface que cria o construtorGeradorDeEventos
 
 ~~~java
-package com.projeto.game.controller.construtor.construcoes;
+package com.projeto.game.controller.construtor.gerador;
 …
-public interface IFactoryConstrucao extends IRConstrutorGui {
-	public IConstrucao criarConstrucao(String tipo, int linha, int coluna);
+public interface IBuildGeradorDeEventos {
+    public IConstrutorGeradorDeEventos buildGeradorDeEventos();
 }
 ~~~
 
 Método | Objetivo
 -------| --------
-`criarConstrucao` | método que fabrica e retorna uma contrucao.
+`buildGeradorDeEventos` | método que instancia e retorna o construtorGeradorDeEventos.
 
 
 
+
+
+
+
+
+
+## Componente `construtorGui`
+Componente que
+
+![Componente](assets4documentation/componentes/construtorGui-component.png)
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classes | FactoryGui: `com.projeto.game.controller.construtor.gui`; ConstrutorBotao: `com.projeto.game.controller.construtor.gui`; ConstrutorDialog: `com.projeto.game.controller.construtor.gui`; ConstrutorJanela: `com.projeto.game.controller.construtor.gui`; ConstrutorLabel: `com.projeto.game.controller.construtor.gui`; 
+Autores | Riccardo Carvalho Sofer e Pedro Carvalho Cintra
+Interfaces | `IFactoryGui, IRControle, IBuildBotao, IBuildDialog, IBuildJanela, IBuildLabel`
+
+### interfaces 
+> interfaces associadas a esse componente
+
+
+
+### Detalhamento das interfaces
+
+#### Interface `IFactoryGui`
+Interface que extende a interface IRControle e é responsável pela criação de elementos da GUI (graphical user interface), usando o Desing Pattern Factory.
+
+~~~java
+package com.projeto.game.controller.construtor.gui;
+…
+public interface IFactoryGui extends IRControle {
+	public Button criarBotao(String tipo, String texto, float largura, float altura, int linha, int coluna);
+	public Window criarJanela(String tipo, String titulo, String texto, float largura, float altura, int linha, int coluna);
+	public Label criarLabel(String texto, float tamanhoFonte, String estilo);
+	public Dialog criarDialog(String titulo, String texto, float tamanhoFonte, float largura, float altura);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`criarBotao` | método que aciona a criação de um Button atraves de do ConstrutorBotao.
+`criarJanela` | método que aciona a criação de uma Window atraves de do ConstrutorJanela.
+`criarLabel` | método que aciona a criação de uma Label atraves de do ConstrutorLabel.
+`criarDialog` | método que aciona a criação de um Dialog atraves de do ConstrutorDialog.
+
+
+
+#### Interface `IRControle`
+Interface responsável por conectar o subControleCidade no construtorGui.
+
+
+~~~java
+package com.projeto.game.controller.construtor.gui;
+…
+public interface IRControle {
+	public void connect(ISubControleCidade controle);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connect` | método que recebe a interface ISubControleCidade como parâmetro e a conecta com o construtorGui.
+
+
+
+
+#### Interface `IBuildBotao`
+Interface responsável pela criação de botões.
+
+
+~~~java
+package com.projeto.game.controller.construtor.gui;
+…
+public interface IBuildBotao extends IRControle {
+	public Button buildBotaoTexto(String texto, float largura, float altura);
+	public Button buildBotaoImagemVazio(float largura, float altura);
+	public Button buildBotaoImagem(TextureRegionDrawable image, float largura, float altura, int linha, int coluna, String tipo);
+	public Button buildBotaoDestruir(String texto, float largura, float altura, int linha, int coluna, String tipo);
+
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`buildBotaoTexto` | método que instancia um TextButton com o texto fornecido, defini seu tamanho com as dimensões dadas e o retorna.
+`buildBotaoImagemVazio` | método que instancia um ImageButton, defini seu tamanho, através dos parâmetros passados, e o retorna.
+`buildBotaoImagem` | método que instancia um ImageButton usando um novoEstilo criado a partir do parâmetro TextureRegionDrawable ..., defini seu tamanho e o retorna.
+`buildBotaoDestruir` | método que .
+
+
+
+#### Interface `IBuildDialog`
+Interface responsável pela criação de dialogs
+
+
+~~~java
+package com.projeto.game.controller.construtor.gui;
+…
+public interface IBuildDialog {
+	public Dialog buildDialog(String titulo, float largura, float altura);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`buildDialog` | método que instancia um Dialog com o titulo fornecido, defini seu tamanho com as dimensões dadas e o retorna.
+
+
+
+
+
+#### Interface `IBuildJanela`
+Interface responsável por conectar o subControleCidade no construtorGui.
+
+
+~~~java
+package com.projeto.game.controller.construtor.gui;
+…
+public interface IBuildJanela {
+	public Window buildJanela(String titulo, float largura, float altura);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`buildJanela` | método que instancia uma Window com o titulo fornecido, defini seu tamanho com as dimensões dadas e a retorna.
+
+
+
+#### Interface `IBuildLabel`
+Interface responsável por conectar o subControleCidade no construtorGui.
+
+
+~~~java
+package com.projeto.game.controller.construtor.gui;
+…
+public interface IBuildLabel {
+	public Label criarLabel(String texto, float tamanhoFonte, String estilo);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connect` | método que instancia uma Label com o texto fornecido, defini o tamanho e estilo da fonte com as informações dadas e a retorna.
+
+
+
+
+
+
+
+## Componente `construtorPopulacao`
+Componente que
+
+![Componente](assets4documentation/componentes/construtorPopulacao-component.jpg)
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | ConstrutorPopulacao: `com.projeto.game.controller.construtor.populacao`
+Interfaces | `IConstrutorPopulacao, IBuildPopulacao, IRConstrutorGui`
+
+### interfaces 
+> interfaces associadas a esse componente
+
+
+> interface agregador do componente em java
+~~~java
+package com.projeto.game.controller.construtor.populacao;
+
+public interface IConstrutorPopulacao extends IBuildPopulacao, IRConstrutorGui {
+
+}
+~~~
+
+### Detalhamento das interfaces
+
+#### Interface `IBuildPopulacao`
+Interface responsável pela criação da populacao.
+
+~~~java
+package com.projeto.game.controller.construtor.populacao;
+…
+public interface IBuildPopulacao {
+	public IPopulacao buildPopulacao();
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`buildPopulacao` | método que instancia a populacao, defini o textoPopulacao e o textoSatisfacao e a retorna.
+
+
+
+#### Interface `IRConstrutorGui`
+Interface responsável por conectar o construtorGui no construtorPopulacao.
+
+~~~java
+package com.projeto.game.controller.construtor.populacao;
+…
+public interface IRConstrutorGui {
+	public void connect(IFactoryGui construtorGui);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connect` | método que recebe a interface IFactoryGui como parâmetro e a conecta com o construtorPopulacao.
+
+
+
+
+
+
+
+
+## Componente `subcontrolesCalendario`
+Componente que
+
+![Componente](assets4documentation/componentes/construtorPopulacao-component.jpg)
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | SubControleCalendario: `com.projeto.game.controller.controle.subcontroles.calendario`
+Interfaces | `ISubControleCalendario, IRSubControleGui, IRGeradorEventos, IRCalendario, IEventoAleatorio, IPassarDia, IAddEventoConstrucao `
+
+### interfaces 
+> interfaces associadas a esse componente
+
+
+> interface agregador do componente em java
+~~~java
+package com.projeto.game.controller.controle.subcontroles.calendario;
+
+public interface ISubControleCalendario extends IRSubControleGui, IRGeradorEventos, IRCalendario, IEventoAleatorio, IPassarDia, IAddEventoConstrucao {
+
+}
+~~~
+
+### Detalhamento das interfaces
+
+#### Interface `IRSubControleGui`
+Interface responsável por conectar o subcontrolesGui no subcontrolesCalendario.
+
+~~~java
+package com.projeto.game.controller.controle.subcontroles.calendario;
+…
+public interface IRSubControleGui {
+	public void connectSubControleGui(ISubControleGui subControleGui);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectSubControleGui` | método que recebe a interface ISubControleGui como parâmetro e a conecta com o subcontrolesCalendario.
+
+
+
+#### Interface `IRGeradorEventos`
+Interface responsável por conectar o geradorDeEventos no subcontrolesCalendario.
+
+~~~java
+package com.projeto.game.controller.controle.subcontroles.calendario;
+…
+public interface IRGeradorEventos {
+	public void connectGeradorEventos(IConstrutorGeradorDeEventos geradorEventos);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectGeradorEventos` | método que recebe a interface IConstrutorGeradorDeEventos como parâmetro e a conecta com o subcontrolesCalendario.
+
+
+
+
+#### Interface `IRCalendario`
+Interface responsável por conectar o calendario no subcontrolesCalendario.
+
+~~~java
+package com.projeto.game.controller.controle.subcontroles.calendario;
+…
+public interface IRCalendario {
+	public void connectCalendario(ICalendario calendario);
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`connectCalendario` | método que recebe a interface ICalendario como parâmetro e a conecta com o subcontrolesCalendario.
+
+
+
+
+#### Interface `IEventoAleatorio`
+Interface responsável por acionar a criação de um novo evento aleatorio.
+
+~~~java
+package com.projeto.game.controller.controle.subcontroles.calendario;
+
+public interface IEventoAleatorio {
+	public void eventoAleatorio();
+}
+~~~
+
+Método | Objetivo
+-------| --------
+`eventoAleatorio` | método que aciona a geração de um eventoAleatorio, adiciona esse evento no calendario e aciona o subContrleGui para que ele adicione um Dialog para o evento.
 
 
 
