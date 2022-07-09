@@ -7,7 +7,11 @@ O `Untitled City Game` é um jogo de construção de cidades em que o jogador de
 * `Riccardo Carvalho Sofer - RA 247362`
 * `Pedro Carvalho Cintra - RA 247315`
 
-# Slides do projeto
+# Slides do projeto prévia
+[Link Slides](https://docs.google.com/presentation/d/18Q0nwnL4gl8Wkp2uV2XbtuXoq--j61drRy9ujxbWtvg/edit?usp=sharing)
+
+
+# Slides do projeto final
 [Link Slides](https://docs.google.com/presentation/d/1TJfkO0ycISbAXsCrqyaSoHrUhCPaGAkyrBRW4GFfrWY/edit?usp=sharing)
 
 
@@ -1823,7 +1827,7 @@ Interfaces | `IViewConstrucao, IRConstrucao, IRStage, IRGui`
 ### interfaces 
 > interfaces associadas a esse componente
 
-![Interfaces](assets4documentation/interfaces/viewcosntrucao-interfaces.jpg)
+![Interfaces](assets4documentation/interfaces/viewconstrucao-interfaces.jpg)
 
 
 > interface agregador do componente em java
@@ -1938,26 +1942,92 @@ Método | Objetivo
 
 
 
-
-
-
-
-
-
 # Destaques de Orientação a Objetos
-Conceitos de OO utilizados no códgigo (sobrecarga de métodos, polimorfismo ...)
+* Classe Abstrata; 
+* Herança; 
+* Sobrecarga de métodos:
+* Polimorfismo;
 
-## Diagrama de Classes usada no destaque
 
 ## Código do Destaque
-
+1. Recortes de código com exemplo de classe abstrata, herança e sobrecarga de métodos:
 ~~~java
-// Recorte do código do destaque OO
-public void algoInteressante(…) {
-   …
-   trechoInteressante = 100;
+package com.projeto.game.model.construcao;
+…
+public abstract class Construcao implements IConstrucao {
+	…
+	public Group criarConstrucaoVisual() {
+		Group grupo = new Group();
+		…
+		return grupo;
+	}
+	
+	public abstract String getTipo();
 }
 ~~~
+
+~~~java
+package com.projeto.game.model.construcao;
+…
+public class Escola extends Construcao {
+	…
+	public Group criarConstrucaoVisual() {
+		Group grupo = super.criarConstrucaoVisual();
+		…
+		return grupo;
+	}
+}
+~~~
+
+2. Recortes de código com exemplo de polimorfismo:
+~~~java
+package com.projeto.game.model.cidade;
+…
+public class Cidade implements ICidade {
+	…
+    	private IConstrucao[][] layout;
+	…
+}
+~~~
+
+~~~java
+package com.projeto.game.controller.construtor.cidade;
+…
+public class ConstrutorCidade implements IConstrutorCidade {
+	…
+	private IFactoryConstrucao construtorConstrucao;
+	…
+	public ICidade buildCidade() {
+		ICidade cidade = new Cidade();
+		IConstrucao[][] layout = new IConstrucao[10][10];
+		…
+		
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 10; j++) {
+				layout[i][j] = construtorConstrucao.criarConstrucao("vazio", i, j);
+			}
+		}
+		…
+		return cidade;
+	}
+	…
+}
+~~~
+
+~~~java
+package com.projeto.game.controller.construtor.construcoes;
+…
+public class ConstrutorConstrucao implements IBuildConstrucao {
+	…
+	public Escola buildEscola(int linha, int coluna) {
+		Escola escola = new  Escola();
+		…
+		return escola;
+	}
+	…
+}
+~~~
+
 
 # Destaques de Pattern
 Foi adotado pela equipe, essencialmente, os seguintes Desing Patterns:
