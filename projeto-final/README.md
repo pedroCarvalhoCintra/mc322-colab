@@ -714,7 +714,7 @@ Método | Objetivo
 
 
 ## Componente `construtorCidade`
-Componente que
+Componente construtor responsável pela criação da cidade no jogo.
 
 ![Componente](assets4documentation/componentes/construtorcidade-component.jpg)
 
@@ -727,6 +727,8 @@ Interfaces | `IConstrutorCidade, IRConstrutorConstrucao, IRConstrutorGui, IRCons
 
 ### interfaces 
 > interfaces associadas a esse componente
+
+![Interfaces](assets4documentation/interfaces/construtorcidade-interfaces.jpg)
 
 > interface agregador do componente em java
 ~~~java
@@ -813,15 +815,8 @@ Método | Objetivo
 
 
 
-
-
-
-
-
-
-
 ## Componente `construtorConstrucoes`
-Componente que
+Componente é um construtor responsável pela criação das construções no jogo
 
 ![Componente](assets4documentation/componentes/construtorconstrucao-component.jpg)
 
@@ -835,6 +830,7 @@ Interfaces | `IFactoryConstrucao, IRConstrutorGui, IBuildConstrucao`
 ### interfaces 
 > interfaces associadas a esse componente
 
+![Interfaces](assets4documentation/interfaces/construtorConstrucoes-interfaces.jpg)
 
 ### Detalhamento das interfaces
 
@@ -905,16 +901,8 @@ Método | Objetivo
 
 
 
-
-
-
-
-
-
-
-
 ## Componente `construtorGerador`
-Componente que
+Componente construtor responsável pela criação do gerador de eventos no jogo.
 
 ![Componente](assets4documentation/componentes/construtorGerador-component.jpg)
 
@@ -927,6 +915,8 @@ Interfaces | `IConstrutorConstrutorGeradorDeEventos, IBuildGeradorDeEventos`
 
 ### interfaces 
 > interfaces associadas a esse componente
+
+![Interfaces](assets4documentation/interfaces/construtorGerador-interfaces.jpg)
 
 
 > interface agregador do componente em java
@@ -959,12 +949,8 @@ Método | Objetivo
 
 
 
-
-
-
-
 ## Componente `construtorGui`
-Componente que
+Componente construtor responsável pela criação dos elementos de GUI no jogo.
 
 ![Componente](assets4documentation/componentes/construtorGui-component.png)
 
@@ -978,7 +964,7 @@ Interfaces | `IFactoryGui, IRControle, IBuildBotao, IBuildDialog, IBuildJanela, 
 ### interfaces 
 > interfaces associadas a esse componente
 
-
+![Interfaces](assets4documentation/interfaces/construtorGui-interfaces.jpg)
 
 ### Detalhamento das interfaces
 
@@ -1044,8 +1030,8 @@ Método | Objetivo
 -------| --------
 `buildBotaoTexto` | método que instancia um TextButton com o texto fornecido, defini seu tamanho com as dimensões dadas e o retorna.
 `buildBotaoImagemVazio` | método que instancia um ImageButton, defini seu tamanho, através dos parâmetros passados, e o retorna.
-`buildBotaoImagem` | método que instancia um ImageButton usando um novoEstilo criado a partir do parâmetro TextureRegionDrawable ..., defini seu tamanho e o retorna.
-`buildBotaoDestruir` | método que .
+`buildBotaoImagem` | método que instancia um ImageButton usando um novoEstilo criado a partir do parâmetro TextureRegionDrawable, defini seu tamanho e o retorna.
+`buildBotaoDestruir` | método que cria o bota destruir apartir dos parêmtros fornecidos.
 
 
 
@@ -1064,8 +1050,6 @@ public interface IBuildDialog {
 Método | Objetivo
 -------| --------
 `buildDialog` | método que instancia um Dialog com o titulo fornecido, defini seu tamanho com as dimensões dadas e o retorna.
-
-
 
 
 
@@ -1108,9 +1092,8 @@ Método | Objetivo
 
 
 
-
 ## Componente `construtorPopulacao`
-Componente que
+Componente construtor que cria a população durante o jogo.
 
 ![Componente](assets4documentation/componentes/construtorPopulacao-component.jpg)
 
@@ -1122,6 +1105,8 @@ Interfaces | `IConstrutorPopulacao, IBuildPopulacao, IRConstrutorGui`
 
 ### interfaces 
 > interfaces associadas a esse componente
+
+![Interfaces](assets4documentation/interfaces/construtorPopulacao-interfaces.jpg)
 
 
 > interface agregador do componente em java
@@ -1172,10 +1157,8 @@ Método | Objetivo
 
 
 
-
-
 ## Componente `subcontrolesCalendario`
-Componente que
+Componente de controle responsável por realizar os comando relacionados ao calendario.
 
 ![Componente](assets4documentation/componentes/subControleCalendario-component.jpg)
 
@@ -1187,6 +1170,8 @@ Interfaces | `ISubControleCalendario, IRSubControleGui, IRGeradorEventos, IRCale
 
 ### interfaces 
 > interfaces associadas a esse componente
+
+![Interfaces](assets4documentation/interfaces/subControleCalendario-interfaces.jpg)
 
 
 > interface agregador do componente em java
@@ -1270,7 +1255,6 @@ Método | Objetivo
 
 
 
-
 #### Interface `IPassarDia`
 Interface responsável por acionar a passagem de dia no calendario.
 
@@ -1310,7 +1294,7 @@ Método | Objetivo
 
 
 ## Componente `subcontrolesCidade`
-Componente que
+Componente de controle responsável pelos comandos relacionados a cidade.
 
 ![Componente](assets4documentation/componentes/subControleCidade-component.jpg)
 
@@ -1323,6 +1307,7 @@ Interfaces | `ISubControleCidade, IRCidade, IRFactoryConstrucoes, IRSubControleC
 ### interfaces 
 > interfaces associadas a esse componente
 
+![Interfaces](assets4documentation/interfaces/subControleCidade-interfaces.jpg)
 
 > interface agregador do componente em java
 ~~~java
@@ -1405,8 +1390,6 @@ Método | Objetivo
 
 
 
-
-
 #### Interface `IRSubControleVisual`
 Interface responsável por conectar o SubContrleVizual no subcontrolesCidade.
 
@@ -1449,7 +1432,7 @@ Método | Objetivo
 
 
 ## Componente `subcontrolesGui`
-Componente que
+Componente de controle responsável pelos comandos relacionados a GUI.
 
 ![Componente](assets4documentation/componentes/subcontroleGui-component.jpg)
 
@@ -1461,6 +1444,8 @@ Interfaces | `ISubControleGui, IRSubControleVisual, IRFactoryGui, IRConnectStage
 
 ### interfaces 
 > interfaces associadas a esse componente
+
+![Interfaces](assets4documentation/interfaces/subControlegui-interfaces.jpg)
 
 
 > interface agregador do componente em java
@@ -1523,7 +1508,7 @@ public interface IRConnectStage {
 
 Método | Objetivo
 -------| --------
-`connectStage` | método que recebe a interface Stage como parâmetro e a conecta com o subcontrolesGui.
+`connectStage` | método que recebe o Stage como parâmetro e a conecta com o subcontrolesGui.
 
 
 
@@ -1603,13 +1588,8 @@ Método | Objetivo
 
 
 
-
-
-
-
-
 ## Componente `subcontrolesVisual`
-Componente que
+Componente de controle responsável pelos comandos relacionados ao visual do jogo.
 
 ![Componente](assets4documentation/componentes/subControleVisual-component.jpg)
 
@@ -1622,6 +1602,7 @@ Interfaces | `ISubControleVisual, IRFactoryGui, IRConnectStage, IRConnectSubCont
 ### interfaces 
 > interfaces associadas a esse componente
 
+![Interfaces](assets4documentation/interfaces/subControleVisual-interfaces.jpg)
 
 > interface agregador do componente em java
 ~~~java
@@ -1668,7 +1649,7 @@ public interface IRConnectStage {
 
 Método | Objetivo
 -------| --------
-`connectStage` | método que recebe a interface Stage como parâmetro e a conecta com o subcontrolesVisual.
+`connectStage` | método que recebe o Stage como parâmetro e a conecta com o subcontrolesVisual.
 
 
 
@@ -1736,10 +1717,8 @@ Método | Objetivo
 
 
 
-
-
 ## Componente `viewCalendario`
-Componente que
+Componente de view responsável pelos criações visuais do calendario.
 
 ![Componente](assets4documentation/componentes/viewCalendario-component.png)
 
@@ -1752,6 +1731,7 @@ Interfaces | `IViewCalendario, IRCalendario`
 ### interfaces 
 > interfaces associadas a esse componente
 
+![Interfaces](assets4documentation/interfaces/viewCalendario-interfaces.jpg)
 
 > interface agregador do componente em java
 ~~~java
@@ -1782,10 +1762,8 @@ Método | Objetivo
 
 
 
-
-
 ## Componente `viewCidade`
-Componente que
+Componente de view responsável pelas criações visuais da cidade.
 
 ![Componente](assets4documentation/componentes/viewCidade-component.png)
 
@@ -1797,6 +1775,8 @@ Interfaces | ` IViewCidade, IRCidade`
 
 ### interfaces 
 > interfaces associadas a esse componente
+
+![Interfaces](assets4documentation/interfaces/viewCidade-interfaces.jpg)
 
 
 > interface agregador do componente em java
@@ -1830,7 +1810,7 @@ Método | Objetivo
 
 
 ## Componente `viewConstrucao`
-Componente que
+Componente de view responsável pelas criações visuais das construções.
 
 ![Componente](assets4documentation/componentes/viewConstrucao-component.png)
 
@@ -1842,6 +1822,8 @@ Interfaces | `IViewConstrucao, IRConstrucao, IRStage, IRGui`
 
 ### interfaces 
 > interfaces associadas a esse componente
+
+![Interfaces](assets4documentation/interfaces/viewcosntrucao-interfaces.jpg)
 
 
 > interface agregador do componente em java
@@ -1911,7 +1893,7 @@ Método | Objetivo
 
 
 ## Componente `viewPopulacao`
-Componente que
+Componente de view responsável pelas criações visuais da população.
 
 ![Componente](assets4documentation/componentes/viewPopulacao-component.png)
 
@@ -1924,6 +1906,7 @@ Interfaces | `IViewPopulacao, IRPopulacao`
 ### interfaces 
 > interfaces associadas a esse componente
 
+![Interfaces](assets4documentation/interfaces/viewPopulacao-interfaces.jpg)
 
 > interface agregador do componente em java
 ~~~java
@@ -1950,16 +1933,6 @@ public interface IRPopulacao {
 Método | Objetivo
 -------| --------
 `connect` | método que recebe a interface IPopulacao como parâmetro e a conecta com o viewPopulacao.
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2160,6 +2133,8 @@ Observação : As funções `EventoAleatorioGreveGeral` e `EventoAleatorioRepass
 # Plano de Exceções
 
 ## Diagrama de hierarquia de exceções
+
+![Interfaces](assets4documentation/excecoes.png)
 
 ## Descrição das classes de exceções
 
