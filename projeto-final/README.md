@@ -1480,7 +1480,7 @@ Método | Objetivo
 ## Componente `subcontrolesGui`
 Componente que
 
-![Componente](assets4documentation/componentes/subControleGui-component.jpg)
+![Componente](assets4documentation/componentes/subcontroleGui-component.jpg)
 
 **Ficha Técnica**
 item | detalhamento
