@@ -26,6 +26,13 @@ Observação: você deve ter o JDK instalado em sua máquina.
 # Mecânica do Jogo 
 Descrever (detalhadamente) mecânicas do jogo
 
+#Relatório de Evolução
+A ideia geral do jogo permaneceu a mesma durante a maioria do desenvolvimento, e de fato isso é visível se compararmos o primeiro diagrama imaginário de arquitetura (visto nos slides da apresentação introdutória) e o diagrama de de arquitetura final do projeto. Porém, isso não significa que houveram desafios, e várias mudanças precisaram ser feitas.
+	A maior dificuldade foi o tempo, em especial pela escolha do grupo de usar o framework LibGDX. Apesar de muito poderoso, aprender a usar o framework demandou muito tempo, o que acabou prejudicando certos aspectos do jogo. Alguns conceitos, como dificuldade, tiveram que ser cortados inteiramente, e certas simplificações foram adotadas para obter maior funcionalidade do framework.
+	Algumas outras decisões, dessa vez positivas, foram tomadas durante o rumo. Vimos que certos design patters facilitariam muito em algumas partes do jogo. Por exemplo, a adoção de Strategies para eventos aleatórios significou muita agilidade em criar esses eventos. Ademais, o uso de Factories facilita a adição de novas construções no futuro, padronizando a criação de objetos. Por fim, optamos por separar nosso Controle de Jogo em vários subcontroles, que, apesar de interligados por interfaces, permitem correções e alterações de maneira mais ágil. Por exemplo, se quisermos mudar algo no calendário do jogo, precisariamos apenas alterar o Subcontrole relacionado ao mesmo.
+	Existem uma série de melhorias que poderiam ainda ter sido realizadas no projeto, mas que por questões de tempo não foram possíveis. Existem alguns problemas de encapsulamento e formatação de componentes, os quais comprometem um pouco a arquitetura geral do jogo. O grupo não teve muito tempo disponível para refatorar o código, o que gerou esses problemas. Mesmo assim, sabemos que essas correções são impotantes, mas que infelizmente tiverem que ser deixadas de lado para priorizar o funcionamento básico do jogo.
+	Aprendemos muito com esse projeto, desde o uso de design patterns, até como trabalhar com arquiteturas complexas e também fazer decisões em equipe para agiliar a criação, sempre dividindo tarefas com base na especialidade de cada membro. Estamos certos de que essas habilidades e conhecimentos serão de grande uso no futuro, seja na faculdade ou fora da vida acadêmica.
+
 # Diagramas
 ## Diagrama geral de Arquitetura do Jogo
 
@@ -2154,4 +2161,8 @@ Observação : As funções `EventoAleatorioGreveGeral` e `EventoAleatorioRepass
 
 Classe | Descrição
 ----- | -----
-`<nome da classe>` | `<o que ela engloba>`
+ExcecaoConstrucao | Engloba todas as exceções relacionadas a construções.
+ConstrucaoInvalida | Indica que houve um erro no posicionamento ou remoção de uma construção.
+PrefeituraInvalida | Indica não se pôde construir uma prefeitura por ela já estar na cidade.
+DinheiroInsuficiente | Indica não há dinheiro suficiente para realizar uma construção.
+
