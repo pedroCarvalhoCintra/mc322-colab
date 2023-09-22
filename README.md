@@ -1,8 +1,8 @@
-# Projetos - MC322 - Grupo "Javassauros"
+# Projects - MC322 (Object-Oriented Programing) - "Javassauros" team
 
-# Alunos
+# Students
 * `Riccardo Carvalho Sofer - RA 247362`
 * `Pedro Carvalho Cintra - RA 247315`
 
-# Curso
-* `Engenharia de Computação`
+# Cours
+* `Computer Engineering`
