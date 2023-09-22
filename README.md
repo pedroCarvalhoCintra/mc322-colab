@@ -4,5 +4,5 @@
 * `Riccardo Carvalho Sofer - RA 247362`
 * `Pedro Carvalho Cintra - RA 247315`
 
-# Cours
+# Course
 * `Computer Engineering`
